@@ -1,0 +1,73 @@
+/* Second navbar row: product tabs on the left, Changelog and GitHub on the
+   right. Hidden on mobile, where the same items live in the sidebar menu. */
+
+.row {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  height: var(--neo-tabs-height);
+  padding: 0 var(--ifm-navbar-padding-horizontal);
+  border-top: 1px solid var(--neo-line);
+}
+
+.tabs,
+.asideGroup {
+  display: flex;
+  align-items: stretch;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab,
+.aside {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  white-space: nowrap;
+  color: var(--neo-ink-muted);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.tab {
+  position: relative;
+  font-weight: 500;
+}
+
+.tab:hover,
+.aside:hover {
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+
+.tab.active {
+  color: var(--neo-accent);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--neo-accent);
+}
+
+.aside {
+  font-size: 14px;
+}
+
+.icon {
+  color: var(--neo-ink-faint);
+}
+
+@media (max-width: 996px) {
+  .row {
+    display: none;
+  }
+}

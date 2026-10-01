@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="270 440 2295 635">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="190 360 900 900">
   <defs>
-    <linearGradient id="ink" gradientUnits="userSpaceOnUse" x1="270" y1="440" x2="2565" y2="1075">
-      <stop offset="0" stop-color="#2b62d4"/>
+    <radialGradient id="bg" cx="20%" cy="10%" r="110%">
+      <stop offset="0" stop-color="#9bb9d3"/>
+      <stop offset=".45" stop-color="#2b62d4"/>
       <stop offset="1" stop-color="#0c2568"/>
-    </linearGradient>
+    </radialGradient>
     <mask id="ring-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="3000" height="1500">
       <rect width="3000" height="1500" fill="#fff"/>
       <path d="M694 440V640" stroke="#000" stroke-width="40"/>
@@ -13,13 +14,10 @@
       <ellipse cx="640" cy="754" rx="306" ry="127" transform="rotate(35 640 754)" fill="none" stroke="#000" stroke-width="40"/>
     </mask>
   </defs>
-  <g fill="none" stroke="url(#ink)" stroke-width="78" stroke-linecap="round">
+  <rect x="190" y="360" width="900" height="900" rx="220" fill="url(#bg)"/>
+  <g fill="none" stroke="#fff" stroke-width="78" stroke-linecap="round">
     <ellipse cx="640" cy="754" rx="365" ry="186" transform="rotate(35 640 754)" mask="url(#ring-gap)"/>
     <path d="M753 500V857"/>
     <path d="M528 687V1020" mask="url(#bar-gap)"/>
-    <path d="M1177 935V601M1177 768a156.5 156.5 0 0 1 313 0V935"/>
-    <path d="M1674 768H1994A160 160 0 1 0 1947 881"/>
-    <circle cx="2343" cy="768" r="167"/>
-  </g>
+    </g>
 </svg>
-

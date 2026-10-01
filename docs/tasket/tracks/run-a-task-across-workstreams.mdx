@@ -1,0 +1,128 @@
+---
+title: Run a task across several workstreams
+sidebar_label: Run a task across workstreams
+sidebar_position: 2
+description: Turn on Tracks for a Tasket project, create a track for each workstream, start a task on the tracks it needs, and mark it Done on each one as the work finishes.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Run a task across several workstreams
+
+Set up a project so one task can move through several workstreams at once, such as Spec, Design and Engineering, each with its own status.
+
+Turn on Tracks in the project's settings, create your tracks on the Tracks board, then start the task on the tracks it needs. After that, each discipline marks the task Done on its own track. Starting several tasks at once is covered in the same step.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **Access to the project.** Any team member, including guests, can turn on Tracks and create tracks. If Tracks is already on, skip to [Create your tracks](#create-your-tracks).
+- **A connection.** Turning on Tracks and creating tracks don't work offline.
+- **A list of your workstreams.** Track names must be unique within a project, so decide on them up front. For example: `Spec`, `Design`, `Engineering`, `QA`, `Docs`.
+
+## Turn on Tracks
+
+1. Open the project and click the **Settings** tab.
+
+2. Turn on **Tracks**.
+
+   A **Tracks** tab appears next to the project's other tabs.
+
+:::info[Turning Tracks off later clears it]
+
+Only admins can turn Tracks off, and doing so clears every track and status in the project. See [What happens when things change](./what-are-tracks.mdx#what-happens-when-things-change).
+
+:::
+
+## Create your tracks
+
+1. Click the **Tracks** tab. The board is empty until you add a track.
+
+2. Click **Add track**, enter a name for the first workstream (for example, `Spec`), and confirm.
+
+   You can also pick tasks to start on the new track now. You can always start tasks later.
+
+3. Repeat for each workstream. **Add track** appears after the last column and between every two columns, so you can insert a track exactly where it belongs.
+
+4. (Optional) To reorder the board, open a track's menu, click **Move track**, and choose its new position. Only the column order changes.
+
+To fix a name later, use **Rename** in the track's menu. Statuses on that track aren't affected.
+
+## Start the task on its tracks
+
+The task must be open. To add a closed task to a track, reopen it first.
+
+Choose the tab that matches what you're doing.
+
+<Tabs groupId="start-scope">
+<TabItem value="one" label="One task" default>
+
+Start a single task from its Tracks pill. This works from anywhere you open the task, including **My Work** and **Updates**.
+
+1. Open the task.
+
+2. Click the **Tracks** pill in the task's detail view. It lists every track in the project with the task's status on each.
+
+3. Click **Start** next to each track the task needs.
+
+   The status changes to *In Progress*, and the task appears in that track's column on the board.
+
+</TabItem>
+<TabItem value="many" label="Several tasks at once">
+
+Start a batch of tasks that are already on one track onto other tracks. For example, move everything that's In Progress on Spec into Design too. This needs a connection.
+
+1. On the **Tracks** board, find the column the tasks are already in.
+
+2. Click **Select** on each task you want to include.
+
+3. Choose the tracks to start them on, and confirm.
+
+   Each selected task is now In Progress on those tracks. A task that was already on one of them stays exactly where it was.
+
+</TabItem>
+</Tabs>
+
+If you click **Start** on a track the task is already on, Tasket highlights where the task already is instead of starting it again.
+
+## Move the task through each track
+
+Each discipline updates its own track. Changing the status on one track never changes another.
+
+- **When a workstream finishes:** in that track's column, click **Mark Done** on the task. It moves to the column's *Done* section and the counter updates.
+- **When it needs more work:** in the *Done* section, click **Mark Pending**. The task moves back to *In Progress*.
+- **When the task no longer needs that workstream:** click **Stop** on the task while it's In Progress. It leaves the column and shows as *Not started* in the pill. To stop a task that's Done, click **Mark Pending** first.
+
+You can do all of this from the task's Tracks pill too. **Mark Done** and **Mark Pending** work offline and sync when you reconnect. **Stop** needs a connection.
+
+## Check where the task stands
+
+Open the task and look at its **Tracks** pill. It shows how many tracks the task is Done on, out of all tracks in the project. Open the pill to see the status on each track.
+
+The pill is the only view that shows every track for one task. The board shows one track per column.
+
+## Close the task
+
+When the work is finished, complete the task as usual. You don't need to mark it Done on every track first: a task's own status and its track statuses are separate.
+
+The completed task leaves the board, but its track statuses are kept. If you reopen it, it returns to its columns with every status as you left it.
+
+:::warning[Before you delete a track]
+
+Deleting a track removes it and every task's status on it permanently, including on closed tasks. There's no undo. To change the board's layout, rename or move the track instead.
+
+:::
+
+## Need help?
+
+- **The Tracks tab is missing.** Tracks is off for this project. Turn it on in **Settings**, or ask a team member to.
+- **A task isn't on the board.** The board only shows open tasks that are started on at least one track. Check that the task is open, then start it from its Tracks pill.
+- **There's no Tracks pill on a task.** Tracks is off for that task's project.
+- **A change you made offline disappeared.** Someone deleted that track while you were offline. Changes to a deleted track are discarded when you sync.
+
+## Next steps
+
+- [What are Tracks?](./what-are-tracks.mdx): statuses, the board, the pill, and what each change does to track data.
+- [Who can do what](./what-are-tracks.mdx#who-can-do-what): track permissions for members, admins and guests.

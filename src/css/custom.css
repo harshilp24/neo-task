@@ -1,30 +1,183 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global styles. Tokens follow neo.work: ink on white, the four blues of the
+ * Neo mesh (steel, sky, royal, navy) with royal as the accent, and Inter
+ * with tight tracking on headings.
  */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --neo-ink: #1a1814;
+  --neo-ink-muted: rgba(26, 24, 20, 0.66);
+  --neo-ink-faint: rgba(26, 24, 20, 0.45);
+  --neo-paper: #ffffff;
+  --neo-wash: #f7f7f6;
+  --neo-line: rgba(26, 24, 20, 0.08);
+  --neo-line-strong: rgba(26, 24, 20, 0.2);
+
+  /* The Neo mesh, sampled from neo.work. */
+  --neo-steel: #9bb9d3;
+  --neo-sky: #4e91ce;
+  --neo-royal: #2b62d4;
+  --neo-navy: #0c2568;
+  --neo-mesh:
+    radial-gradient(90% 120% at 12% 0%, var(--neo-steel) 0%, rgba(155, 185, 211, 0) 60%),
+    radial-gradient(70% 90% at 92% 12%, var(--neo-sky) 0%, rgba(78, 145, 206, 0) 60%),
+    radial-gradient(90% 110% at 20% 100%, var(--neo-royal) 0%, rgba(43, 98, 212, 0) 65%),
+    radial-gradient(80% 110% at 100% 100%, var(--neo-navy) 0%, rgba(12, 37, 104, 0) 70%),
+    #3d64b0;
+
+  --neo-accent: var(--neo-royal);
+  --neo-accent-soft: #eef3fc;
+  --neo-accent-line: #cddcf6;
+
+  --ifm-color-primary: #2b62d4;
+  --ifm-color-primary-dark: #2758bf;
+  --ifm-color-primary-darker: #2553b4;
+  --ifm-color-primary-darkest: #1e4494;
+  --ifm-color-primary-light: #4072d8;
+  --ifm-color-primary-lighter: #4b7adb;
+  --ifm-color-primary-lightest: #6b92e2;
+
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-weight: 500;
+  --ifm-font-color-base: var(--neo-ink);
+  --ifm-heading-color: var(--neo-ink);
+  --ifm-background-color: var(--neo-paper);
+  --ifm-navbar-shadow: none;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --neo-ink: #f2f1ee;
+  --neo-ink-muted: rgba(242, 241, 238, 0.7);
+  --neo-ink-faint: rgba(242, 241, 238, 0.45);
+  --neo-paper: #121110;
+  --neo-wash: #1b1a18;
+  --neo-line: rgba(242, 241, 238, 0.1);
+  --neo-line-strong: rgba(242, 241, 238, 0.24);
+  --neo-accent: #7aa7e6;
+  --neo-accent-soft: rgba(122, 167, 230, 0.12);
+  --neo-accent-line: rgba(122, 167, 230, 0.3);
+
+  --ifm-color-primary: #7aa7e6;
+  --ifm-color-primary-dark: #5f94e1;
+  --ifm-color-primary-darker: #528bde;
+  --ifm-color-primary-darkest: #2e72d4;
+  --ifm-color-primary-light: #95baeb;
+  --ifm-color-primary-lighter: #a2c3ee;
+  --ifm-color-primary-lightest: #cadcf5;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+/* Navbar: two rows on desktop (logo, search, Open Neo; then the tabs from
+   src/theme/Navbar/Content). The navbar height covers both rows so the docs
+   sidebar and TOC stick below them. */
+:root {
+  --neo-bar-height: 3.75rem;
+  --neo-tabs-height: 3rem;
+  --ifm-navbar-height: calc(var(--neo-bar-height) + var(--neo-tabs-height));
+  --ifm-navbar-padding-horizontal: 1.5rem;
+}
+
+.navbar {
+  flex-direction: column;
+  padding: 0;
+  border-bottom: 1px solid var(--neo-line);
+}
+
+.navbar__inner {
+  position: relative;
+  flex-wrap: nowrap;
+  height: var(--neo-bar-height);
+  padding: 0 var(--ifm-navbar-padding-horizontal);
+}
+
+.navbar__logo {
+  height: 1.6rem;
+  margin-right: 0.6rem;
+}
+
+/* The logo carries the "neo" wordmark; the title is the muted "docs". */
+.navbar__title {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--neo-ink-faint);
+}
+
+/* Desktop shows tabs in the second row; the sidebar menu shows them on mobile. */
+.navbar__inner .navbar-tab {
+  display: none;
+}
+
+/* Search, centred in the top row on desktop. */
+@media (min-width: 997px) {
+  .navbar__inner .navbar-search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.navbar .navbar__search-input {
+  width: 280px;
+  height: 38px;
+  padding-left: 2.25rem;
+  border-radius: 999px;
+  font-size: 15px;
+  background-color: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+
+.navbar .navbar__search-input:focus {
+  box-shadow: inset 0 0 0 1px var(--neo-accent),
+    0 0 0 3px var(--neo-accent-soft);
+}
+
+/* Desktop only: on mobile, Open Neo lives in the sidebar menu. */
+@media (min-width: 997px) {
+  .navbar__inner .navbar-cta {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--neo-ink);
+    box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  }
+
+  .navbar__inner .navbar-cta:hover {
+    color: var(--neo-ink);
+    background: var(--neo-wash);
+  }
+
+  /* The external-link arrow reads as noise on a button. */
+  .navbar__inner .navbar-cta svg {
+    display: none;
+  }
+}
+
+@media (max-width: 996px) {
+  :root {
+    --ifm-navbar-height: var(--neo-bar-height);
+  }
+
+  .navbar .navbar__search-input {
+    width: 100%;
+  }
 }

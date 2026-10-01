@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Neo Docs',
+  tagline: 'The work platform where AI does the work.',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -50,10 +50,16 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/harshilp24/neo-task/tree/main/',
         },
+        // The blog is the product changelog: one post per release note.
         blog: {
-          showReadingTime: true,
+          routeBasePath: 'changelog',
+          blogTitle: 'Changelog',
+          blogDescription: 'What shipped in Neo, newest first.',
+          blogSidebarTitle: 'Recent releases',
+          blogSidebarCount: 'ALL',
+          showReadingTime: false,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -61,7 +67,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/harshilp24/neo-task/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -74,79 +80,57 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        indexBlog: true,
+        searchBarShortcutHint: true,
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'My Site',
+        // The logo is the full Neo lockup; the title adds a muted "docs".
+        title: 'docs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Neo',
           src: 'img/logo.svg',
         },
+        // Items with the navbar-tab class are drawn in the second row by
+        // src/theme/Navbar/Content, and in the sidebar menu on mobile.
         items: [
+          {type: 'search', position: 'left', className: 'navbar-search'},
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://neo.work',
+            label: 'Open Neo',
             position: 'right',
+            className: 'navbar-cta',
+          },
+          {to: '/', label: 'Home', className: 'navbar-tab'},
+          {
+            to: '/docs/tasket/tracks',
+            label: 'Tasket',
+            activeBasePath: '/docs/tasket',
+            className: 'navbar-tab',
+          },
+          {to: '/changelog', label: 'Changelog', className: 'navbar-tab navbar-tab--aside'},
+          {
+            href: 'https://github.com/harshilp24/neo-task',
+            label: 'GitHub',
+            className: 'navbar-tab navbar-tab--aside',
           },
         ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

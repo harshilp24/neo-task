@@ -1,23 +1,389 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Home page. Colours and type come from the tokens in src/css/custom.css,
+   which follow neo.work: ink on paper, the Neo blues, Inter set tight. */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
+.page {
+  /* Explicit width: Docusaurus' main wrapper is a flex column, where auto
+     margins alone would size the page to its content. */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Hero: copy on the left, the one-task-four-products demo on the right. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 56px;
+  padding: 88px 0 72px;
+}
+
+.h1 {
+  font-size: clamp(40px, 5.2vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.lead {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.6;
+  color: var(--neo-ink-muted);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heroNote {
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: var(--neo-ink-faint);
+}
+
+/* Buttons: pills, as on neo.work. */
+.btnPrimary,
+.btnOutline,
+.btnWhite {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 150ms ease-out, opacity 150ms ease-out,
+    background-color 150ms ease-out;
+}
+
+.btnPrimary:active,
+.btnOutline:active {
+  transform: scale(0.97);
+}
+
+.btnPrimary {
+  background: var(--neo-accent);
+  color: #fff;
+}
+.btnPrimary:hover {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.btnOutline {
+  color: var(--neo-ink);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+.btnOutline:hover {
+  color: var(--neo-ink);
+  text-decoration: none;
+  background: var(--neo-wash);
+}
+
+.btnWhite {
+  background: #fff;
+  color: var(--neo-ink);
+  font-weight: 600;
+}
+
+/* Release banner: the Neo mesh with white type, like the neo.work sign-up. */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 44px 48px;
+  border-radius: 24px;
+  /* Navy wash on the left keeps white type readable over the light steel. */
+  background:
+    linear-gradient(90deg, rgba(12, 37, 104, 0.45), rgba(12, 37, 104, 0) 75%),
+    var(--neo-mesh);
+  color: #fff;
+  text-decoration: none;
+}
+.banner:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.banner:hover .btnWhite {
+  opacity: 0.92;
+}
+.banner .kicker {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bannerTitle {
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.bannerLine {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  max-width: 640px;
+}
+
+/* Sections */
+.section {
+  margin-top: 88px;
+}
+
+.sectionHead {
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+
+.h2 {
+  font-size: clamp(26px, 2.8vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.sectionSub {
+  color: var(--neo-ink-muted);
+  font-size: 17px;
+  margin: 0;
+}
+
+.kicker {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neo-accent);
+  margin-bottom: 8px;
+}
+
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--neo-accent-soft);
+  color: var(--neo-accent);
+  margin-bottom: 20px;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform 150ms ease-out;
+}
+.task:hover .chevron,
+.banner:hover .chevron {
+  transform: translateX(2px);
+}
+
+/* Article cards */
+.groupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.group {
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.groupHead {
+  display: block;
+  padding: 32px 32px 24px;
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+.groupHead:hover {
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+.groupHead:hover .groupTitle {
+  color: var(--neo-accent);
+}
+
+.groupTitle {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  margin: 0 0 6px;
+  transition: color 150ms ease-out;
+}
+
+.groupOutcome {
+  color: var(--neo-ink-muted);
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+
+.groupMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--neo-ink-faint);
+}
+
+.needs {
+  padding: 3px 12px;
+  border-radius: 999px;
+  color: var(--neo-ink-muted);
+  font-weight: 500;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+
+.taskList {
+  list-style: none;
+  margin: 0 32px 16px;
+  padding: 0;
+  border-top: 1px solid var(--neo-line);
+}
+
+.taskList li {
+  border-bottom: 1px solid var(--neo-line);
+}
+.taskList li:last-child {
+  border-bottom: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 4px;
+  font-size: 16px;
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+.task:hover {
+  color: var(--neo-accent);
+  text-decoration: none;
+}
+.task .chevron {
+  color: var(--neo-ink-faint);
+}
+.task:hover .chevron {
+  color: var(--neo-accent);
+}
+
+/* More */
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.more {
+  display: block;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  color: var(--neo-ink);
+  text-decoration: none;
+  transition: background-color 150ms ease-out;
+}
+.more:hover {
+  color: var(--neo-ink);
+  text-decoration: none;
+  background: var(--neo-wash);
+}
+.more .iconBox {
+  margin-bottom: 16px;
+}
+
+.moreTitle {
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--neo-accent);
+  margin: 0 0 4px;
+}
+
+.moreLine {
+  color: var(--neo-ink-muted);
+  margin: 0;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 88px;
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--neo-line);
+}
+
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.footerLink,
+.footerCopy {
+  font-size: 15px;
+  color: var(--neo-ink-muted);
+}
+.footerLink:hover {
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding-top: 64px;
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 760px) {
+  .page {
+    padding: 0 16px;
+  }
+  .hero {
+    padding: 48px 0;
+  }
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+  .groupGrid,
+  .moreGrid {
+    grid-template-columns: 1fr;
+  }
+  .groupHead {
+    padding: 24px 24px 20px;
+  }
+  .taskList {
+    margin: 0 24px 8px;
+  }
+  .section {
+    margin-top: 64px;
+  }
 }
