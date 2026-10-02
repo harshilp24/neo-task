@@ -1,10 +1,10 @@
 /**
  * Global styles. Tokens follow neo.work: ink on white, the four blues of the
- * Neo mesh (steel, sky, royal, navy) with royal as the accent, and Inter
- * with tight tracking on headings.
+ * Neo mesh (steel, sky, royal, navy) with royal as the accent, and
+ * Instrument Sans: a clean grotesk, medium-weight headings, airy body text.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
 
 :root {
   --neo-ink: #1a1814;
@@ -39,7 +39,8 @@
   --ifm-color-primary-lighter: #4b7adb;
   --ifm-color-primary-lightest: #6b92e2;
 
-  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-base: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --ifm-line-height-base: 1.7;
   --ifm-heading-font-weight: 500;
   --ifm-font-color-base: var(--neo-ink);
   --ifm-heading-color: var(--neo-ink);
@@ -79,7 +80,7 @@ body {
 h1,
 h2,
 h3 {
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
 }
 
 /* Navbar: two rows on desktop (logo, search, Open Neo; then the tabs from
@@ -114,7 +115,7 @@ h3 {
 .navbar__title {
   font-size: 1.125rem;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--neo-ink-faint);
 }
 
@@ -180,4 +181,128 @@ h3 {
   .navbar .navbar__search-input {
     width: 100%;
   }
+}
+
+/* Release notes show their tags as badges in the header (see
+   src/theme/BlogPostItem/Header), so the footer tag list would repeat them. */
+.blog-post-page article footer {
+  display: none;
+}
+
+/* Docs pages, in the clean docs style: no breadcrumbs (the section label
+   above the title does that job), quiet body text, medium headings. */
+.theme-doc-breadcrumbs {
+  display: none;
+}
+
+.theme-doc-markdown {
+  font-size: 17px;
+  color: var(--neo-ink-muted);
+}
+.theme-doc-markdown h2,
+.theme-doc-markdown h3 {
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.theme-doc-markdown h2 {
+  margin-top: 2.6rem;
+  font-size: 1.6rem;
+}
+.theme-doc-markdown strong,
+.theme-doc-markdown th {
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.theme-doc-markdown li + li {
+  margin-top: 6px;
+}
+
+/* Sidebar: section headings, then items with a tinted pill when current. */
+.theme-doc-sidebar-menu {
+  padding-top: 1rem;
+}
+.theme-doc-sidebar-menu .menu__link {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 15.5px;
+  color: var(--neo-ink-muted);
+}
+.theme-doc-sidebar-menu .menu__link:hover {
+  color: var(--neo-ink);
+  background: var(--neo-wash);
+}
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist) {
+  font-weight: 500;
+  color: var(--neo-accent);
+  background: var(--neo-accent-soft);
+}
+
+/* Table of contents: an "On this page" label, current section in accent. */
+.theme-doc-toc-desktop {
+  padding-top: 1rem;
+}
+.theme-doc-toc-desktop .table-of-contents {
+  border-left: 0;
+  font-size: 14.5px;
+}
+.theme-doc-toc-desktop .table-of-contents::before {
+  content: 'On this page';
+  display: block;
+  margin: 0 0 10px 0.75rem;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.table-of-contents__link {
+  color: var(--neo-ink-muted);
+}
+.table-of-contents__link--active {
+  font-weight: 500;
+  color: var(--neo-accent);
+}
+
+/* Sidebar icons: each section label is a quiet heading (sections don't
+   collapse), and entries carry an icon picked by their className in
+   sidebars.js. */
+.theme-doc-sidebar-item-category-level-1 + .theme-doc-sidebar-item-category-level-1 {
+  margin-top: 20px;
+}
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover {
+  padding: 4px 12px;
+  background: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neo-ink);
+  pointer-events: none;
+}
+.theme-doc-sidebar-item-category-level-1 > .menu__list {
+  padding-left: 0;
+}
+.sb-icon > .menu__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-icon > .menu__link::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon) center / contain no-repeat;
+  mask: var(--sb-icon) center / contain no-repeat;
+  opacity: 0.75;
+}
+.sb-icon > .menu__link--active::before {
+  opacity: 1;
+}
+.sb-icon--book {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z'/><path d='M4 19.5A1.5 1.5 0 0 0 5.5 21H20'/></svg>");
+}
+.sb-icon--lanes {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6h16M4 12h16M4 18h16'/><circle cx='8' cy='6' r='1.6'/><circle cx='15' cy='12' r='1.6'/><circle cx='11' cy='18' r='1.6'/></svg>");
+}
+.sb-icon--home {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H5.5A1.5 1.5 0 0 1 4 19z'/></svg>");
 }

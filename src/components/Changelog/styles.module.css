@@ -1,0 +1,38 @@
+/* Type and product badges, shared by the changelog list and post pages. */
+
+.badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.new {
+  background: var(--neo-accent-soft);
+  color: var(--neo-accent);
+}
+
+.improved {
+  background: #f1ecfb;
+  color: #5b3fb0;
+}
+
+.fixed {
+  background: #e7f6ee;
+  color: #157a4f;
+}
+
+.product {
+  color: var(--neo-ink-muted);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}

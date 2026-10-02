@@ -1,16 +1,12 @@
 ---
 title: What are Tracks?
-sidebar_label: What are Tracks?
-sidebar_position: 1
 slug: /tasket/tracks
 description: Tracks let one Tasket task move through several workstreams at once, such as spec, design and engineering, with its own status in each. This page covers how tracks work, the Tracks board, the Tracks pill, and what happens to track data when tasks and tracks change.
 ---
 
-# What are Tracks?
-
 **Tracks** let one task move through several workstreams at the same time, with a separate status in each. Turn Tracks on for a project and create a track for each workstream your work passes through, such as Spec, Design, Engineering, QA and Docs. Then start each task on the tracks it needs. Every discipline sees the task in its own column and moves it forward without changing anyone else's progress.
 
-- **One task, many lanes.** A task can be In Progress on Design while it's Done on Spec. There's still only one task: its comments, assignees, watchers, Studio docs and Friday chat stay in one place.
+- **One task, many lanes.** A task can be Pending on Design while it's Done on Spec. There's still only one task: its comments, assignees, watchers, Studio docs and Friday chat stay in one place.
 - **Separate from the task's own status.** Marking a task Done on a track doesn't complete the task, and completing the task doesn't change its tracks.
 - **Scoped to a project.** Each project has its own tracks. A track created in one project doesn't exist in any other.
 
@@ -46,8 +42,8 @@ Every task has exactly one status on each track in its project.
 | Status | What it means | How a task gets there |
 |---|---|---|
 | **Not started** | The task isn't on this track. | Every task starts here. **Stop** also returns a task here. |
-| **In Progress** | Work on this track is under way. | **Start** a task that is Not started, or **Mark Pending** a task that is Done. |
-| **Done** | Work on this track is finished. | **Mark Done** a task that is In Progress. |
+| **Pending** | Work on this track is under way. | **Start** a task that is Not started, or **Mark Pending** a task that is Done. |
+| **Done** | Work on this track is finished. | **Mark Done** a task that is Pending. |
 
 Statuses on different tracks never affect each other. Marking a task Done on Design changes nothing on Engineering.
 
@@ -55,30 +51,31 @@ A task that is Done on a track can't be stopped directly. Mark it Pending first,
 
 ## The Tracks board
 
-When Tracks is on, the project gets a **Tracks** tab next to its other tabs. The board shows one column per track, in the order your team arranges them.
+When Tracks is on, the project gets a **Tracks** tab next to its **Open** tab. The board shows the project's tasks on the left and one column per track beside them.
 
-- **Columns.** Each column has an *In Progress* section and a *Done* section. A task started on three tracks appears in three columns at once.
-- **Counter.** Each column header shows a count in the form *X out of Y*: how many tasks are Done on that track, out of all open tasks on it.
+- **Task list.** The project's open tasks, grouped by section, such as sprints. Select tasks here to start them on a track.
+- **Columns.** One per track, numbered in the order your team arranges them. Each column has a *Pending* section and a *Done* section. A task started on three tracks appears in three columns at once.
+- **Counter.** Each column header shows a count such as **2/4**: how many tasks are Done on that track, out of all open tasks on it.
 - **Open tasks only.** Completed and discarded tasks drop off the board. Their track statuses are kept, so they come back if the task is reopened.
 
 From the board you can:
 
-- **Add a track.** Use **Add track** after the last column, or between any two columns to insert one there. You name the track and can start tasks on it straight away.
-- **Manage a track.** Each track has **Rename**, **Move track** and **Delete**.
-- **Act on a task.** In the In Progress section, a task has **Mark Done**, **Stop** and **Select**. In the Done section, it has **Mark Pending** and **Select**.
-- **Start several tasks at once.** Use **Select** on tasks in one column, then start them all on other tracks in a single action.
+- **Add a track.** Use **Add Track** after the last column, or between any two columns to insert one there. You name the track and can start tasks on it straight away.
+- **Manage a track.** Click the arrow next to a track's name for **Rename**, **Move track** and **Delete**.
+- **Act on a task.** In the Pending section, a task has **Mark Done**, **Stop** and **Select**. In the Done section, it has **Mark Pending** and **Select**.
+- **Start several tasks at once.** Select tasks in the task list, or with **Select** in a column, then click **Start** in a track's header to start them all on that track.
 - **Open a task.** Click a task to see its assignees, watchers, comments, Studio docs and Friday chat without leaving the board.
 
 ## The Tracks pill
 
-The board shows one track per column. To see every track for a single task, use the **Tracks pill** in the task's detail view. It appears wherever you open the task: from the board, from **My Work**, or from **Updates**.
+The board shows one track per column. To see every track for a single task, use the **Tracks pill** in the task's detail view. It appears wherever you open the task: from the board, the **Work** tab or the **Updates** tab.
 
 The pill shows how many tracks the task is Done on, out of all tracks in the project. Open it to see every track in the project with the task's status on each, and the actions available:
 
 | Task's status on the track | Actions in the pill |
 |---|---|
 | Not started | **Start** |
-| In Progress | **Mark Done**, **Stop** |
+| Pending | **Mark Done**, **Stop** |
 | Done | **Mark Pending** |
 
 The pill is the only place that shows a task's full track picture in one view. It still appears on closed tasks, showing their kept statuses. It doesn't appear at all in a project where Tracks is off.

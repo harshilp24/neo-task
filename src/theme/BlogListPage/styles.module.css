@@ -1,0 +1,541 @@
+/* Changelog index: months by year on the left; on the right, one month's
+   release notes in full under search and filters. Tokens from
+   src/css/custom.css. */
+
+.page {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 64px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px 96px 16px;
+}
+
+/* Sidebar: years and months */
+.sidebar {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 32px);
+  align-self: start;
+}
+
+.sidebarLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neo-ink-muted);
+}
+
+.year + .year {
+  margin-top: 8px;
+}
+
+.yearToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 36px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--neo-ink);
+  cursor: pointer;
+}
+.yearToggle:hover {
+  background: var(--neo-wash);
+}
+.yearToggle:focus-visible {
+  outline: 2px solid var(--neo-accent);
+  outline-offset: 2px;
+}
+
+.caret {
+  display: inline-flex;
+  color: var(--neo-ink-faint);
+  transition: transform 150ms ease-out;
+}
+.caretOpen {
+  transform: rotate(90deg);
+}
+
+.monthList {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  color: var(--neo-ink-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+.month:hover {
+  color: var(--neo-ink);
+  background: var(--neo-wash);
+}
+.month:focus-visible {
+  outline: 2px solid var(--neo-accent);
+  outline-offset: 2px;
+}
+
+.monthOn,
+.monthOn:hover {
+  background: var(--neo-accent-soft);
+  color: var(--neo-accent);
+  font-weight: 500;
+}
+
+.monthCount {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Header */
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.kicker {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--neo-accent);
+  margin-bottom: 8px;
+}
+
+.h1 {
+  font-size: clamp(34px, 4.4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.lead {
+  font-size: 17px;
+  color: var(--neo-ink-muted);
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.rss {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--neo-ink-muted);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+.rss:hover {
+  color: var(--neo-ink);
+  background: var(--neo-wash);
+}
+
+/* Search and filters */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--neo-line);
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--neo-ink-faint);
+}
+.search svg {
+  position: absolute;
+  left: 16px;
+  pointer-events: none;
+}
+.search input {
+  width: 100%;
+  height: 44px;
+  padding: 0 44px 0 42px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--neo-wash);
+  box-shadow: inset 0 0 0 1px var(--neo-line);
+  font: inherit;
+  font-size: 15px;
+  color: var(--neo-ink);
+  transition: box-shadow 150ms ease-out, background-color 150ms ease-out;
+}
+.search input::placeholder {
+  color: var(--neo-ink-faint);
+}
+.search input:focus {
+  outline: none;
+  background: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-accent), 0 0 0 3px var(--neo-accent-soft);
+}
+
+.kbd {
+  position: absolute;
+  right: 14px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 6px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  background: var(--neo-paper);
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--neo-ink-faint);
+}
+
+.toolbarRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Filters on the left; search fills the rest of the row. */
+.menus {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.toolbarRow .search {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Filter menus */
+.menuWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.menuButton {
+  display: inline-flex;
+  height: 44px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  transition: background-color 150ms ease-out;
+}
+.menuButton:hover {
+  background: var(--neo-wash);
+}
+.menuButtonOn {
+  background: var(--neo-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--neo-accent-line);
+}
+.menuButtonOn:hover {
+  background: var(--neo-accent-soft);
+}
+
+.menuTrigger,
+.menuClear {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+.menuTrigger:focus-visible,
+.menuClear:focus-visible {
+  outline: 2px solid var(--neo-accent);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.menuTrigger {
+  gap: 6px;
+  padding: 0 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--neo-ink-muted);
+}
+.menuTrigger svg {
+  color: var(--neo-ink-faint);
+}
+.menuButtonOn .menuTrigger {
+  padding-right: 4px;
+  color: var(--neo-accent);
+}
+
+.menuClear {
+  justify-content: center;
+  width: 30px;
+  margin-right: 6px;
+  color: var(--neo-accent);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  min-width: 180px;
+  padding: 6px;
+  border-radius: 14px;
+  background: var(--neo-paper);
+  box-shadow: 0 0 0 1px var(--neo-line-strong),
+    0 16px 40px -12px rgba(12, 37, 104, 0.22);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--neo-ink);
+  text-align: left;
+  cursor: pointer;
+}
+.menuItem:hover,
+.menuItem:focus-visible {
+  outline: none;
+  background: var(--neo-wash);
+}
+.menuItem svg {
+  color: var(--neo-accent);
+}
+
+/* Entries: the month's notes, in full. */
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.entryMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--neo-ink-faint);
+}
+
+.entryTitle {
+  margin: 0 0 20px;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+.entryTitle a {
+  color: var(--neo-ink);
+}
+.entryTitle a:hover {
+  color: var(--neo-accent);
+  text-decoration: none;
+}
+
+/* Inside an entry the note reads as quiet body text, so the release title
+   stays the strongest element. */
+.entryBody {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--neo-ink-muted);
+}
+.entryBody p {
+  margin: 0 0 20px;
+}
+.entryBody h2 {
+  margin: 32px 0 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neo-ink-faint);
+}
+.entryBody strong {
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.entryBody ul {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+.entryBody li {
+  padding-left: 6px;
+}
+.entryBody li + li {
+  margin-top: 10px;
+}
+.entryBody li::marker {
+  color: var(--neo-line-strong);
+}
+
+.empty {
+  padding: 56px 24px;
+  border-radius: 16px;
+  background: var(--neo-wash);
+  text-align: center;
+  color: var(--neo-ink-muted);
+}
+.empty p {
+  margin: 0;
+}
+.emptyTitle {
+  margin-bottom: 6px !important;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--neo-ink);
+}
+
+.clear {
+  margin-top: 6px;
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neo-accent);
+  cursor: pointer;
+}
+.clear:hover {
+  text-decoration: underline;
+}
+
+/* Label for screen readers only; the placeholder carries it visually. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Narrow screens: the year and its months become one scrolling row. */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 24px 16px 72px;
+  }
+  .sidebar {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+  }
+  .sidebarLabel {
+    display: none;
+  }
+  .year {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .year + .year {
+    margin-top: 0;
+  }
+  .yearToggle {
+    width: auto;
+  }
+  .monthList {
+    flex-direction: row;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+  }
+  .month {
+    gap: 8px;
+    width: auto;
+    height: 34px;
+    border-radius: 999px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  }
+  .monthOn {
+    box-shadow: none;
+  }
+  .head {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .actions {
+    margin-top: 0;
+  }
+  .kbd {
+    display: none;
+  }
+  .search input {
+    padding-right: 12px;
+  }
+  .entryTitle {
+    font-size: 24px;
+  }
+}

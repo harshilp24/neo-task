@@ -52,26 +52,26 @@ const config = {
           editUrl:
             'https://github.com/harshilp24/neo-task/tree/main/',
         },
-        // The blog is the product changelog: one post per release note.
+        // The blog is the product changelog: one post per release note,
+        // all on one page so the changelog's search and filters see them.
         blog: {
           routeBasePath: 'changelog',
           blogTitle: 'Changelog',
-          blogDescription: 'What shipped in Neo, newest first.',
-          blogSidebarTitle: 'Recent releases',
-          blogSidebarCount: 'ALL',
+          blogDescription:
+            'New features, improvements and fixes across Tasket, Friday, Studio and Drive.',
+          postsPerPage: 'ALL',
+          blogSidebarCount: 0,
           showReadingTime: false,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/harshilp24/neo-task/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          // Notes render in full on the changelog page, so there's no
+          // "read more" cut to enforce.
+          onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -119,7 +119,7 @@ const config = {
           },
           {to: '/', label: 'Home', className: 'navbar-tab'},
           {
-            to: '/docs/tasket/tracks',
+            to: '/docs/tasket',
             label: 'Tasket',
             activeBasePath: '/docs/tasket',
             className: 'navbar-tab',

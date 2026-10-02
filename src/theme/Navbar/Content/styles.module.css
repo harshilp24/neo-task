@@ -62,6 +62,11 @@
   font-size: 14px;
 }
 
+.aside.active {
+  color: var(--neo-accent);
+  font-weight: 500;
+}
+
 .icon {
   color: var(--neo-ink-faint);
 }

@@ -1,9 +1,38 @@
+# Changelog taxonomy. Every release note takes one product tag and one type
+# tag; src/components/Changelog reads each key from its permalink, so keep
+# every permalink equal to its key.
+
 tasket:
   label: Tasket
   permalink: /tasket
   description: Changes to Tasket, Neo's work management platform.
 
+friday:
+  label: Friday
+  permalink: /friday
+  description: Changes to Friday, Neo's assistant, co-worker and agent.
+
+studio:
+  label: Studio
+  permalink: /studio
+  description: Changes to Studio docs, spreadsheets and diagrams.
+
+drive:
+  label: Drive
+  permalink: /drive
+  description: Changes to Drive, Neo's shared file repository.
+
 new-feature:
-  label: New feature
+  label: New
   permalink: /new-feature
   description: Capabilities that weren't in Neo before.
+
+improvement:
+  label: Improved
+  permalink: /improvement
+  description: Existing features that work better.
+
+fix:
+  label: Fixed
+  permalink: /fix
+  description: Bugs that are fixed.

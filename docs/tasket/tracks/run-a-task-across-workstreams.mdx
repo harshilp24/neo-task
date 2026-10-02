@@ -1,14 +1,10 @@
 ---
 title: Run a task across several workstreams
-sidebar_label: Run a task across workstreams
-sidebar_position: 2
 description: Turn on Tracks for a Tasket project, create a track for each workstream, start a task on the tracks it needs, and mark it Done on each one as the work finishes.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Run a task across several workstreams
 
 Set up a project so one task can move through several workstreams at once, such as Spec, Design and Engineering, each with its own status.
 
@@ -40,15 +36,15 @@ Only admins can turn Tracks off, and doing so clears every track and status in t
 
 1. Click the **Tracks** tab. The board is empty until you add a track.
 
-2. Click **Add track**, enter a name for the first workstream (for example, `Spec`), and confirm.
+2. Click **Add Track**, enter a name for the first workstream (for example, `Spec`), and confirm.
 
    You can also pick tasks to start on the new track now. You can always start tasks later.
 
-3. Repeat for each workstream. **Add track** appears after the last column and between every two columns, so you can insert a track exactly where it belongs.
+3. Repeat for each workstream. **Add Track** appears after the last column and between every two columns, so you can insert a track exactly where it belongs.
 
-4. (Optional) To reorder the board, open a track's menu, click **Move track**, and choose its new position. Only the column order changes.
+4. (Optional) To reorder the board, click the arrow next to a track's name, click **Move track**, and choose its new position. Only the column order changes.
 
-To fix a name later, use **Rename** in the track's menu. Statuses on that track aren't affected.
+To fix a name later, use **Rename** in the same menu. Statuses on that track aren't affected.
 
 ## Start the task on its tracks
 
@@ -59,7 +55,7 @@ Choose the tab that matches what you're doing.
 <Tabs groupId="start-scope">
 <TabItem value="one" label="One task" default>
 
-Start a single task from its Tracks pill. This works from anywhere you open the task, including **My Work** and **Updates**.
+Start a single task from its Tracks pill. This works from anywhere you open the task, including the **Work** and **Updates** tabs.
 
 1. Open the task.
 
@@ -67,20 +63,20 @@ Start a single task from its Tracks pill. This works from anywhere you open the 
 
 3. Click **Start** next to each track the task needs.
 
-   The status changes to *In Progress*, and the task appears in that track's column on the board.
+   The status changes to *Pending*, and the task appears in that track's column on the board.
 
 </TabItem>
 <TabItem value="many" label="Several tasks at once">
 
-Start a batch of tasks that are already on one track onto other tracks. For example, move everything that's In Progress on Spec into Design too. This needs a connection.
+Start a batch of tasks on a track in one action. For example, start this sprint's tasks on Discovery. This needs a connection.
 
-1. On the **Tracks** board, find the column the tasks are already in.
+1. On the **Tracks** board, select the tasks you want. Tick them in the task list beside the columns, or click **Select** on a task in a column.
 
-2. Click **Select** on each task you want to include.
+2. In the header of the track you want to start them on, click **Start**.
 
-3. Choose the tracks to start them on, and confirm.
+   The selected tasks appear in that track's *Pending* section. A task that was already on the track stays exactly where it was.
 
-   Each selected task is now In Progress on those tracks. A task that was already on one of them stays exactly where it was.
+3. To start the same tasks on another track, click **Start** in that track's header too.
 
 </TabItem>
 </Tabs>
@@ -92,8 +88,8 @@ If you click **Start** on a track the task is already on, Tasket highlights wher
 Each discipline updates its own track. Changing the status on one track never changes another.
 
 - **When a workstream finishes:** in that track's column, click **Mark Done** on the task. It moves to the column's *Done* section and the counter updates.
-- **When it needs more work:** in the *Done* section, click **Mark Pending**. The task moves back to *In Progress*.
-- **When the task no longer needs that workstream:** click **Stop** on the task while it's In Progress. It leaves the column and shows as *Not started* in the pill. To stop a task that's Done, click **Mark Pending** first.
+- **When it needs more work:** in the *Done* section, click **Mark Pending**. The task moves back to *Pending*.
+- **When the task no longer needs that workstream:** click **Stop** on the task while it's Pending. It leaves the column and shows as *Not started* in the pill. To stop a task that's Done, click **Mark Pending** first.
 
 You can do all of this from the task's Tracks pill too. **Mark Done** and **Mark Pending** work offline and sync when you reconnect. **Stop** needs a connection.
 

@@ -1,0 +1,140 @@
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Split button */
+.split {
+  display: inline-flex;
+  height: 38px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+
+.main,
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--neo-ink);
+  cursor: pointer;
+  transition: background-color 150ms ease-out;
+}
+.main:hover,
+.toggle:hover,
+.toggleOpen {
+  background: var(--neo-wash);
+}
+.main:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid var(--neo-accent);
+  outline-offset: 2px;
+}
+
+.main {
+  gap: 8px;
+  padding: 0 14px;
+  border-radius: 12px 0 0 12px;
+  font-size: 14.5px;
+}
+
+.toggle {
+  justify-content: center;
+  width: 38px;
+  border-left: 1px solid var(--neo-line-strong);
+  border-radius: 0 12px 12px 0;
+  color: var(--neo-ink-muted);
+}
+.toggle svg {
+  transition: transform 150ms ease-out;
+}
+.toggleOpen svg {
+  transform: rotate(180deg);
+}
+
+/* Menu */
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  width: 300px;
+  padding: 6px;
+  border-radius: 16px;
+  background: var(--neo-paper);
+  box-shadow: 0 0 0 1px var(--neo-line-strong),
+    0 16px 40px -12px rgba(12, 37, 104, 0.22);
+  animation: menuIn 140ms ease-out;
+}
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: var(--neo-ink);
+  cursor: pointer;
+}
+.item:hover,
+.item:focus-visible {
+  outline: none;
+  background: var(--neo-wash);
+  color: var(--neo-ink);
+  text-decoration: none;
+}
+
+.itemIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  color: var(--neo-ink-muted);
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.itemLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ext {
+  display: inline-flex;
+  color: var(--neo-ink-faint);
+}
+
+.itemHint {
+  font-size: 13px;
+  color: var(--neo-ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    animation: none;
+  }
+}
