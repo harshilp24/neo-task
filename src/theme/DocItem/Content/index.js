@@ -21,10 +21,14 @@ export default function DocItemContent({children}) {
   return (
     <>
       {!frontMatter.hide_title && (
-        <header className={styles.header}>
+        <header className={clsx(styles.header, 'doc-header')}>
           <div>
-            {section && <span className={styles.section}>{section.label}</span>}
-            <Heading as="h1" className={styles.title}>
+            {section && (
+              <span className={clsx(styles.section, 'doc-section')}>
+                {section.label}
+              </span>
+            )}
+            <Heading as="h1" className={clsx(styles.title, 'doc-title')}>
               {metadata.title}
             </Heading>
           </div>

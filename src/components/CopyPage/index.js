@@ -218,7 +218,7 @@ export default function CopyPage({selector, title, className}) {
   ];
 
   return (
-    <div ref={wrapRef} className={clsx(styles.wrap, className)}>
+    <div ref={wrapRef} className={clsx(styles.wrap, 'copy-page', className)}>
       <div className={styles.split}>
         <button type="button" className={styles.main} onClick={copy}>
           <Glyph size={16}>{copied ? ICONS.check : ICONS.copy}</Glyph>

@@ -74,7 +74,7 @@ const config = {
           onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/custom.css', './src/css/directions.css'],
         },
       }),
     ],
