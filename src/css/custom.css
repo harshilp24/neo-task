@@ -1,21 +1,22 @@
 /**
  * Global styles. Tokens follow neo.work: ink on white, the four blues of the
- * Neo mesh (steel, sky, royal, navy) with royal as the accent, and
- * Instrument Sans: a clean grotesk, medium-weight headings, airy body text.
+ * Neo mesh (steel, sky, royal, navy) with royal as the accent. Type and
+ * greys follow the plain "official docs" look (Stripe, Vercel, Supabase):
+ * Geist on a cool neutral grey scale, near-black semi-bold headings.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
-/* Fonts for the design directions in directions.css (temporary). */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hanken+Grotesk:wght@400;500;600&family=Onest:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
 
 :root {
-  --neo-ink: #1a1814;
-  --neo-ink-muted: rgba(26, 24, 20, 0.66);
-  --neo-ink-faint: rgba(26, 24, 20, 0.45);
+  /* Cool neutral greys: headings, body text, secondary text, hints. */
+  --neo-ink: #18181b;
+  --neo-body: #3f3f46;
+  --neo-ink-muted: #52525b;
+  --neo-ink-faint: #71717a;
   --neo-paper: #ffffff;
-  --neo-wash: #f7f7f6;
-  --neo-line: rgba(26, 24, 20, 0.08);
-  --neo-line-strong: rgba(26, 24, 20, 0.2);
+  --neo-wash: #f6f6f7;
+  --neo-line: #ececee;
+  --neo-line-strong: #dcdce0;
 
   /* The Neo mesh, sampled from neo.work. */
   --neo-steel: #9bb9d3;
@@ -30,7 +31,9 @@
     #3d64b0;
 
   --neo-accent: var(--neo-royal);
-  --neo-accent-soft: #eef3fc;
+  --docsearch-primary-color: var(--neo-royal);
+  --docsearch-highlight-color: var(--neo-royal);
+  --neo-accent-soft: #edf2fd;
   --neo-accent-line: #cddcf6;
 
   --ifm-color-primary: #2b62d4;
@@ -41,9 +44,10 @@
   --ifm-color-primary-lighter: #4b7adb;
   --ifm-color-primary-lightest: #6b92e2;
 
-  --ifm-font-family-base: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-base: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ifm-font-family-monospace: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --ifm-line-height-base: 1.7;
-  --ifm-heading-font-weight: 500;
+  --ifm-heading-font-weight: 600;
   --ifm-font-color-base: var(--neo-ink);
   --ifm-heading-color: var(--neo-ink);
   --ifm-background-color: var(--neo-paper);
@@ -89,6 +93,7 @@ h3 {
    src/theme/Navbar/Content). The navbar height covers both rows so the docs
    sidebar and TOC stick below them. */
 :root {
+  --doc-sidebar-width: 264px;
   --neo-bar-height: 3.75rem;
   --neo-tabs-height: 3rem;
   --ifm-navbar-height: calc(var(--neo-bar-height) + var(--neo-tabs-height));
@@ -135,19 +140,28 @@ h3 {
   }
 }
 
-.navbar .navbar__search-input {
+.navbar .DocSearch-Button {
   width: 280px;
   height: 38px;
-  padding-left: 2.25rem;
+  margin: 0;
+  padding: 0 10px 0 14px;
   border-radius: 999px;
-  font-size: 15px;
-  background-color: var(--neo-paper);
+  background: var(--neo-paper);
   box-shadow: inset 0 0 0 1px var(--neo-line-strong);
 }
-
-.navbar .navbar__search-input:focus {
-  box-shadow: inset 0 0 0 1px var(--neo-accent),
-    0 0 0 3px var(--neo-accent-soft);
+.navbar .DocSearch-Button:hover,
+.navbar .DocSearch-Button:focus-visible {
+  background: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-accent), 0 0 0 3px var(--neo-accent-soft);
+}
+.navbar .DocSearch-Button-Placeholder {
+  font-size: 15px;
+  color: var(--neo-ink-faint);
+}
+.navbar .DocSearch-Search-Icon {
+  width: 16px;
+  height: 16px;
+  color: var(--neo-ink-faint);
 }
 
 /* Desktop only: on mobile, Open Neo lives in the sidebar menu. */
@@ -180,8 +194,8 @@ h3 {
     --ifm-navbar-height: var(--neo-bar-height);
   }
 
-  .navbar .navbar__search-input {
-    width: 100%;
+  .navbar .DocSearch-Button {
+    width: auto;
   }
 }
 
@@ -191,24 +205,109 @@ h3 {
   display: none;
 }
 
-/* Docs pages, in the clean docs style: no breadcrumbs (the section label
-   above the title does that job), quiet body text, medium headings. */
+/* Docs pages: Docusaurus' breadcrumbs are hidden because the page header
+   draws its own (src/theme/DocItem/Content), with quiet body text and
+   semi-bold headings. */
 .theme-doc-breadcrumbs {
   display: none;
 }
 
 .theme-doc-markdown {
-  font-size: 17px;
-  color: var(--neo-ink-muted);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--neo-body);
 }
 .theme-doc-markdown h2,
 .theme-doc-markdown h3 {
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   color: var(--neo-ink);
 }
 .theme-doc-markdown h2 {
-  margin-top: 2.6rem;
-  font-size: 1.6rem;
+  margin-top: 2.75rem;
+  font-size: 24px;
+  line-height: 1.3;
+}
+.theme-doc-markdown h3 {
+  font-size: 18px;
+}
+
+/* Steps: a plain numbered list, as in most docs, with room between steps
+   and the step's result sitting under it. */
+.theme-doc-markdown ol {
+  padding-left: 1.5rem;
+}
+.theme-doc-markdown ol > li {
+  padding-left: 4px;
+}
+.theme-doc-markdown ol > li + li {
+  margin-top: 10px;
+}
+.theme-doc-markdown ol > li::marker {
+  color: var(--neo-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.theme-doc-markdown ol > li > p {
+  margin: 6px 0 0;
+}
+
+/* Callouts: rounded tinted cards. */
+.theme-doc-markdown .theme-admonition {
+  --ifm-alert-background-color: var(--neo-accent-soft);
+  --ifm-alert-border-left-width: 0;
+  --ifm-alert-border-radius: 16px;
+  --ifm-alert-shadow: none;
+  padding: 18px 20px;
+}
+.theme-doc-markdown .theme-admonition-warning {
+  --ifm-alert-background-color: #fdf4e7;
+}
+
+/* Tables, built for scanning: one rounded outline, small uppercase headers,
+   the first column on one line in ink, compact rows that highlight on hover.
+   On wide screens tables fill the column; on narrow ones they scroll. */
+.theme-doc-markdown table {
+  --ifm-table-border-color: var(--neo-line);
+  --ifm-table-stripe-background: transparent;
+  --ifm-table-head-background: var(--neo-wash);
+  --ifm-table-cell-padding: 10px 14px;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+@media (min-width: 997px) {
+  .theme-doc-markdown table {
+    display: table;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+.theme-doc-markdown :is(th, td) {
+  border-width: 0 0 1px;
+  vertical-align: top;
+}
+.theme-doc-markdown th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neo-ink-muted);
+  white-space: nowrap;
+}
+.theme-doc-markdown td:first-child {
+  color: var(--neo-ink);
+  white-space: nowrap;
+}
+.theme-doc-markdown th[style*='center'] {
+  text-align: center;
+}
+.theme-doc-markdown tbody tr:hover {
+  background: var(--neo-wash);
+}
+.theme-doc-markdown tr:last-child td {
+  border-bottom: 0;
 }
 .theme-doc-markdown strong,
 .theme-doc-markdown th {
@@ -224,19 +323,27 @@ h3 {
   padding-top: 1rem;
 }
 .theme-doc-sidebar-menu .menu__link {
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 15.5px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.45;
   color: var(--neo-ink-muted);
 }
 .theme-doc-sidebar-menu .menu__link:hover {
+  background: none;
   color: var(--neo-ink);
   background: var(--neo-wash);
 }
-.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist) {
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
   font-weight: 500;
   color: var(--neo-accent);
   background: var(--neo-accent-soft);
+}
+
+/* The section holding the current page is highlighted too. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active {
+  color: var(--neo-accent);
 }
 
 /* Table of contents: an "On this page" label, current section in accent. */
@@ -263,48 +370,128 @@ h3 {
   color: var(--neo-accent);
 }
 
-/* Sidebar icons: each section label is a quiet heading (sections don't
-   collapse), and entries carry an icon picked by their className in
-   sidebars.js. */
-.theme-doc-sidebar-item-category-level-1 + .theme-doc-sidebar-item-category-level-1 {
-  margin-top: 20px;
+/* Sidebar: fixed sections shown as small uppercase labels with an icon
+   (the icon comes from the className in sidebars.js); pages sit flush
+   underneath in plain text, and the current page is in the accent colour. */
+.theme-doc-sidebar-item-category-level-1 {
+  margin-top: 22px;
+}
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:hover {
+  background: none;
 }
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover {
-  padding: 4px 12px;
-  background: none;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--neo-ink);
-  pointer-events: none;
-}
-.theme-doc-sidebar-item-category-level-1 > .menu__list {
-  padding-left: 0;
-}
-.sb-icon > .menu__link {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 4px 10px 6px;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neo-ink-muted);
+  cursor: pointer;
 }
-.sb-icon > .menu__link::before {
+/* Dropdown chevron on each section, pointing down when open. */
+.sb-section > .menu__list-item-collapsible > .menu__link--sublist-caret::after {
+  margin-left: auto;
+  min-width: 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--ifm-menu-link-sublist-icon) 50% / 14px 14px no-repeat;
+  opacity: 0.55;
+  transform: rotate(180deg);
+  transition: transform 150ms ease-out;
+}
+.sb-section.menu__list-item--collapsed > .menu__list-item-collapsible > .menu__link--sublist-caret::after {
+  transform: rotate(90deg);
+}
+.sb-section > .menu__list-item-collapsible > .menu__link::before {
   content: '';
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   background-color: currentColor;
   -webkit-mask: var(--sb-icon) center / contain no-repeat;
   mask: var(--sb-icon) center / contain no-repeat;
-  opacity: 0.75;
 }
-.sb-icon > .menu__link--active::before {
-  opacity: 1;
+.sb-section--start {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='8.5'/><path d='m10 8.5 5 3.5-5 3.5z'/></svg>");
 }
-.sb-icon--book {
-  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z'/><path d='M4 19.5A1.5 1.5 0 0 0 5.5 21H20'/></svg>");
+.sb-section--lanes {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6h16M4 12h16M4 18h16'/><circle cx='8' cy='6' r='1.6'/><circle cx='15' cy='12' r='1.6'/><circle cx='11' cy='18' r='1.6'/></svg>");
 }
-.sb-icon--lanes {
-  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6h16M4 12h16M4 18h16'/><circle cx='8' cy='6' r='1.6'/><circle cx='15' cy='12' r='1.6'/><circle cx='11' cy='18' r='1.6'/></svg>");
+.sb-section--book {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z'/><path d='M4 19.5A1.5 1.5 0 0 0 5.5 21H20'/></svg>");
 }
-.sb-icon--home {
-  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H5.5A1.5 1.5 0 0 1 4 19z'/></svg>");
+.sb-section--list {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M9 6h11M9 12h11M9 18h11'/><circle cx='4.5' cy='6' r='1'/><circle cx='4.5' cy='12' r='1'/><circle cx='4.5' cy='18' r='1'/></svg>");
+}
+.sb-section--wrench {
+  --sb-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5'/><path d='M14.5 6.5 17 4l3 3-2.5 2.5'/></svg>");
+}
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link {
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list {
+  margin-top: 2px;
+  padding-left: 0;
+}
+.theme-doc-sidebar-menu .menu__list-item-collapsible:hover {
+  background: var(--neo-wash);
+}
+.theme-doc-sidebar-menu .menu__list-item-collapsible .menu__link:hover {
+  background: none;
+}
+
+/* Links in body text are ink with a soft underline, so blue is kept for
+   the page chrome; the underline darkens on hover. */
+.theme-doc-markdown :is(p, li, td) > a {
+  color: var(--neo-accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--neo-accent-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.theme-doc-markdown :is(p, li, td) > a:hover {
+  color: var(--neo-accent);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+/* Callouts: soft tint, thin border, sentence-case title in the accent. */
+.theme-doc-markdown .theme-admonition {
+  box-shadow: inset 0 0 0 1px var(--neo-accent-line);
+}
+.theme-doc-markdown .theme-admonition-warning {
+  box-shadow: inset 0 0 0 1px #f3d6ad;
+}
+/* Issue / cause / solution colours, used on troubleshooting pages. */
+.theme-doc-markdown .theme-admonition-danger {
+  --ifm-alert-background-color: #fdf0ef;
+  --ifm-alert-foreground-color: #3f3f46;
+  box-shadow: inset 0 0 0 1px #f4cfcb;
+}
+.theme-doc-markdown .theme-admonition-danger [class*='admonitionHeading'] { color: #b42318; }
+.theme-doc-markdown .theme-admonition-caution {
+  --ifm-alert-background-color: #fdf4e7;
+  --ifm-alert-foreground-color: #3f3f46;
+  box-shadow: inset 0 0 0 1px #f3d6ad;
+}
+.theme-doc-markdown :is(.theme-admonition-warning, .theme-admonition-caution) [class*='admonitionHeading'] { color: #a15c07; }
+.theme-doc-markdown .theme-admonition-tip {
+  --ifm-alert-background-color: #ecf7f1;
+  --ifm-alert-foreground-color: #3f3f46;
+  box-shadow: inset 0 0 0 1px #bfe3cf;
+}
+.theme-doc-markdown .theme-admonition-tip [class*='admonitionHeading'] { color: #157a4f; }
+.theme-doc-markdown .theme-admonition + .theme-admonition { margin-top: -8px; }
+.theme-doc-markdown .theme-admonition [class*='admonitionHeading'] {
+  font-size: 15.5px;
+  font-weight: 500;
+  text-transform: none;
 }

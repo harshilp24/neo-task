@@ -1,0 +1,129 @@
+.box {
+  margin-top: 48px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.question {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--neo-ink);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neo-ink-muted);
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+.btn:hover {
+  color: var(--neo-ink);
+  background: var(--neo-wash);
+}
+.btn:focus-visible,
+.change:focus-visible {
+  outline: 2px solid var(--neo-accent);
+  outline-offset: 2px;
+}
+
+.on {
+  color: var(--neo-accent);
+  background: var(--neo-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--neo-accent-line);
+}
+
+.primary,
+.primary:hover {
+  background: var(--neo-accent);
+  color: #fff;
+  box-shadow: none;
+}
+
+.thanks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 15px;
+  color: var(--neo-ink);
+}
+
+.change {
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--neo-accent);
+  cursor: pointer;
+}
+.change:hover {
+  text-decoration: underline;
+}
+
+.form {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neo-ink);
+}
+.label span {
+  font-weight: 400;
+  color: var(--neo-ink-faint);
+}
+
+.form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--neo-paper);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+  font: inherit;
+  font-size: 15px;
+  color: var(--neo-ink);
+  resize: vertical;
+}
+.form textarea:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--neo-accent), 0 0 0 3px var(--neo-accent-soft);
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}

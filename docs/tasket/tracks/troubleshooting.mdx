@@ -1,0 +1,171 @@
+---
+title: Troubleshoot Tracks
+description: "Fixes for Tracks in Tasket: a missing Tracks tab or pill, tasks missing from the board, greyed-out track actions, duplicate names, and changes lost after working offline."
+tags: [tasket, tracks, troubleshooting]
+toc_max_heading_level: 2
+---
+
+This page covers the most common problems with Tracks in Tasket: errors, symptoms such as a missing tab or action, offline and permission limits, and data loss. Each one shows what you see, its cause and the solution.
+
+For how-to questions, see the [Tracks FAQ](./faq.mdx). For how Tracks behave in each case, see the [Tracks reference](./reference.mdx).
+
+## Track name already used
+
+:::danger[Error]
+
+A new or renamed track can't be saved with the name you entered.
+
+:::
+
+### Cause
+
+Another track in the project already uses that name. Two tracks in a project can't share a name.
+
+### Solution
+
+Choose a different name, or rename the other track first.
+
+## No Tracks tab
+
+:::info[Symptom]
+
+The project has no **Tracks** tab next to **Open**.
+
+:::
+
+### Cause
+
+Tracks is off for this project.
+
+### Solution
+
+Turn Tracks on in the project's **Settings** tab. Any team member can do this. See [Add your tracks](./get-started.mdx#add-your-tracks).
+
+## No Tracks pill on a task
+
+:::info[Symptom]
+
+A task's detail view doesn't show a **Tracks** pill.
+
+:::
+
+### Cause
+
+Tracks is off for the task's project. The pill only appears in projects where Tracks is on.
+
+### Solution
+
+Turn Tracks on for the project in its **Settings** tab.
+
+## Task missing from the board
+
+:::info[Symptom]
+
+A task doesn't appear in any column on the **Tracks** board.
+
+:::
+
+### Cause
+
+The board shows open tasks only, and only in the columns of tracks they've been started on. The task is either completed or discarded, or not started on any track.
+
+### Solution
+
+- **If the task is closed,** reopen it. It returns to its columns with its statuses as they were.
+- **If it's open,** open its **Tracks** pill. If every track says *Not started*, start it on the tracks it needs.
+
+## No Stop on a task
+
+:::info[Symptom]
+
+A task on a track shows **Mark Pending** but no **Stop**.
+
+:::
+
+### Cause
+
+The task is *Done* on that track, and a Done task can't be stopped.
+
+### Solution
+
+Click **Mark Pending**, then **Stop**.
+
+## Can't start a task on a track
+
+:::info[Symptom]
+
+There's no way to start a task on a track.
+
+:::
+
+### Cause
+
+The task is completed or discarded. A closed task can't be started on a new track.
+
+### Solution
+
+Reopen the task, then start it on the track.
+
+## Track actions unavailable
+
+:::caution[Offline]
+
+**Rename**, **Move track** or **Delete** doesn't work.
+
+:::
+
+### Cause
+
+You're offline. Changes to tracks need a connection.
+
+### Solution
+
+Reconnect and try again.
+
+## Can't turn Tracks off
+
+:::caution[Permission]
+
+The **Tracks** switch in **Settings** won't turn off.
+
+:::
+
+### Cause
+
+Only admins can turn Tracks off.
+
+### Solution
+
+Ask an admin in your team. Turning Tracks off clears every track, so check the [FAQ](./faq.mdx#how-do-i-turn-off-tracks) first.
+
+## Offline change disappeared
+
+:::danger[Data loss]
+
+A change you made offline is gone after you reconnect.
+
+:::
+
+### Cause
+
+Someone deleted that track while you were offline. Changes to a deleted track are discarded when you sync, and the track isn't recreated.
+
+### Solution
+
+Nothing can bring back the deleted track's statuses. If the work still needs tracking, add a new track and start the task on it.
+
+## Task lost its tracks after a move
+
+:::danger[Data loss]
+
+A task you moved to another project shows no tracks started.
+
+:::
+
+### Cause
+
+Tracks belong to one project. Moving a task clears its track statuses, even if the new project has tracks with the same names.
+
+### Solution
+
+Start the task on the new project's tracks.

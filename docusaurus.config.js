@@ -31,6 +31,7 @@ const config = {
   projectName: 'neo-task', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -74,27 +75,24 @@ const config = {
           onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
-          customCss: ['./src/css/custom.css', './src/css/directions.css'],
+          customCss: './src/css/custom.css',
         },
       }),
-    ],
-  ],
-
-  themes: [
-    [
-      '@easyops-cn/docusaurus-search-local',
-      {
-        hashed: true,
-        indexBlog: true,
-        searchBarShortcutHint: true,
-        highlightSearchTermsOnTargetPage: true,
-      },
     ],
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Algolia DocSearch. Keys come from the environment so they stay out
+      // of Git; until they're set, the search box opens but finds nothing.
+      // Apply at https://docsearch.algolia.com to get an index.
+      algolia: {
+        appId: process.env.ALGOLIA_APP_ID || 'YOUR_APP_ID',
+        apiKey: process.env.ALGOLIA_SEARCH_API_KEY || 'YOUR_SEARCH_API_KEY',
+        indexName: process.env.ALGOLIA_INDEX_NAME || 'neo-docs',
+        contextualSearch: true,
+      },
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true,

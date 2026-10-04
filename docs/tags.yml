@@ -1,0 +1,32 @@
+tasket:
+  label: Tasket
+  permalink: /tasket
+  description: Docs for Tasket, Neo's work management app.
+tracks:
+  label: Tracks
+  permalink: /tracks
+  description: Docs for Tracks, which let one task sit on several workstreams at once.
+tutorial:
+  label: Tutorial
+  permalink: /tutorial
+  description: Step-by-step lessons for first-time users.
+how-to:
+  label: How-to guide
+  permalink: /how-to
+  description: Steps for one specific goal.
+faq:
+  label: FAQ
+  permalink: /faq
+  description: Quick answers to common questions.
+troubleshooting:
+  label: Troubleshooting
+  permalink: /troubleshooting
+  description: Fixes for common problems.
+reference:
+  label: Reference
+  permalink: /reference
+  description: Facts to look up while you work.
+concept:
+  label: Concept
+  permalink: /concept
+  description: Background and how things work.

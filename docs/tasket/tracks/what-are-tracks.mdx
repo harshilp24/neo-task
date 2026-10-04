@@ -1,127 +1,73 @@
 ---
 title: What are Tracks?
 slug: /tasket/tracks
-description: Tracks let one Tasket task move through several workstreams at once, such as spec, design and engineering, with its own status in each. This page covers how tracks work, the Tracks board, the Tracks pill, and what happens to track data when tasks and tracks change.
+description: "Tracks in Tasket let one task sit on several workstreams at once, such as Spec and Design, with its own status on each: Not started, Pending or Done. Track statuses are separate from the task's Open, Completed or Discarded status, and tracks belong to one project."
+tags: [tasket, tracks, concept]
+keywords: [Tasket, what are Tracks, Tracks explained, workstreams, track status, Tracks board, Tracks pill, Tracks vs status board, Neo]
+toc_max_heading_level: 2
 ---
 
-**Tracks** let one task move through several workstreams at the same time, with a separate status in each. Turn Tracks on for a project and create a track for each workstream your work passes through, such as Spec, Design, Engineering, QA and Docs. Then start each task on the tracks it needs. Every discipline sees the task in its own column and moves it forward without changing anyone else's progress.
+**Tracks** let one task move through several workstreams at the same time, with a separate status in each. A project's tracks might be Spec, Design, Engineering and QA. Each discipline sees the task in its own column and moves it forward without changing anyone else's progress, while the task itself stays in one place.
 
-- **One task, many lanes.** A task can be Pending on Design while it's Done on Spec. There's still only one task: its comments, assignees, watchers, Studio docs and Friday chat stay in one place.
+- **One task, many lanes.** A task can be Pending on Design while it's Done on Spec. Its comments, assignees, watchers, Studio docs and Friday chat stay on the one task.
 - **Separate from the task's own status.** Marking a task Done on a track doesn't complete the task, and completing the task doesn't change its tracks.
-- **Scoped to a project.** Each project has its own tracks. A track created in one project doesn't exist in any other.
+- **Scoped to a project.** Each project has its own tracks. A track in one project doesn't exist in any other.
 
-This page explains why Tracks exists, how track statuses work, where tracks appear, and what happens to track data when tasks and tracks change. To set up Tracks and start your first task on them, see [Run a task across several workstreams](./run-a-task-across-workstreams.mdx).
+This page explains why Tracks exist, how they work, and when to use them. It has no steps. To set Tracks up, follow [Get started with Tracks](./get-started.mdx).
 
 ## Why one status isn't enough
 
-A task's status answers one question: is the work open or closed? Real work usually passes through several hands before it closes, and those hands overlap.
+A task's status answers one question: is the work open or closed? Real work usually passes through several teams before it closes, and those teams overlap.
 
-Take a sign-in redesign. It needs a spec, then design, engineering, QA and documentation. Design often starts before the spec is signed off, and docs start while QA is still testing. Ask *"Where is the sign-in redesign?"* and the honest answer is "spec is done, design is nearly there, engineering hasn't started". A single Open status can't hold that.
+Take a sign-in redesign. It needs a spec, then design, then engineering, then QA, then documentation, and the task can be in spec and in design at the same time. Ask *"Where is the sign-in redesign?"* and the honest answer is "spec is done, design is under way, engineering hasn't started". A single Open status can't hold that.
 
-Teams usually work around this in one of two ways:
+Splitting the work into one task per discipline doesn't fix it either. The comments, docs and Friday chat split across copies, so nobody sees the whole picture.
 
-- **One task per discipline.** The discussion, files and decisions split across copies, so nobody, including Friday, sees the whole picture.
-- **Status kept somewhere else.** A spreadsheet or a pinned message that drifts out of date the moment work moves.
+Tracks keep one task as the single home for the work and its context, and give each workstream its own status on it.
 
-Tracks keeps one task as the single home for the work and its context, and gives each workstream its own status on that task.
+## How Tracks work
+
+A track is a workstream in a project, such as Design. A task joins a track when someone **starts** it there. From then on it has a status on that track, either *Pending* while the work is under way or *Done* when that workstream has finished with it. On every track it hasn't joined, the task is *Not started*.
+
+Two views show the same information from different sides:
+
+- **The Tracks board** puts the tracks side by side, one column per track. Read it to see what one team has on its plate: a task on three tracks appears in three columns.
+- **The Tracks pill** on a task lists every track in the project with the task's status on each. Read it to see where one task stands across every team. It's the only place that shows the whole picture for a single task.
+
+The task's own status, *Open*, *Completed* or *Discarded*, runs alongside its tracks and doesn't depend on them. A task can be Done on every track and still Open, waiting for someone to complete it. Completing it takes it off the board, but its track statuses are kept and come back if it's reopened.
+
+## How Tracks differ from a status board
+
+The Tracks board looks like the boards in other tools, but its columns mean something different:
+
+| | Status board | Tracks board |
+|---|---|---|
+| A column is… | a stage in one workflow, such as *In review* | a workstream that runs in parallel, such as *Design* |
+| A task is in… | exactly one column | as many columns as it has tracks |
+| Moving a task… | changes its status | changes its status on that track only |
+| "Done" means… | the task is finished | that workstream has finished with it |
+
+If your team moves a task through stages one after another and only one team works on it at a time, project sections or the task's own status are enough. Tracks are for work that several teams carry at once.
 
 ## When to use Tracks
 
-Use Tracks when the tasks in a project pass through the same set of workstreams, and those workstreams overlap or hand work to each other. Common examples:
+Use Tracks when the tasks in a project pass through the same set of workstreams, and those workstreams overlap or hand work to each other, as a product feature does on its way through spec, design, engineering, QA and documentation.
 
-- Product features that go through spec, design, engineering, QA and docs.
-- Content that goes through draft, review, legal and publishing.
-- Launches where marketing, sales enablement and support each prepare in parallel.
+Skip Tracks when a task belongs to one discipline, or one person takes it from start to finish. Several assignees on one task don't need Tracks.
 
-If a task belongs to one discipline, or one person takes it from start to finish, a plain task is simpler. You don't need Tracks to have several assignees on a task.
+## What to know before you turn them on
 
-## Track statuses
+A few things about Tracks are hard to change later:
 
-Every task has exactly one status on each track in its project.
+- **Name tracks after workstreams, not stages.** "Design" works as a track; "In review" works better as a section.
+- **Deleting a track or turning Tracks off can't be undone.** Both remove track statuses from every task, closed ones included. Renaming and reordering tracks are always safe.
+- **Moving a task to another project clears its tracks**, because tracks belong to a project. The task arrives Not started everywhere, even on a track with the same name.
 
-| Status | What it means | How a task gets there |
-|---|---|---|
-| **Not started** | The task isn't on this track. | Every task starts here. **Stop** also returns a task here. |
-| **Pending** | Work on this track is under way. | **Start** a task that is Not started, or **Mark Pending** a task that is Done. |
-| **Done** | Work on this track is finished. | **Mark Done** a task that is Pending. |
+The full rules are in the [Tracks reference](./reference.mdx).
 
-Statuses on different tracks never affect each other. Marking a task Done on Design changes nothing on Engineering.
+## Related
 
-A task that is Done on a track can't be stopped directly. Mark it Pending first, then Stop it.
-
-## The Tracks board
-
-When Tracks is on, the project gets a **Tracks** tab next to its **Open** tab. The board shows the project's tasks on the left and one column per track beside them.
-
-- **Task list.** The project's open tasks, grouped by section, such as sprints. Select tasks here to start them on a track.
-- **Columns.** One per track, numbered in the order your team arranges them. Each column has a *Pending* section and a *Done* section. A task started on three tracks appears in three columns at once.
-- **Counter.** Each column header shows a count such as **2/4**: how many tasks are Done on that track, out of all open tasks on it.
-- **Open tasks only.** Completed and discarded tasks drop off the board. Their track statuses are kept, so they come back if the task is reopened.
-
-From the board you can:
-
-- **Add a track.** Use **Add Track** after the last column, or between any two columns to insert one there. You name the track and can start tasks on it straight away.
-- **Manage a track.** Click the arrow next to a track's name for **Rename**, **Move track** and **Delete**.
-- **Act on a task.** In the Pending section, a task has **Mark Done**, **Stop** and **Select**. In the Done section, it has **Mark Pending** and **Select**.
-- **Start several tasks at once.** Select tasks in the task list, or with **Select** in a column, then click **Start** in a track's header to start them all on that track.
-- **Open a task.** Click a task to see its assignees, watchers, comments, Studio docs and Friday chat without leaving the board.
-
-## The Tracks pill
-
-The board shows one track per column. To see every track for a single task, use the **Tracks pill** in the task's detail view. It appears wherever you open the task: from the board, the **Work** tab or the **Updates** tab.
-
-The pill shows how many tracks the task is Done on, out of all tracks in the project. Open it to see every track in the project with the task's status on each, and the actions available:
-
-| Task's status on the track | Actions in the pill |
-|---|---|
-| Not started | **Start** |
-| Pending | **Mark Done**, **Stop** |
-| Done | **Mark Pending** |
-
-The pill is the only place that shows a task's full track picture in one view. It still appears on closed tasks, showing their kept statuses. It doesn't appear at all in a project where Tracks is off.
-
-## What happens when things change
-
-Most changes to tasks and tracks keep your track data. Three don't: deleting a track, turning Tracks off, and moving a task to another project.
-
-| When you… | What happens to track data |
-|---|---|
-| Complete or discard a task | Statuses are kept. The task leaves every column, but its pill still shows them. |
-| Reopen a task | The task returns to its columns with every status exactly as before. |
-| Rename a track | The new name shows on the column and in every pill. Statuses are untouched. |
-| Move a track | Only the column order changes. |
-| **Delete a track** | **The track and every task's status on it are removed permanently**, on open and closed tasks alike. There's no undo. |
-| **Turn Tracks off** | **All tracks and statuses in the project are cleared.** Turning Tracks back on starts with an empty board. |
-| **Move a task to another project** | **The task's tracks are cleared.** It arrives Not started on every track, even one with the same name. |
-
-:::warning[Before you delete a track or turn Tracks off]
-
-Neither can be undone. Deleting a track also removes it from closed tasks, so a task you reopen later won't show that track. If you only want to change the board's layout, rename or move the track instead.
-
-:::
-
-## Who can do what
-
-Guests have the same track permissions as members, on the projects they can access.
-
-| Action | Who can do it |
-|---|---|
-| Turn Tracks on | Any team member |
-| Turn Tracks off | Admins only |
-| Create, rename, move or delete a track | Any team member |
-| Start, Mark Done, Stop or Mark Pending a task | Anyone with access to the task |
-| Start several selected tasks on other tracks | Anyone with access to every selected task |
-| View the Tracks board | Anyone with access to the project |
-
-## Working offline
-
-You can keep moving tasks through tracks without a connection. **Start**, **Mark Done** and **Mark Pending** work offline. Tasket saves them on your device and syncs them when you're back online.
-
-Everything that changes a project's tracks needs a connection: turning Tracks on or off, and creating, renaming, moving or deleting a track. So do **Stop** and starting several tasks at once.
-
-If someone deletes a track while you're offline, any changes you made on that track are discarded when you sync. The track isn't recreated.
-
-## See also
-
-- [Run a task across several workstreams](./run-a-task-across-workstreams.mdx): turn on Tracks, create tracks and move a task through them.
-- [Tracks release note](/changelog/tracks): what changed, in a two-minute read.
+- [Get started with Tracks](./get-started.mdx): set up Tracks for a project and move your first tasks through them.
+- [Tracks FAQ](./faq.mdx): rename, reorder or delete a track, or turn Tracks off.
+- [Manage tasks on tracks](./manage-tasks-on-tracks.mdx): start several tasks at once, send tasks back, or take them off a track.
+- [Tracks reference](./reference.mdx): every status, action, permission and rule.

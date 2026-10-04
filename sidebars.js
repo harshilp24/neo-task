@@ -1,49 +1,55 @@
 // @ts-check
 
-// Docs sidebar: one entry per page, grouped by the kind of article. The
-// className on each entry picks its icon (see "Sidebar icons" in
-// src/css/custom.css).
+// Docs sidebar, organised by job first, then by Diátaxis type: the overview,
+// a tutorial for first-time users, task areas named for what the reader is
+// trying to do, then shared sections for concepts, reference and
+// troubleshooting. New features slot into a task area by goal, not name.
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   docs: [
+    {type: 'doc', id: 'tasket/index', label: 'Tasket overview'},
     {
       type: 'category',
       label: 'Get started',
-      collapsible: false,
-      items: [
-        {
-          type: 'doc',
-          id: 'tasket/index',
-          label: 'Overview',
-          className: 'sb-icon sb-icon--home',
-        },
-      ],
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--start',
+      items: ['tasket/tracks/get-started'],
     },
     {
       type: 'category',
-      label: 'Guides',
-      collapsible: false,
+      label: 'Run work across teams',
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--lanes',
       items: [
-        {
-          type: 'doc',
-          id: 'tasket/tracks/run-a-task-across-workstreams',
-          label: 'Run a task across workstreams',
-          className: 'sb-icon sb-icon--lanes',
-        },
+        'tasket/tracks/manage-tasks-on-tracks',
       ],
     },
     {
       type: 'category',
       label: 'Concepts',
-      collapsible: false,
-      items: [
-        {
-          type: 'doc',
-          id: 'tasket/tracks/what-are-tracks',
-          className: 'sb-icon sb-icon--book',
-        },
-      ],
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--book',
+      items: ['tasket/tracks/what-are-tracks'],
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--list',
+      items: ['tasket/tracks/reference'],
+    },
+    {
+      type: 'category',
+      label: 'Help',
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--wrench',
+      items: ['tasket/tracks/faq', 'tasket/tracks/troubleshooting'],
     },
   ],
 };

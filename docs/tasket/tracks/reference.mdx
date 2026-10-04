@@ -1,0 +1,124 @@
+---
+title: Tracks reference
+slug: /tasket/tracks/reference
+description: "Tracks reference for Tasket: the three track statuses (Not started, Pending, Done), every action and where it is, who can use it, which actions work offline, and what each change does to track data."
+tags: [tasket, tracks, reference]
+keywords: [Tasket, Tracks, track statuses, Not started, Pending, Done, Tracks permissions, Tracks offline, delete a track, Tracks board, Tracks pill]
+toc_max_heading_level: 2
+---
+
+This page lists the facts about Tracks in Tasket: statuses, the board and the pill, every action, permissions, offline behaviour and what each change does to track data. It describes how Tracks behave. For steps, see [Get started with Tracks](./get-started.mdx), [Manage tasks on tracks](./manage-tasks-on-tracks.mdx) and the [Tracks FAQ](./faq.mdx).
+
+:::info[At a glance]
+
+- **Statuses on a track:** <Chip>Not started</Chip> <Chip kind="pending">Pending</Chip> <Chip kind="done">Done</Chip>
+- **Can't be undone:** deleting a track, turning Tracks off, moving a task to another project
+- **Admins only:** turning Tracks off
+- **Works offline:** Start, Mark Done, Mark Pending
+
+:::
+
+## Track statuses
+
+A task has exactly one status on each track in its project.
+
+| Status | Meaning | Reached by |
+|---|---|---|
+| <Chip>Not started</Chip> | The task isn't on this track. | Default · **Stop** |
+| <Chip kind="pending">Pending</Chip> | Work on this track is under way. | **Start** · **Mark Pending** |
+| <Chip kind="done">Done</Chip> | This workstream has finished with the task. | **Mark Done** |
+
+Track statuses don't affect each other, or the task's own status (*Open*, *Completed* or *Discarded*).
+
+## The Tracks board
+
+| Part | What it shows |
+|---|---|
+| **Tracks** tab | Next to the project's **Open** tab, while Tracks is on. |
+| Task list | Open tasks grouped by section, each with a tick to select it. |
+| Columns | One per track, numbered in order, each split into *Pending* and *Done*. |
+| Counter | Done out of all tasks on the track, such as **2/4**. |
+| Tasks | Open tasks only. A task on three tracks appears in three columns. |
+| Empty section | When the last *Pending* task on a track is marked Done, the *Pending* section is empty and the counter updates. |
+| Opening a task | Opens the task's detail view: assignees, watchers, comments, and attached docs and chats. |
+
+## The Tracks pill
+
+| Part | What it shows |
+|---|---|
+| Where | The task's detail view, opened from the board, the **Work** tab or the **Updates** tab. |
+| Count | Tracks Done, out of all tracks in the project, such as **2/5 done**. |
+| List | Every track, with the task's status and actions on each. |
+| Closed tasks | Still shown, with the statuses kept from before the task closed. |
+| Tracks off | Not shown. |
+
+## Task actions
+
+Anyone with access to the task can use these.
+
+| Action | Changes | Where | Offline |
+|---|---|---|---|
+| **Start** | Not started → Pending | Tracks pill | ✓ |
+| **Start** selected tasks | Not started → Pending, for each | Track's column header | — |
+| **Mark Done** | Pending → Done | *Pending* section · Tracks pill | ✓ |
+| **Mark Pending** | Done → Pending | *Done* section · Tracks pill | ✓ |
+| **Stop** | Pending → Not started | *Pending* section · Tracks pill | — |
+| **Select** | Adds the task to a selection | Task list · any column | — |
+
+- **Start** isn't available on a closed task.
+- **Start** on a track the task is already on highlights it and changes nothing. Starting selected tasks skips those already on the track.
+- **Stop** isn't available on a task that is Done on that track.
+
+## Track and project actions
+
+None of these work offline.
+
+| Action | Does | Where | Who | Undo |
+|---|---|---|---|---|
+| **+ Add Track** | Creates a track | End of the board · **+** between columns | Any member | <Chip kind="yes">Delete it</Chip> |
+| **Rename** | Changes the name everywhere | Arrow next to the track's name | Any member | <Chip kind="yes">Yes</Chip> |
+| **Move track** | Changes the column order | Arrow next to the track's name | Any member | <Chip kind="yes">Yes</Chip> |
+| **Delete** | Removes the track and its statuses | Arrow next to the track's name | Any member | <Chip kind="no">No</Chip> |
+| Turn on **Tracks** | Adds the board and pills | **Settings** tab | Any member | <Chip kind="yes">Turn off</Chip> |
+| Turn off **Tracks** | Clears every track and status | **Settings** tab | <Chip kind="admin">Admins</Chip> | <Chip kind="no">No</Chip> |
+
+## Roles and permissions
+
+|  | Member | Guest | Admin |
+|---|:-:|:-:|:-:|
+| View the Tracks board | ✓ | ✓ | ✓ |
+| Start, Mark Done, Mark Pending, Stop | ✓ | ✓ | ✓ |
+| Add, rename, move or delete tracks | ✓ | ✓ | ✓ |
+| Turn Tracks on | ✓ | ✓ | ✓ |
+| Turn Tracks off | — | — | ✓ |
+
+Guests have these permissions on the projects they can access. Every task action needs access to the task. Starting selected tasks needs access to all of them.
+
+## Offline behaviour
+
+| Works offline | Needs a connection |
+|---|---|
+| **Start** · **Mark Done** · **Mark Pending** | **Stop** · starting selected tasks · every track and project action |
+
+Offline changes are saved on the device and sync on reconnect. On sync:
+
+- A saved change to a track deleted in the meantime is discarded. The track isn't recreated.
+- A task closed offline while one of its tracks was deleted loses that track, so it doesn't come back when the task is reopened.
+
+## What changes do to track data
+
+| Change | Effect | Undo |
+|---|---|---|
+| Complete or discard a task | Statuses kept. The task leaves the board; its pill still shows them. | <Chip kind="yes">Reopen</Chip> |
+| Reopen a task | Back in its columns, every status as before. | — |
+| Rename a track | New name on the column and every pill. Statuses unchanged. | <Chip kind="yes">Yes</Chip> |
+| Move a track | Column order only. | <Chip kind="yes">Yes</Chip> |
+| Delete a track | Track and every status on it removed, open and closed tasks alike. | <Chip kind="no">No</Chip> |
+| Turn Tracks off | Every track and status in the project cleared. Turning back on starts empty. | <Chip kind="no">No</Chip> |
+| Move a task to another project | Its statuses cleared. Not started everywhere, even on same-named tracks. | <Chip kind="no">No</Chip> |
+
+## Rules and limits
+
+- Tracks belong to one project and don't exist in any other.
+- Track names must be unique within a project.
+- A task can be on any number of tracks, with one status on each.

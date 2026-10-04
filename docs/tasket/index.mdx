@@ -1,51 +1,47 @@
 ---
 title: Tasket
 slug: /tasket
-description: Tasket is Neo's work management platform. Teams run their work as tasks that carry their own context, so people and Friday can pick up the work.
+description: "Tasket is Neo's AI-native work management platform for all functions. Teams, guests, projects, tasks with comments, documents and AI chats, sprints, intakes, custom fields, and Tracks for workflows with several steps."
+tags: [tasket]
+hide_table_of_contents: true
 ---
 
-import DocCards from '@site/src/components/DocCards';
+import {Overview, JobCards, TracksPreview} from '@site/src/components/ProductOverview';
 
-**Tasket** is where your team plans and runs its work in Neo. Each task carries its own context, the discussion, the Studio docs and the Friday chat, so anyone who picks it up, Friday included, has what they need.
+<Overview
+  intro={<>Tasket is Neo's AI-native work management platform for all functions. It organises your team's work across three layers: <b>teams and projects</b> (who works together, and where), <b>tasks</b> (each unit of work and its context), and <b>views</b> (where your work shows up). Use this section to set up Tracks, move tasks through them, and fix common problems.</>}
+  layers={[
+    {icon: 'team', title: 'Teams and projects', text: 'Teams with guests from other organisations, and configurable projects with sprints, intakes and custom fields.'},
+    {icon: 'task', title: 'Tasks', text: 'Each with comments, documents and AI chats. Tracks move a task through several steps at once.'},
+    {icon: 'views', title: 'Views', text: 'The Work tab for tasks you are assigned to, the Updates tab for activity, and the Silence Score.'},
+  ]}
+  preview={<TracksPreview />}
+/>
 
-## How Tasket is organised
+## What you can do in Tasket
 
-- **Teams.** The people who work together. A team has members and admins from your organisation, and guests from other organisations.
-- **Projects.** Each team keeps its work in projects. A project holds a set of tasks.
-- **Tasks.** One unit of work, in exactly one project. A task has a title, a comment thread, attached Studio docs and a Friday chat. It has one creator, up to ten assignees and any number of watchers.
+| Area | Features |
+|---|---|
+| **Teams** | Create teams · Invite guests |
+| **Projects** | Create projects · Configurable projects · Plan sprints · Accept intakes · Configure custom fields |
+| **Tasks** | Organise tasks · Add comments · Add documents · Add AI chats |
+| **Workflows** | [Tracks](/docs/tasket/tracks): define workflows made of several steps |
+| **Your work** | Work tab · Updates tab · Silence Score |
 
-## Task status
+Tracks is documented here. Docs for the other features are on the way.
 
-A task is **Open**, **Completed** or **Discarded**. Completed and discarded tasks are closed. You can reopen a closed task, which makes it Open again.
-
-## Where your work shows up
-
-- **Work tab.** Every task you're assigned to, across your projects.
-- **Updates tab.** Activity on the tasks you take part in.
 
 ## Tracks
 
-Some tasks pass through several teams at once, such as spec, design and QA. Tracks give a task a separate status in each of those workstreams.
-
-<DocCards
+<JobCards
   items={[
-    {
-      kind: 'Guide',
-      title: 'Run a task across workstreams',
-      description: 'Turn on Tracks and move a task through each workstream.',
-      to: '/docs/tasket/tracks/run-a-task-across-workstreams',
-    },
-    {
-      kind: 'Concept',
-      title: 'What are Tracks?',
-      description: 'How one task holds a separate status in each workstream.',
-      to: '/docs/tasket/tracks',
-    },
-    {
-      kind: 'Release note',
-      title: 'Tracks',
-      description: 'What changed, in a one-minute read.',
-      to: '/changelog/tracks',
-    },
+    {icon: 'start', title: 'Get started with Tracks', text: 'Turn on Tracks for a project and add a track for each workstream.', to: '/docs/tasket/tracks/get-started'},
+    {icon: 'lanes', title: 'Manage tasks on tracks', text: 'Start several tasks at once, send a task back, or take it off a track.', to: '/docs/tasket/tracks/manage-tasks-on-tracks'},
+    {icon: 'book', title: 'What are Tracks?', text: 'How one task holds a separate status in each workstream.', to: '/docs/tasket/tracks'},
+    {icon: 'list', title: 'Tracks reference', text: 'Every status, action, permission and offline rule.', to: '/docs/tasket/tracks/reference'},
+    {icon: 'question', title: 'Tracks FAQ', text: 'Rename, reorder or delete a track, or turn Tracks off.', to: '/docs/tasket/tracks/faq'},
+    {icon: 'wrench', title: 'Troubleshoot Tracks', text: 'Fixes for missing tabs, unavailable actions and lost changes.', to: '/docs/tasket/tracks/troubleshooting'},
   ]}
 />
+
+New to Tracks? Read the [release note](/changelog/tracks).

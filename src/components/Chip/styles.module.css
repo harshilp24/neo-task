@@ -1,0 +1,33 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 9px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.none {
+  color: var(--neo-ink-muted);
+  box-shadow: inset 0 0 0 1px var(--neo-line-strong);
+}
+
+.pending,
+.admin {
+  background: var(--neo-accent-soft);
+  color: var(--neo-accent);
+}
+
+.done,
+.yes {
+  background: #e7f6ee;
+  color: #157a4f;
+}
+
+.no {
+  background: #fcebea;
+  color: #b42318;
+}

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>neo task | Harshil</title>
+<meta name="description" content="Harshil's submission for the Neo Senior Technical Writer case study: clarifying questions, the Tracks docs, and a reusable write-docs skill.">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* A one-page memo to the hiring team: a short letter, then one numbered
+   section per task in the brief. Light only. Neo blue is the single accent. */
+:root {
+  --paper: #ffffff;
+  --tint: #f7f8fa;
+  --ink: #18181b;
+  --body: #3f3f46;
+  --muted: #71717a;
+  --line: #e8e8eb;
+  --line-strong: #d7d7dc;
+  --blue: #2b62d4;
+  --blue-soft: #eef3fc;
+  --blue-line: #cfdcf5;
+  --navy: #0c2568;
+  --red: #b42318;
+  --red-soft: #fdeceb;
+  --green: #157a4f;
+  --green-soft: #e7f6ee;
+  --font: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--body); font-family: var(--font); font-size: 16.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { color: var(--ink); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+p { margin: 0; }
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+
+.page { max-width: 980px; margin: 0 auto; padding-inline: 24px; }
+
+/* Masthead */
+.mast { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 28px 22px; border-bottom: 1px solid var(--line); }
+.brand { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.brand b { color: var(--blue); font-weight: 700; }
+.brand span { color: var(--line-strong); font-weight: 400; padding: 0 6px; }
+.meta { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+
+/* Letter */
+.letter { display: grid; grid-template-columns: minmax(0, 640px); padding-block: 64px 48px; gap: 18px; }
+.letter h1 { font-size: clamp(34px, 5vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -0.035em; }
+.letter p { font-size: 18px; line-height: 1.7; }
+.sign { color: var(--ink); font-weight: 500; }
+.toc { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; padding: 0; list-style: none; }
+.toc a { display: inline-flex; align-items: baseline; gap: 10px; padding: 10px 16px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--ink); text-decoration: none; font-weight: 500; transition: box-shadow 150ms ease-out, background-color 150ms ease-out; }
+.toc a:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--blue-line); }
+.toc a span { font-family: var(--mono); font-size: 12.5px; color: var(--blue); }
+
+/* Task sections */
+.task { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 28px; padding-block: 56px; border-top: 1px solid var(--line); }
+.num { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 8px; }
+.num b { display: block; font-family: var(--font); font-size: 64px; line-height: 1; font-weight: 600; color: var(--ink); letter-spacing: -0.04em; margin-bottom: 6px; }
+.content { display: grid; gap: 22px; min-width: 0; }
+.content > h2 { font-size: clamp(26px, 3.4vw, 32px); font-weight: 600; letter-spacing: -0.03em; }
+.brief { margin: 0; padding: 14px 18px; border-radius: 12px; background: var(--tint); font-size: 15.5px; color: var(--body); }
+.brief cite { display: block; margin-bottom: 4px; font-style: normal; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: 17.5px; max-width: 68ch; }
+.lead strong { color: var(--ink); font-weight: 600; }
+h3.sub { font-size: 15px; font-weight: 600; letter-spacing: 0; margin-bottom: -8px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; white-space: nowrap; transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out; }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--ink); color: #fff; }
+.btn.primary:hover { background: #2c2c31; }
+.btn.secondary { color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.btn.secondary:hover { background: var(--tint); }
+.btn svg { width: 16px; height: 16px; }
+
+/* Task 1 */
+.counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.count { padding: 16px 18px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.count b { display: block; font-size: 30px; line-height: 1.1; font-weight: 600; color: var(--ink); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.count span { font-size: 14px; color: var(--muted); }
+.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.q { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; padding: 16px 18px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.q .tag { grid-row: span 3; align-self: start; font-family: var(--mono); font-size: 11.5px; padding: 3px 8px; border-radius: 6px; background: var(--red-soft); color: var(--red); white-space: nowrap; }
+.q .tag.blue { background: var(--blue-soft); color: var(--blue); }
+.q h4 { margin: 0; font-size: 16px; color: var(--ink); font-weight: 600; }
+.q p { font-size: 15px; }
+.q .took { color: var(--ink); }
+.q .took b { font-weight: 600; }
+
+/* Task 2 */
+.split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.deliv { padding: 16px 18px; border-radius: 12px; background: var(--tint); display: grid; gap: 6px; align-content: start; }
+.deliv .k { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.deliv b { color: var(--ink); font-weight: 600; font-size: 15.5px; }
+.deliv span { font-size: 14.5px; }
+.tablewrap { overflow-x: auto; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line-strong); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 12px 16px; background: var(--tint); border-bottom: 1px solid var(--line); }
+td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+td:first-child a { color: var(--ink); text-decoration-color: var(--line-strong); }
+td:first-child a:hover { color: var(--blue); }
+.type { display: inline-block; font-family: var(--mono); font-size: 11.5px; padding: 2px 8px; border-radius: 6px; background: var(--blue-soft); color: var(--blue); white-space: nowrap; }
+.type.grey { background: var(--tint); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+.extras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.extras li { padding-left: 18px; position: relative; font-size: 15px; }
+.extras li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.extras b { color: var(--ink); font-weight: 600; }
+
+/* Task 3: an n8n-style canvas on a fixed 1320 x 520 grid, scaled to fit.
+   Main steps are wide nodes with the label inside, so no wire crosses text. */
+.canvas-wrap { position: relative; overflow: hidden; border-radius: 14px; box-shadow: inset 0 0 0 1px var(--line); background-color: #fcfcfd; background-image: radial-gradient(circle, #dfe1e6 1px, transparent 1.2px); background-size: 18px 18px; }
+.canvas-wrap.scrolls { overflow-x: auto; }
+.canvas { position: absolute; left: 0; top: 0; width: 1380px; height: 520px; transform-origin: 0 0; padding: 0; }
+.wires { position: absolute; left: 0; top: 0; width: 1380px; height: 520px; overflow: visible; }
+.wires path { fill: none; stroke: #9aa0ad; stroke-width: 1.6; }
+.wires path.dim { stroke: #d6d8de; }
+.wires path.uses { stroke: #a9bde7; stroke-dasharray: 4 5; stroke-width: 1.4; }
+.wires circle { fill: #fff; stroke: #9aa0ad; stroke-width: 1.4; }
+.nd { position: absolute; }
+.nd .nbox { background: var(--paper); box-shadow: 0 0 0 1px #cfd2d9, 0 4px 10px -7px rgba(16, 24, 40, 0.4); color: var(--ink); }
+.nd svg { width: 22px; height: 22px; }
+.nd.sq { width: 112px; margin-left: -6px; display: grid; justify-items: center; gap: 6px; text-align: center; }
+.nd.sq .nbox { width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; }
+.nd.sq.trigger .nbox { border-radius: 28px 12px 12px 28px; }
+.nd.sq b { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.2; }
+.nd.sq span { font-size: 12.5px; color: var(--muted); margin-top: -4px; }
+.nd.wd .nbox { width: 200px; height: 56px; border-radius: 12px; display: flex; align-items: center; gap: 9px; padding: 0 10px; box-shadow: 0 0 0 1px var(--blue-line), 0 4px 10px -7px rgba(43, 98, 212, 0.45); }
+.nd.wd i { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); }
+.nd.wd i svg { width: 18px; height: 18px; }
+.nd.wd b { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 500; color: var(--ink); line-height: 1.3; white-space: nowrap; }
+.nd.wd span { display: block; font-size: 12px; color: var(--muted); line-height: 1.3; }
+.nd.wf .nbox { box-shadow: 0 0 0 1.5px var(--blue), 0 4px 10px -7px rgba(43, 98, 212, 0.5); }
+.nd.dim { opacity: 0.55; }
+.nd.dim .nbox { height: 42px; box-shadow: 0 0 0 1px #d6d8de; }
+.nd.dim i { width: 26px; height: 26px; background: var(--tint); color: var(--muted); }
+.nd.out .nbox { box-shadow: 0 0 0 1.5px var(--green), 0 4px 10px -7px rgba(21, 122, 79, 0.45); color: var(--green); }
+.sn { position: absolute; width: 90px; display: grid; justify-items: center; gap: 4px; text-align: center; }
+.sn .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--paper); display: grid; place-items: center; box-shadow: 0 0 0 1px #c9d6f1; color: var(--blue); }
+.sn .dot svg { width: 15px; height: 15px; }
+.sn b { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--body); }
+.sn span { font-size: 11.5px; color: var(--muted); margin-top: -3px; }
+.sn.ct { width: 120px; }
+.glabel { position: absolute; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9a9da6; }
+.canvas-legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--muted); }
+.canvas-legend i { display: inline-block; width: 22px; height: 0; vertical-align: middle; margin-right: 7px; border-top: 1.5px solid #9aa0ad; }
+.canvas-legend i.uses { border-top: 1.5px dashed #a9bde7; }
+.canvas-legend i.dim { border-top-color: #d6d8de; }
+.scroll-hint { display: none; font-size: 13px; color: var(--muted); }
+
+/* Footer */
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 36px 56px; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--muted); }
+.foot a { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .task { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 44px; }
+  .num { display: flex; align-items: baseline; gap: 12px; padding-top: 0; }
+  .num b { font-size: 44px; margin-bottom: 0; }
+  .counts, .split { grid-template-columns: minmax(0, 1fr); }
+  .extras { grid-template-columns: minmax(0, 1fr); }
+  .scroll-hint { display: block; }
+  .letter { padding-block: 44px 36px; }
+}
+@media (max-width: 520px) {
+  .page { padding-inline: 16px; }
+  .q { grid-template-columns: minmax(0, 1fr); }
+  .q .tag { grid-row: auto; justify-self: start; }
+}
+
+/* Shell: tasks in a left sidebar, one panel open in the main area. */
+.shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+.side { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 6px; padding: 28px 18px; border-right: 1px solid var(--line); background: var(--tint); }
+.side .brand { padding: 0 10px; }
+.side .meta { padding: 0 10px 22px; line-height: 1.6; }
+.tabs { display: grid; gap: 2px; }
+.tabs a { display: flex; align-items: baseline; gap: 12px; padding: 9px 10px; border-radius: 8px; color: var(--body); text-decoration: none; font-size: 15px; font-weight: 500; transition: background-color 150ms ease-out, color 150ms ease-out; }
+.tabs a span { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.tabs a:hover { background: #eef0f3; color: var(--ink); }
+.tabs a[aria-current="page"] { background: var(--paper); color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(16, 24, 40, 0.05); }
+.tabs a[aria-current="page"] span { color: var(--blue); }
+.side-foot { margin-top: auto; padding: 0 10px; font-size: 13.5px; color: var(--muted); }
+.side-foot a { color: var(--ink); }
+.stage { max-width: 1240px; width: 100%; padding: 0 48px 64px; }
+.panel[hidden] { display: none; }
+.stage .task { border-top: 0; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.stage .num { padding-top: 0; color: var(--blue); }
+.stage .num b { display: none; }
+@media (max-width: 860px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .side { position: sticky; z-index: 2; height: auto; padding: 14px 16px 10px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .side .meta, .side-foot { display: none; }
+  .tabs { display: flex; overflow-x: auto; gap: 4px; }
+  .tabs a { white-space: nowrap; padding: 7px 10px; font-size: 14px; }
+  .stage { padding: 0 16px 48px; }
+}
+
+
+/* Memo styling: one typeface, few boxes, plain labels. */
+.meta, .num, .brief cite, .h, .canvas-legend { font-family: var(--font) !important; }
+.side { background: var(--paper); }
+.side .brand { text-decoration: none; display: block; }
+.side .meta { font-size: 13px; color: var(--muted); margin: 6px 0 0; padding: 0 10px 26px; letter-spacing: 0; }
+.tabs { gap: 4px; }
+.tabs a { display: grid; gap: 1px; padding: 9px 12px; border-radius: 8px; }
+.tabs a b { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.tabs a span { font-family: var(--font); font-size: 13.5px; color: var(--muted); }
+.tabs a[aria-current="page"] { background: var(--tint); box-shadow: none; }
+.tabs a[aria-current="page"] b { color: var(--blue); }
+.tabs a[aria-current="page"] span { color: var(--body); }
+.side-foot { display: flex; gap: 14px; }
+.letter { padding-block: 72px 48px; gap: 16px; }
+.eyebrow, .stage .num { font-size: 13.5px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.letter h1 { font-size: clamp(30px, 4vw, 38px); letter-spacing: -0.025em; }
+.letter p { font-size: 17px; }
+.index { margin: 12px 0 4px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.index > div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.index dt a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.index dt a:hover { color: var(--blue); }
+.index dd { margin: 2px 0 0; font-size: 15.5px; color: var(--body); }
+.brief { background: none; border-radius: 0; padding: 2px 0 2px 16px; border-left: 2px solid var(--line-strong); font-size: 15.5px; color: var(--body); }
+.brief cite { font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 500; }
+.qs { list-style: decimal; padding-left: 22px; display: grid; gap: 0; }
+.qs li { padding: 14px 0 14px 4px; border-bottom: 1px solid var(--line); }
+.qs li::marker { color: var(--muted); font-weight: 500; }
+.qs h4 { margin: 0 0 4px; font-size: 16px; color: var(--ink); }
+.qs p { font-size: 15.5px; margin: 0; }
+.qs .took { margin-top: 6px; color: var(--ink); }
+.more a { font-weight: 600; color: var(--blue); text-decoration: none; }
+.more a:hover { text-decoration: underline; }
+.map { margin: 0; display: grid; border-top: 1px solid var(--line); }
+.map > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.map dt { font-weight: 600; color: var(--ink); }
+.map dd { margin: 0; font-size: 15.5px; }
+.plain { font-size: 15.5px; max-width: 68ch; }
+th { font-family: var(--font); letter-spacing: 0; text-transform: none; font-size: 13px; color: var(--muted); }
+.tablewrap { box-shadow: inset 0 0 0 1px var(--line); }
+td:first-child a { text-decoration: none; color: var(--blue); font-weight: 600; }
+td:first-child a::after { content: ' ↗'; font-weight: 400; font-size: 0.9em; }
+td:first-child a:hover { text-decoration: underline; }
+.glabel { font-family: var(--font) !important; letter-spacing: 0.02em; text-transform: none; font-size: 12px; }
+@media (max-width: 860px) {
+  .tabs a { padding: 6px 10px; }
+  .tabs a span { display: none; }
+  .map > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+
+/* Richer memo: soft cards for key items, link cards for deliverables. */
+.letter h1 { font-size: clamp(32px, 4.4vw, 44px); }
+.index { border-top: 0; gap: 10px; }
+.index > div { border: 0; padding: 0; }
+.index dt a { display: block; padding: 16px 18px 2px; }
+.index > div { border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow 150ms ease-out, background-color 150ms ease-out; }
+.index > div:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--blue-line); }
+.index dd { padding: 0 18px 16px; }
+.qs { list-style: none; padding: 0; gap: 12px; counter-reset: q; }
+.qs li { counter-increment: q; border: 0; padding: 18px 20px 18px 58px; border-radius: 12px; background: var(--tint); position: relative; }
+.qs li::before { content: counter(q); position: absolute; left: 20px; top: 18px; width: 24px; height: 24px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); display: grid; place-items: center; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.qs .took { margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); font-size: 15px; }
+.doclink { display: flex; align-items: center; gap: 14px; max-width: 520px; padding: 14px 16px; border-radius: 12px; text-decoration: none; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong), 0 1px 2px rgba(16, 24, 40, 0.04); transition: box-shadow 150ms ease-out, transform 150ms ease-out; }
+.doclink:hover { box-shadow: inset 0 0 0 1px var(--blue-line), 0 6px 16px -10px rgba(16, 24, 40, 0.25); transform: translateY(-1px); }
+.docicon { flex: none; width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; background: #eef3fe; }
+.docicon svg { width: 22px; height: 22px; }
+.docicon.site { background: var(--blue-soft); color: var(--blue); }
+.doctext { display: grid; gap: 1px; min-width: 0; }
+.doctext b { color: var(--ink); font-weight: 600; font-size: 15.5px; }
+.doctext span { color: var(--muted); font-size: 13.5px; }
+.docarrow { margin-left: auto; color: var(--muted); font-size: 16px; }
+.map > div { border-bottom: 1px solid var(--line); }
+
+.pieces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.piece { display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: 14px; background: var(--tint); box-shadow: inset 0 0 0 1px var(--line); }
+.piece .pi { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: var(--paper); color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue-line); }
+.piece .pi svg { width: 18px; height: 18px; }
+.piece b { color: var(--ink); font-size: 16px; font-weight: 600; margin-top: 4px; }
+.piece p { font-size: 14.5px; line-height: 1.55; margin: 0; }
+.plinks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.plinks a { font-size: 13.5px; font-weight: 500; color: var(--ink); text-decoration: none; padding: 5px 10px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); transition: box-shadow 150ms ease-out, color 150ms ease-out; }
+.plinks a:hover { color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue-line); }
+.briefmap .plinks { display: flex; margin-top: 8px; padding-top: 0; }
+.briefmap td:first-child { font-weight: 600; color: var(--ink); }
+@media (max-width: 860px) { .pieces { grid-template-columns: minmax(0, 1fr); } }
+
+.runsteps { margin: 0; padding: 0; list-style: none; counter-reset: r; display: grid; gap: 10px; }
+.runsteps li { counter-increment: r; position: relative; padding: 14px 18px 14px 54px; border-radius: 12px; background: var(--tint); font-size: 15.5px; }
+.runsteps li::before { content: counter(r); position: absolute; left: 18px; top: 14px; width: 24px; height: 24px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); display: grid; place-items: center; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.runsteps b { color: var(--ink); }
+.prompt { display: block; margin-top: 8px; padding: 10px 12px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); }
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cards2 .doclink { max-width: none; }
+.docicon.gh { background: #f2f2f3; color: var(--ink); }
+.docicon.gh svg { width: 20px; height: 20px; }
+td:nth-child(3):last-child { color: var(--muted); }
+@media (max-width: 860px) { .cards2 { grid-template-columns: minmax(0, 1fr); } }
+
+.readme { border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line-strong); background: var(--paper); }
+.rm-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; background: var(--tint); border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.rm-path { color: var(--muted); }
+.rm-path i { font-style: normal; padding: 0 4px; }
+.rm-path b { color: var(--ink); font-weight: 600; }
+.rm-bar a { color: var(--blue); text-decoration: none; font-weight: 500; }
+.rm-body { padding: 22px 24px 26px; display: grid; gap: 12px; }
+.rm-h1 { margin: 0; font-size: 24px; color: var(--ink); letter-spacing: -0.02em; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.rm-h2 { margin: 10px 0 0; font-size: 17px; color: var(--ink); padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.rm-body p { font-size: 15px; }
+.rm-body pre { margin: 0; padding: 16px 18px; border-radius: 10px; background: #17181c; color: #e6e7ea; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; overflow-x: auto; }
+.rm-body pre .c { color: #8b93a7; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="side" aria-label="Case study">
+    <a class="brand" href="#overview"><b>neo</b> task<span>|</span>Harshil</a>
+    <p class="meta">Senior Technical Writer case study, October 2026</p>
+    <nav class="tabs">
+      <a href="#overview" data-panel="overview"><b>Overview</b></a>
+      <a href="#task-1" data-panel="task-1"><b>Task 1</b><span>Clarifying questions</span></a>
+      <a href="#task-2" data-panel="task-2"><b>Task 2</b><span>The Tracks docs</span></a>
+      <a href="#task-3" data-panel="task-3"><b>Task 3</b><span>The write-docs skill</span></a>
+    </nav>
+    <div class="side-foot"><a href="/" target="_blank" rel="noopener">Docs site</a><a href="https://github.com/harshilp24/neo-task" target="_blank" rel="noopener">GitHub</a></div>
+  </aside>
+
+  <main class="stage">
+
+  <section class="letter panel" id="overview" aria-labelledby="hello">
+    <p class="eyebrow">Overview</p>
+    <h1 id="hello">Hi team, thanks for the case study.</h1>
+    <p>Here's everything in one place. I've kept it short; the work itself is in the docs site and the repo.</p>
+    <dl class="index">
+      <div><dt><a href="#task-1">Task 1. Clarifying questions</a></dt><dd>24 questions about the Tracks PRD, each with the assumption I took to keep writing.</dd></div>
+      <div><dt><a href="#task-2">Task 2. The Tracks docs</a></dt><dd>A working docs site instead of a document, organised with Diátaxis.</dd></div>
+      <div><dt><a href="#task-3">Task 3. The write-docs skill</a></dt><dd>The skill that drafts those docs from any PRD. I'll use it in the live round.</dd></div>
+    </dl>
+    <p class="sign">Harshil</p>
+  </section>
+
+  <!-- Task 1 -->
+  <section class="task panel" id="task-1" aria-labelledby="t1">
+    <div class="num">Task 1</div>
+    <div class="content">
+      <h2 id="t1">What I'd need clarified</h2>
+      <blockquote class="brief"><cite>The brief</cite>List everything you would need clarified before you could write accurate documentation from the extract. For each item, state the assumption you took in order to complete the document.</blockquote>
+      <p class="lead">I read the PRD as a spec I'd be held to and checked it against the real Tracks screen on neo.work. That gave 24 questions: 6 about data loss and permissions, 12 about behaviour, and 6 about labels and wording. Each has the assumption I took and the pages it affects. Where the PRD could cost someone data, I took the reading that protects it.</p>
+
+      <h3 class="sub">The three that matter most</h3>
+      <ol class="qs">
+        <li>
+          <h4>Turning Tracks off: hide or delete?</h4>
+          <p>One section says switching off "is a hide, not a delete" and everything comes back. The lifecycle rules say it "clears all track assignments".</p>
+          <p class="took">Assumed: it clears everything, and the docs warn before the step.</p>
+        </li>
+        <li>
+          <h4>Who can delete a track?</h4>
+          <p>Deleting is permanent and reaches closed tasks, but the permissions table has no row for it. A user story says any team member.</p>
+          <p class="took">Assumed: any member, as the story says, with a recommendation to make it admin-only.</p>
+        </li>
+        <li>
+          <h4>What does Stop do?</h4>
+          <p>Stop is listed as an action but never defined, and it's missing from the offline list.</p>
+          <p class="took">Assumed: it returns the task to <i>Not started</i>, and needs a connection.</p>
+        </li>
+      </ol>
+
+      <!-- TODO: replace href with the Google Doc URL. -->
+      <a class="doclink" href="https://github.com/harshilp24/neo-task/blob/main/write-docs/examples/tracks/clarifying_questions.md" data-link="questions" target="_blank" rel="noopener">
+        <span class="docicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#4285f4"/><path d="M14 2v5h5" fill="#a1c2fa"/><path d="M8 12h8M8 15h8M8 18h5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <span class="doctext"><b>Tracks PRD: clarifying questions</b><span>Google Doc · 24 questions, each with the assumption taken</span></span>
+        <span class="docarrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Task 2 -->
+  <section class="task panel" id="task-2" aria-labelledby="t2">
+    <div class="num">Task 2</div>
+    <div class="content">
+      <h2 id="t2">The Tracks docs</h2>
+      <blockquote class="brief"><cite>The brief</cite>Write three pieces on the same feature: a user-facing feature document for someone using the feature for the first time, a how-to guide for someone with a specific task in hand, and a release note for an existing user scanning what changed.</blockquote>
+      <p class="lead">I built the docs as a small Docusaurus site, kept in Git, instead of a Google Doc. Each page answers one kind of need (<a href="https://diataxis.fr/" target="_blank" rel="noopener">Diátaxis</a>), so every step and rule lives in one place and the other pages link to it.</p>
+
+      <h3 class="sub">The three pieces in the brief</h3>
+      <div class="tablewrap">
+        <table class="briefmap">
+          <thead><tr><th>Piece</th><th>The brief asks for</th><th>What I made</th></tr></thead>
+          <tbody>
+            <tr><td>Feature document</td><td>A user-facing document for someone using the feature for the first time.</td><td>Set it up, then understand it.<span class="plinks"><a href="/docs/tasket/tracks/get-started" target="_blank" rel="noopener">Get started with Tracks ↗</a><a href="/docs/tasket/tracks" target="_blank" rel="noopener">What are Tracks? ↗</a></span></td></tr>
+            <tr><td>How-to guide</td><td>A guide for someone with a specific task in hand.</td><td>Everyday work, plus rare changes like renaming or deleting a track.<span class="plinks"><a href="/docs/tasket/tracks/manage-tasks-on-tracks" target="_blank" rel="noopener">Manage tasks on tracks ↗</a><a href="/docs/tasket/tracks/faq" target="_blank" rel="noopener">Tracks FAQ ↗</a></span></td></tr>
+            <tr><td>Release note</td><td>A note for an existing user scanning what changed.</td><td>One sentence, three facts, one link.<span class="plinks"><a href="/changelog/tracks" target="_blank" rel="noopener">Tracks in the changelog ↗</a></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">Every page</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Page</th><th>Type</th><th>Written for</th><th>What it covers</th></tr></thead>
+          <tbody>
+            <tr><td><a href="/docs/tasket" target="_blank" rel="noopener">Tasket overview</a></td><td>Overview</td><td>Anyone arriving</td><td>What Tasket is, a preview of the Tracks board, and a way into every page.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks/get-started" target="_blank" rel="noopener">Get started with Tracks</a></td><td>Tutorial</td><td>First-time user</td><td>Turning Tracks on and adding tracks, with the PRD's sign-in redesign as the example.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks/manage-tasks-on-tracks" target="_blank" rel="noopener">Manage tasks on tracks</a></td><td>How-to</td><td>Someone moving work</td><td>Starting several tasks, sending one back, taking one off a track, working offline.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks" target="_blank" rel="noopener">What are Tracks?</a></td><td>Explanation</td><td>Anyone asking why</td><td>The model, and how a Tracks board differs from a status board.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks/reference" target="_blank" rel="noopener">Tracks reference</a></td><td>Reference</td><td>Someone checking a fact</td><td>Every status, action, permission and offline rule, in tables.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks/faq" target="_blank" rel="noopener">Tracks FAQ</a></td><td>FAQ</td><td>Someone with a quick question</td><td>Adding, renaming, reordering and deleting tracks, and turning Tracks off.</td></tr>
+            <tr><td><a href="/docs/tasket/tracks/troubleshooting" target="_blank" rel="noopener">Troubleshoot Tracks</a></td><td>Troubleshooting</td><td>Someone stuck</td><td>Ten issues, each with its cause and solution.</td></tr>
+            <tr><td><a href="/changelog/tracks" target="_blank" rel="noopener">Tracks</a></td><td>Release note</td><td>Existing users</td><td>What's new, in under a minute.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">Also in the site</h3>
+      <ul class="extras">
+        <li><b>Copy page</b> as Markdown, or open it in ChatGPT or Claude</li>
+        <li><b>Was this page helpful?</b> on every page</li>
+        <li><b>Changelog</b> by month, with product and type filters</li>
+        <li><b>Sidebar by job</b>, then by type, so new features slot in by goal</li>
+        <li><b>Search</b> wired for Algolia DocSearch</li>
+        <li><b>Build fails</b> on any broken link or anchor</li>
+      </ul>
+
+      <a class="doclink" href="/docs/tasket" target="_blank" rel="noopener">
+        <span class="docicon site" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H20v14H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></span>
+        <span class="doctext"><b>Neo docs: Tasket and Tracks</b><span>Docs site · 8 pages, built with Docusaurus</span></span>
+        <span class="docarrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Task 3 -->
+  <section class="task panel" id="task-3" aria-labelledby="t3">
+    <div class="num">Task 3</div>
+    <div class="content">
+      <h2 id="t3">The write-docs skill</h2>
+      <blockquote class="brief"><cite>The brief</cite>Build a reusable skill file that produces a first draft of those same three article types from any PRD and its supporting artefacts, not just this one.</blockquote>
+      <p class="lead">The skill is a folder of plain Markdown, <code>write-docs/</code>, that any AI assistant or writer can follow. Give it a PRD and any screens, and it drafts the full set of pages from Task 2, a release note, the clarifying questions, and a report of what it checked. When the feature changes later, it updates the one page that owns each changed fact.</p>
+
+      <h3 class="sub">How a run flows</h3>
+      <p class="scroll-hint">Scroll sideways to see the whole flow.</p>
+      <div class="canvas-wrap" id="canvas-wrap">
+        <div class="canvas" id="canvas" role="img" aria-label="A PRD, screens or a change go to SKILL.md, which routes to a workflow. For a new feature, new_feature_docs runs prd_analysis, page_planning and content_generation. For a change, update_feature_docs runs find_changes, locate_owner and update_pages. Both lanes end in the quality checklist and produce the output. Both use the doc contracts, and each step follows standards from the framework folder. release_note_only and review_only are smaller extra workflows.">
+          <svg class="wires" id="wires" aria-hidden="true"></svg>
+          <span class="glabel" style="left:270px;top:28px">Update</span>
+          <span class="glabel" style="left:270px;top:218px">New feature</span>
+          <span class="glabel" style="left:500px;top:496px">framework/</span>
+          <div class="nd sq trigger" id="n-prd" style="left:30px;top:250px"><div class="nbox" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><b>PRD + screens</b><span>or a change</span></div>
+          <div class="nd sq " id="n-skill" style="left:150px;top:250px"><div class="nbox" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 12h3a3 3 0 0 0 3-3V6.5M11.5 12a3 3 0 0 1 3 3v.5"/></svg></div><b>SKILL.md</b><span>router</span></div>
+          <div class="nd wd wf" id="n-upd" style="left:270px;top:60px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></i><div><b>update_feature_docs</b><span>workflow</span></div></div></div>
+          <div class="nd wd wf" id="n-new" style="left:270px;top:250px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></i><div><b>new_feature_docs</b><span>workflow</span></div></div></div>
+          <div class="nd wd dim" id="n-rel" style="left:270px;top:372px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></i><div><b>release_note_only</b><span>workflow</span></div></div></div>
+          <div class="nd wd dim" id="n-rev" style="left:270px;top:446px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></i><div><b>review_only</b><span>workflow</span></div></div></div>
+          <div class="nd wd " id="n-diff" style="left:486px;top:60px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M3 8h8M15 4v6M12 7h6M15 14v6"/></svg></i><div><b>find_changes</b><span>what changed</span></div></div></div>
+          <div class="nd wd " id="n-loc" style="left:702px;top:60px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg></i><div><b>locate_owner</b><span>the owning page</span></div></div></div>
+          <div class="nd wd " id="n-edit" style="left:918px;top:60px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16Z"/><path d="m13.5 6.5 4 4"/></svg></i><div><b>update_pages</b><span>edit + fix links</span></div></div></div>
+          <div class="nd wd " id="n-ana" style="left:486px;top:250px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2M11 8.5v5M8.5 11h5"/></svg></i><div><b>prd_analysis</b><span>facts, gaps</span></div></div></div>
+          <div class="nd wd " id="n-plan" style="left:702px;top:250px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M9.5 9.5V20"/></svg></i><div><b>page_planning</b><span>goals → pages</span></div></div></div>
+          <div class="nd wd " id="n-gen" style="left:918px;top:250px"><div class="nbox" data-port><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16Z"/><path d="m13.5 6.5 4 4"/></svg></i><div><b>content_generation</b><span>drafts</span></div></div></div>
+          <div class="nd sq " id="n-qa" style="left:1134px;top:250px"><div class="nbox" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6Z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></svg></div><b>checklist</b><span>quality checks</span></div>
+          <div class="nd sq out" id="n-out" style="left:1244px;top:250px"><div class="nbox" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></div><b>Output</b><span>pages, notes, Qs</span></div>
+          <div class="sn ct" id="s-contracts" style="left:1140px;top:140px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><b>doc_contracts</b><span>6 templates</span></div>
+          <div class="sn " id="s-f-base" style="left:500px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>base</b></div>
+          <div class="sn " id="s-f-dx" style="left:600px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>diataxis</b></div>
+          <div class="sn " id="s-f-link" style="left:720px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>linking</b></div>
+          <div class="sn " id="s-f-style" style="left:830px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>style</b></div>
+          <div class="sn " id="s-f-call" style="left:920px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>callouts</b></div>
+          <div class="sn " id="s-f-front" style="left:1010px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>files</b></div>
+          <div class="sn " id="s-f-persona" style="left:1100px;top:410px"><div class="dot" data-port><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 16 4l4 4L8 20H4Z"/><path d="m11 9 2 2M14 6l2 2M8 12l2 2"/></svg></div><b>personas</b></div>
+        </div>
+      </div>
+      <div class="canvas-legend">
+        <span><i></i>runs in order</span>
+        <span><i class="dim"></i>extra workflows</span>
+        <span><i class="uses"></i>uses this standard or template</span>
+      </div>
+
+      <h3 class="sub">The README</h3>
+      <div class="readme">
+        <div class="rm-bar"><span class="rm-path">write-docs <i>/</i> <b>README.md</b></span><a href="https://github.com/harshilp24/neo-task/blob/main/write-docs/README.md" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+        <div class="rm-body">
+          <h4 class="rm-h1">Write-docs skill</h4>
+          <p>An agent skill for drafting Neo product documentation from a PRD. Give it a PRD and any screens or tickets, and it produces first drafts of every page a feature needs, plus a list of questions the PRD leaves open.</p>
+          <h5 class="rm-h2">Architecture overview</h5>
+          <p>The skill handles task-specific jobs through workflows, and reuses shared modules and framework rules for everything else.</p>
+          <h5 class="rm-h2">Execution flow</h5>
+          <pre>SKILL.md (routing)
+ └─&gt; workflows/  (one per kind of job)
+      ├─&gt; modules/  (PRD analysis, page planning, doc contracts, content generation)
+      │    └─&gt; framework/  (Diátaxis, style and tone, linking, callouts, files, personas)
+      └─&gt; quality/checklist.md  (shared checks)</pre>
+          <h5 class="rm-h2">Structure</h5>
+          <pre>write-docs/
+├── SKILL.md                         <span class="c"># Root routing</span>
+├── README.md                        <span class="c"># This file</span>
+│
+├── framework/                       <span class="c"># Site-wide standards for all Neo docs</span>
+│   ├── framework_base.md            <span class="c"># Principles, sources of truth, what not to do</span>
+│   ├── diataxis.md                  <span class="c"># The four page types and how to choose</span>
+│   ├── style_and_tone.md            <span class="c"># Voice, banned patterns, names, labels</span>
+│   ├── linking_and_navigation.md    <span class="c"># Links, sidebar, breadcrumbs</span>
+│   ├── callouts_and_formatting.md   <span class="c"># Callouts, tables, chips, steps</span>
+│   ├── frontmatter_and_files.md     <span class="c"># Front matter, file names, folders</span>
+│   └── persona_specific/
+│       ├── member.md
+│       ├── admin.md
+│       └── guest.md
+│
+├── workflows/                       <span class="c"># Task-based entry points</span>
+│   ├── new_feature_docs.md          <span class="c"># PRD → full doc set</span>
+│   ├── update_feature_docs.md       <span class="c"># Feature changed → update pages</span>
+│   ├── release_note_only.md         <span class="c"># Changelog entry only</span>
+│   └── review_only.md               <span class="c"># Review drafts, change nothing</span>
+│
+├── modules/                         <span class="c"># Reusable internal steps</span>
+│   ├── prd_analysis.md              <span class="c"># Extract facts, find gaps and conflicts</span>
+│   ├── page_planning.md             <span class="c"># Goals → pages → sidebar</span>
+│   ├── content_generation.md        <span class="c"># How to draft</span>
+│   └── doc_contracts/               <span class="c"># One contract per page type, by sidebar section</span>
+│       ├── product_overview.md      <span class="c"># &lt;Product&gt; overview</span>
+│       ├── tutorial.md              <span class="c"># Get started</span>
+│       ├── how_to_guide.md          <span class="c"># Job area, e.g. Run work across teams</span>
+│       ├── explanation.md           <span class="c"># Concepts</span>
+│       ├── reference.md             <span class="c"># Reference</span>
+│       ├── faq.md                   <span class="c"># Help</span>
+│       ├── troubleshooting.md       <span class="c"># Help</span>
+│       └── release_note.md          <span class="c"># Changelog</span>
+│
+├── quality/
+│   └── checklist.md                 <span class="c"># Checks every run must pass</span>
+│
+└── examples/
+    └── tracks/                      <span class="c"># Worked example from the case study</span>
+        ├── prd.md                   <span class="c"># The Tracks PRD, as received</span>
+        ├── clarifying_questions.md  <span class="c"># Gaps and conflicts, with assumptions</span>
+        └── page_plan.md             <span class="c"># The page plan and where each page lives</span></pre>
+        </div>
+      </div>
+
+      <h3 class="sub">How to run it</h3>
+      <ol class="runsteps">
+        <li><b>Give it the inputs.</b> The PRD, plus any screenshots or tickets. Screens win over the PRD for labels.</li>
+        <li><b>Ask in plain words.</b><code class="prompt">Use write-docs to draft the docs for this PRD.</code></li>
+        <li><b>Review what comes back.</b> The pages, the release note, the clarifying questions with assumptions, and a checklist report.</li>
+      </ol>
+      <p class="plain">To change how every page is written, edit one file: a contract for a page type, or a framework file for a house rule. That's what I'll do in the live round.</p>
+
+      <div class="cards2">
+        <a class="doclink" href="https://github.com/harshilp24/neo-task/tree/main/write-docs" target="_blank" rel="noopener">
+          <span class="docicon gh" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+          <span class="doctext"><b>write-docs on GitHub</b><span>The skill folder · plain Markdown</span></span>
+          <span class="docarrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="doclink" href="https://github.com/harshilp24/neo-task/blob/main/write-docs/README.md" target="_blank" rel="noopener">
+          <span class="docicon site" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+          <span class="doctext"><b>How the skill works</b><span>README · architecture and how to change it</span></span>
+          <span class="docarrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+</div>
+<script>
+// Show one panel at a time, chosen by the URL hash.
+(() => {
+  const panels = [...document.querySelectorAll('.panel')];
+  const links = [...document.querySelectorAll('.tabs a')];
+  function show() {
+    const id = (location.hash || '#overview').slice(1);
+    const target = panels.find((p) => p.id === id) ? id : 'overview';
+    panels.forEach((p) => { p.hidden = p.id !== target; });
+    links.forEach((a) => { if (a.dataset.panel === target) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    window.scrollTo(0, 0);
+    window.dispatchEvent(new Event('resize'));
+  }
+  window.addEventListener('hashchange', show);
+  show();
+})();
+(() => {
+  // n8n-style canvas: nodes sit on a fixed 1320 x 520 grid and the whole
+  // canvas scales to the available width. Wires are drawn from node ports.
+  const W = 1380, H = 520;
+  const EDGES = [
+    ['n-prd','n-skill','main'],['n-skill','n-new','main'],['n-skill','n-upd','main'],
+    ['n-skill','n-rel','dim'],['n-skill','n-rev','dim'],
+    ['n-upd','n-diff','main'],['n-diff','n-loc','main'],['n-loc','n-edit','main'],['n-edit','n-qa','main'],
+    ['n-new','n-ana','main'],['n-ana','n-plan','main'],['n-plan','n-gen','main'],['n-gen','n-qa','main'],['n-qa','n-out','main'],
+    ['s-contracts','n-edit','side'],['s-contracts','n-gen','side'],
+['s-f-base','n-ana','uses'],['s-f-dx','n-plan','uses'],['s-f-link','n-plan','uses'],['s-f-style','n-gen','uses'],['s-f-call','n-gen','uses'],['s-f-front','n-gen','uses'],['s-f-persona','n-gen','uses']
+  ];
+  const wrap = document.getElementById('canvas-wrap');
+  const canvas = document.getElementById('canvas');
+  const wires = document.getElementById('wires');
+  if (!canvas) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  function rect(id) {
+    const el = document.getElementById(id).querySelector('[data-port]');
+    let x = 0, y = 0, n = el;
+    while (n && n !== canvas) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+    const w = el.offsetWidth, h = el.offsetHeight;
+    return {l: x, t: y, r: x + w, b: y + h, cx: x + w / 2, cy: y + h / 2};
+  }
+  function fit() {
+    const avail = wrap.clientWidth - 2;
+    const k = Math.max(0.62, Math.min(1, avail / W));
+    canvas.style.transform = `scale(${k})`;
+    wrap.style.height = (H * k + 2) + 'px';
+    canvas.parentElement.classList.toggle('scrolls', avail / W < 0.62);
+  }
+  function draw() {
+    if (!canvas.offsetParent) return;
+    fit();
+    wires.innerHTML = '';
+    EDGES.forEach(([from, to, style]) => {
+      const a = rect(from), b = rect(to);
+      let d;
+      if (style === 'uses') {
+        d = `M${a.cx},${a.t} C${a.cx},${a.t - 40} ${b.cx},${b.b + 40} ${b.cx},${b.b}`;
+      } else if (style === 'side') {
+        const up = b.cy < a.cy;
+        const y1 = up ? a.t : a.b, y2 = up ? b.b : b.t;
+        d = `M${a.cx},${y1} C${a.cx},${(y1 + y2) / 2} ${b.cx + 40},${(y1 + y2) / 2} ${b.r - 20},${y2}`;
+      } else {
+        const x1 = a.r, y1 = a.cy, x2 = b.l, y2 = b.cy;
+        const k = Math.max(20, (x2 - x1) * 0.5);
+        d = `M${x1},${y1} C${x1 + k},${y1} ${x2 - k},${y2} ${x2},${y2}`;
+        const dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('cx', x1); dot.setAttribute('cy', y1); dot.setAttribute('r', 3);
+        wires.appendChild(dot);
+      }
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', style === 'side' ? 'uses' : style);
+      wires.insertBefore(path, wires.firstChild);
+    });
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  window.addEventListener('load', draw);
+  window.addEventListener('resize', draw);
+  draw();
+})();
+</script>
+</body>
+</html>

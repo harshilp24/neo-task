@@ -5,7 +5,10 @@ import HeroDemo from '@site/src/components/HeroDemo';
 import styles from './index.module.css';
 
 const CONCEPT = '/docs/tasket/tracks';
-const HOW_TO = '/docs/tasket/tracks/run-a-task-across-workstreams';
+const TUTORIAL = '/docs/tasket/tracks/get-started';
+const MANAGE_TRACKS = '/docs/tasket/tracks/faq';
+const MANAGE_TASKS = '/docs/tasket/tracks/manage-tasks-on-tracks';
+const TRACKS = '/docs/tasket/tracks';
 const RELEASE_NOTE = '/changelog/tracks';
 
 // Line icons, drawn on a 24px grid and stroked with currentColor.
@@ -56,27 +59,25 @@ const GROUPS = [
     needs: 'New to Tracks',
     meta: 'Five-minute read',
     tasks: [
-      ['Track statuses', `${CONCEPT}#track-statuses`],
-      ['The Tracks board', `${CONCEPT}#the-tracks-board`],
-      ['The Tracks pill', `${CONCEPT}#the-tracks-pill`],
-      ['What happens when things change', `${CONCEPT}#what-happens-when-things-change`],
-      ['Who can do what', `${CONCEPT}#who-can-do-what`],
+      ['How Tracks work', `${CONCEPT}#how-tracks-work`],
+      ['How Tracks differ from a status board', `${CONCEPT}#how-tracks-differ-from-a-status-board`],
+      ['When to use Tracks', `${CONCEPT}#when-to-use-tracks`],
+      ['Track statuses', `${CONCEPT}/reference#track-statuses`],
+      ['Roles and permissions', `${CONCEPT}/reference#roles-and-permissions`],
     ],
   },
   {
     icon: 'steps',
-    kicker: 'How-to',
-    title: 'Run a task across workstreams',
-    to: HOW_TO,
-    outcome: 'Turn on Tracks, create your tracks, and move a task through them.',
+    kicker: 'How-to guides',
+    title: 'Work with Tracks',
+    to: TUTORIAL,
+    outcome: 'Set up your tracks once, then move each task through them.',
     needs: 'Access to a project',
     meta: 'About five minutes',
     tasks: [
-      ['Turn on Tracks', `${HOW_TO}#turn-on-tracks`],
-      ['Create your tracks', `${HOW_TO}#create-your-tracks`],
-      ['Start the task on its tracks', `${HOW_TO}#start-the-task-on-its-tracks`],
-      ['Move the task through each track', `${HOW_TO}#move-the-task-through-each-track`],
-      ['Close the task', `${HOW_TO}#close-the-task`],
+      ['Add your tracks', `${TUTORIAL}#add-your-tracks`],
+      ['Start several tasks at once', `${MANAGE_TASKS}#start-several-tasks-at-once`],
+      ['Rename, reorder or delete tracks', MANAGE_TRACKS],
     ],
   },
 ];
@@ -212,7 +213,7 @@ export default function Home() {
               context on every task, and hand the work to Friday.
             </p>
             <div className={styles.heroActions}>
-              <Link to={HOW_TO} className={styles.btnPrimary}>
+              <Link to={TUTORIAL} className={styles.btnPrimary}>
                 Get started with Tracks
               </Link>
               <Link to={CONCEPT} className={styles.btnOutline}>
