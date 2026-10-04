@@ -38,10 +38,10 @@ Each page shows **Home › <Product> › <sidebar section>** above the title, wi
 | Page type | Must link to |
 |---|---|
 | Tutorial | The explanation (on the feature name in the intro); explanation, guide and FAQ in *Next steps* |
-| How-to guide | The explanation (in the intro); FAQ, reference and troubleshooting in *Related* |
-| Explanation | The tutorial (in the intro); tutorial, guide, FAQ and reference in *Related* |
+| How-to guide | The explanation (in the intro); FAQ, reference and troubleshooting in *See also* |
+| Explanation | The tutorial (in the intro); tutorial, guide, FAQ and reference in *See also* |
 | Reference | The tutorial, guide and FAQ, in the intro |
-| FAQ | Troubleshooting (in the intro); reference and troubleshooting in *Related* |
+| FAQ | Troubleshooting (in the intro); reference and troubleshooting in *See also* |
 | Troubleshooting | The FAQ and reference (in the intro), and the page that owns each fix |
 | Product overview | Every page of the feature, as cards |
 | Release note | The explanation, as "Learn about <feature> →" |

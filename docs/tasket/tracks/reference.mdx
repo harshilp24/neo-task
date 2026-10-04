@@ -52,35 +52,29 @@ Track statuses don't affect each other, or the task's own status (*Open*, *Compl
 | Closed tasks | Still shown, with the statuses kept from before the task closed. |
 | Tracks off | Not shown. |
 
-## Task actions
+## Actions
 
-Anyone with access to the task can use these.
+Anyone with access to the task or project can use these, except turning Tracks off, which is for admins only.
 
-| Action | Changes | Where | Offline |
-|---|---|---|---|
-| **Start** | Not started → Pending | Tracks pill | ✓ |
-| **Start** selected tasks | Not started → Pending, for each | Track's column header | — |
-| **Mark Done** | Pending → Done | *Pending* section · Tracks pill | ✓ |
-| **Mark Pending** | Done → Pending | *Done* section · Tracks pill | ✓ |
-| **Stop** | Pending → Not started | *Pending* section · Tracks pill | — |
-| **Select** | Adds the task to a selection | Task list · any column | — |
+| Action | Does | Where | Offline | Undo |
+|---|---|---|---|---|
+| **Start** | Not started → Pending | Tracks pill | ✓ | **Stop** |
+| **Start** selected tasks | Not started → Pending, for each | Track's column header | — | **Stop** |
+| **Mark Done** | Pending → Done | *Pending* section · Tracks pill | ✓ | **Mark Pending** |
+| **Mark Pending** | Done → Pending | *Done* section · Tracks pill | ✓ | **Mark Done** |
+| **Stop** | Pending → Not started | *Pending* section · Tracks pill | — | **Start** |
+| **Select** | Adds the task to a selection | Task list · any column | — | — |
+| **+ Add Track** | Creates a track | End of the board · **+** between columns | — | <Chip kind="yes">Delete it</Chip> |
+| **Rename** | Changes the track's name everywhere | Arrow next to the track's name | — | <Chip kind="yes">Yes</Chip> |
+| **Move track** | Changes the column order | Arrow next to the track's name | — | <Chip kind="yes">Yes</Chip> |
+| **Delete** | Removes the track and its statuses | Arrow next to the track's name | — | <Chip kind="no">No</Chip> |
+| Turn on **Tracks** | Adds the board and pills | **Settings** tab | — | — |
+| Turn off **Tracks** | Clears every track and status | **Settings** tab | — | <Chip kind="no">No</Chip> |
 
 - **Start** isn't available on a closed task.
 - **Start** on a track the task is already on highlights it and changes nothing. Starting selected tasks skips those already on the track.
 - **Stop** isn't available on a task that is Done on that track.
-
-## Track and project actions
-
-None of these work offline.
-
-| Action | Does | Where | Who | Undo |
-|---|---|---|---|---|
-| **+ Add Track** | Creates a track | End of the board · **+** between columns | Any member | <Chip kind="yes">Delete it</Chip> |
-| **Rename** | Changes the name everywhere | Arrow next to the track's name | Any member | <Chip kind="yes">Yes</Chip> |
-| **Move track** | Changes the column order | Arrow next to the track's name | Any member | <Chip kind="yes">Yes</Chip> |
-| **Delete** | Removes the track and its statuses | Arrow next to the track's name | Any member | <Chip kind="no">No</Chip> |
-| Turn on **Tracks** | Adds the board and pills | **Settings** tab | Any member | <Chip kind="yes">Turn off</Chip> |
-| Turn off **Tracks** | Clears every track and status | **Settings** tab | <Chip kind="admin">Admins</Chip> | <Chip kind="no">No</Chip> |
+- Tracks belong to one project, and track names must be unique within it. A task can be on any number of tracks.
 
 ## Roles and permissions
 
@@ -116,9 +110,3 @@ Offline changes are saved on the device and sync on reconnect. On sync:
 | Delete a track | Track and every status on it removed, open and closed tasks alike. | <Chip kind="no">No</Chip> |
 | Turn Tracks off | Every track and status in the project cleared. Turning back on starts empty. | <Chip kind="no">No</Chip> |
 | Move a task to another project | Its statuses cleared. Not started everywhere, even on same-named tracks. | <Chip kind="no">No</Chip> |
-
-## Rules and limits
-
-- Tracks belong to one project and don't exist in any other.
-- Track names must be unique within a project.
-- A task can be on any number of tracks, with one status on each.

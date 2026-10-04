@@ -20,7 +20,8 @@ These apply to every request:
 
 | If the request is… | Run |
 |---|---|
-| A new feature: "write docs for this PRD", "draft the docs for X" | [workflows/new_feature_docs.md](workflows/new_feature_docs.md) |
+| A new feature: "write docs for this PRD", "draft the three documents" (default) | [workflows/three_pieces.md](workflows/three_pieces.md) |
+| A new feature, full doc set: "write the full docs", "add a reference and FAQ" | [workflows/new_feature_docs.md](workflows/new_feature_docs.md) |
 | A change to a documented feature: "the PRD changed", "the UI now…", "update the Tracks docs" | [workflows/update_feature_docs.md](workflows/update_feature_docs.md) |
 | Only a release note or changelog entry | [workflows/release_note_only.md](workflows/release_note_only.md) |
 | A review of existing pages or a draft | [workflows/review_only.md](workflows/review_only.md) |

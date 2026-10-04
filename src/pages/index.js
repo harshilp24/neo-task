@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 const CONCEPT = '/docs/tasket/tracks';
 const TUTORIAL = '/docs/tasket/tracks/get-started';
-const MANAGE_TRACKS = '/docs/tasket/tracks/faq';
+const FAQ = '/docs/tasket/tracks/faq';
 const MANAGE_TASKS = '/docs/tasket/tracks/manage-tasks-on-tracks';
 const TRACKS = '/docs/tasket/tracks';
 const RELEASE_NOTE = '/changelog/tracks';
@@ -57,7 +57,6 @@ const GROUPS = [
     to: CONCEPT,
     outcome: 'How one task holds a separate status in each workstream.',
     needs: 'New to Tracks',
-    meta: 'Five-minute read',
     tasks: [
       ['How Tracks work', `${CONCEPT}#how-tracks-work`],
       ['How Tracks differ from a status board', `${CONCEPT}#how-tracks-differ-from-a-status-board`],
@@ -68,16 +67,15 @@ const GROUPS = [
   },
   {
     icon: 'steps',
-    kicker: 'How-to guides',
-    title: 'Work with Tracks',
+    kicker: 'Get started',
+    title: 'Set up Tracks',
     to: TUTORIAL,
     outcome: 'Set up your tracks once, then move each task through them.',
     needs: 'Access to a project',
-    meta: 'About five minutes',
     tasks: [
       ['Add your tracks', `${TUTORIAL}#add-your-tracks`],
       ['Start several tasks at once', `${MANAGE_TASKS}#start-several-tasks-at-once`],
-      ['Rename, reorder or delete tracks', MANAGE_TRACKS],
+      ['Rename, reorder or delete tracks', FAQ],
     ],
   },
 ];
@@ -160,8 +158,6 @@ function Group({g}) {
         <p className={styles.groupOutcome}>{g.outcome}</p>
         <span className={styles.groupMeta}>
           <span className={styles.needs}>{g.needs}</span>
-          <span aria-hidden="true">·</span>
-          {g.meta}
         </span>
       </Link>
       <ul className={styles.taskList}>

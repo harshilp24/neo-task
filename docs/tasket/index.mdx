@@ -1,7 +1,7 @@
 ---
 title: Tasket
 slug: /tasket
-description: "Tasket is Neo's AI-native work management platform for all functions. Teams, guests, projects, tasks with comments, documents and AI chats, sprints, intakes, custom fields, and Tracks for workflows with several steps."
+description: "Tasket is Neo's work management platform. Teams of members, admins and guests work in projects, each task has comments, Studio docs and a Friday chat, and Tracks lets one task move through several workstreams at once."
 tags: [tasket]
 hide_table_of_contents: true
 ---
@@ -9,34 +9,21 @@ hide_table_of_contents: true
 import {Overview, JobCards, TracksPreview} from '@site/src/components/ProductOverview';
 
 <Overview
-  intro={<>Tasket is Neo's AI-native work management platform for all functions. It organises your team's work across three layers: <b>teams and projects</b> (who works together, and where), <b>tasks</b> (each unit of work and its context), and <b>views</b> (where your work shows up). Use this section to set up Tracks, move tasks through them, and fix common problems.</>}
+  intro={<>Tasket is Neo's work management platform. It organises your team's work across three layers: <b>teams and projects</b> (who works together, and where), <b>tasks</b> (each unit of work and its context), and <b>views</b> (where your work shows up). Use this section to set up Tracks, move tasks through them, and fix common problems.</>}
   layers={[
-    {icon: 'team', title: 'Teams and projects', text: 'Teams with guests from other organisations, and configurable projects with sprints, intakes and custom fields.'},
-    {icon: 'task', title: 'Tasks', text: 'Each with comments, documents and AI chats. Tracks move a task through several steps at once.'},
-    {icon: 'views', title: 'Views', text: 'The Work tab for tasks you are assigned to, the Updates tab for activity, and the Silence Score.'},
+    {icon: 'team', title: 'Teams and projects', text: 'Members, admins and guests from other organisations, working in projects that hold tasks.'},
+    {icon: 'task', title: 'Tasks', text: 'A title, a comment thread, Studio docs and a Friday chat. Open, Completed or Discarded.'},
+    {icon: 'views', title: 'Views', text: 'The Work tab for tasks you are assigned to, and the Updates tab for activity on your tasks.'},
   ]}
   preview={<TracksPreview />}
 />
-
-## What you can do in Tasket
-
-| Area | Features |
-|---|---|
-| **Teams** | Create teams · Invite guests |
-| **Projects** | Create projects · Configurable projects · Plan sprints · Accept intakes · Configure custom fields |
-| **Tasks** | Organise tasks · Add comments · Add documents · Add AI chats |
-| **Workflows** | [Tracks](/docs/tasket/tracks): define workflows made of several steps |
-| **Your work** | Work tab · Updates tab · Silence Score |
-
-Tracks is documented here. Docs for the other features are on the way.
-
 
 ## Tracks
 
 <JobCards
   items={[
     {icon: 'start', title: 'Get started with Tracks', text: 'Turn on Tracks for a project and add a track for each workstream.', to: '/docs/tasket/tracks/get-started'},
-    {icon: 'lanes', title: 'Manage tasks on tracks', text: 'Start several tasks at once, send a task back, or take it off a track.', to: '/docs/tasket/tracks/manage-tasks-on-tracks'},
+    {icon: 'lanes', title: 'Manage tasks on tracks', text: 'Start a task, mark it Done, send it back or stop it.', to: '/docs/tasket/tracks/manage-tasks-on-tracks'},
     {icon: 'book', title: 'What are Tracks?', text: 'How one task holds a separate status in each workstream.', to: '/docs/tasket/tracks'},
     {icon: 'list', title: 'Tracks reference', text: 'Every status, action, permission and offline rule.', to: '/docs/tasket/tracks/reference'},
     {icon: 'question', title: 'Tracks FAQ', text: 'Rename, reorder or delete a track, or turn Tracks off.', to: '/docs/tasket/tracks/faq'},

@@ -31,7 +31,7 @@ toc_max_heading_level: 2
 3. **One section per task.** Heading starts with a verb: "Start several tasks at once", "Send a task back for more work". Each section:
    - an optional one-line condition ("If a track marked a task Done too early:")
    - numbered steps, with results
-4. **Related**: links to the FAQ, reference and troubleshooting.
+4. **See also**: links to the FAQ, reference and troubleshooting.
 
 ## Doesn't include
 

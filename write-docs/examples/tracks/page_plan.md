@@ -17,7 +17,7 @@ The plan the skill produced for Tracks, and where each page lives.
 | Turn Tracks off | admin | the project | rarely | FAQ |
 | Start several tasks at once | member | task statuses | sometimes | Manage tasks on tracks |
 | Send a task back for more work | member | a task's status | sometimes | Manage tasks on tracks |
-| Take a task off a track | member | a task's status | sometimes | Manage tasks on tracks |
+| Stop a task on a track | member | a task's status | sometimes | Manage tasks on tracks |
 | Close or reopen a task with tracks | member | the task | sometimes | Reference, troubleshooting |
 | Work offline | member | task statuses | sometimes | Manage tasks on tracks |
 

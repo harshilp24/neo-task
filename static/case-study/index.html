@@ -4,119 +4,105 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>neo task | Harshil</title>
-<meta name="description" content="Harshil's submission for the Neo Senior Technical Writer case study: clarifying questions, the Tracks docs, and a reusable write-docs skill.">
+<title>Documenting Tracks | Harshil</title>
+<meta name="description" content="Harshil's submission for the Neo Senior Technical Writer case study: clarifying questions, the Tracks docs, and the write-docs skill.">
 <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-/* A one-page memo to the hiring team: a short letter, then one numbered
-   section per task in the brief. Light only. Neo blue is the single accent. */
+/* Docs home: a plain sidebar (Overview, then Task 1-3), one page open at a
+   time in the main column, and a small facts panel on the overview. */
 :root {
   --paper: #ffffff;
-  --tint: #f7f8fa;
-  --ink: #18181b;
-  --body: #3f3f46;
-  --muted: #71717a;
-  --line: #e8e8eb;
-  --line-strong: #d7d7dc;
-  --blue: #2b62d4;
-  --blue-soft: #eef3fc;
-  --blue-line: #cfdcf5;
-  --navy: #0c2568;
-  --red: #b42318;
-  --red-soft: #fdeceb;
-  --green: #157a4f;
-  --green-soft: #e7f6ee;
+  --wash: #f6f7f9;
+  --ink: #17191e;
+  --body: #444954;
+  --muted: #767c88;
+  --line: #e4e6eb;
+  --accent: #2b62d4;
+  --accent-soft: #eaf0fc;
+  --code-bg: #f3f4f6;
   --font: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
   color-scheme: light;
 }
-
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--body); font-family: var(--font); font-size: 16.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-a { color: var(--blue); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
-h1, h2, h3 { color: var(--ink); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--body); font-family: var(--font); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+h1, h2 { color: var(--ink); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
 p { margin: 0; }
-code, .mono { font-family: var(--mono); font-size: 0.88em; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--code-bg); padding: 1px 5px; border-radius: 5px; color: var(--ink); }
+.shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
 
-.page { max-width: 980px; margin: 0 auto; padding-inline: 24px; }
+.nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; border-right: 1px solid var(--line); padding: 24px 14px; display: flex; flex-direction: column; gap: 2px; }
+.brand { display: block; padding: 0 10px 20px; color: var(--ink); font-weight: 600; font-size: 16px; text-decoration: none; }
+.brand b { color: var(--accent); font-weight: 600; }
+.brand span { color: var(--muted); font-weight: 400; }
+.navlabel { font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding: 16px 10px 4px; }
+.nav a.item { padding: 7px 10px; border-radius: 7px; color: var(--body); font-size: 14.5px; text-decoration: none; line-height: 1.4; }
+.nav a.item:hover { background: var(--wash); color: var(--ink); }
+.nav a.item[aria-current="page"] { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+.navfoot { margin-top: auto; padding: 16px 10px 0; font-size: 13.5px; display: grid; gap: 4px; }
+.navfoot a { color: var(--muted); text-decoration: none; }
+.navfoot a:hover { color: var(--ink); }
 
-/* Masthead */
-.mast { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 28px 22px; border-bottom: 1px solid var(--line); }
-.brand { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
-.brand b { color: var(--blue); font-weight: 700; }
-.brand span { color: var(--line-strong); font-weight: 400; padding: 0 6px; }
-.meta { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.main { padding: 44px 48px 72px; min-width: 0; }
+.page { max-width: 1040px; }
+.crumb { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.crumb a { color: var(--muted); text-decoration: none; }
+.crumb a:hover { color: var(--ink); }
+.page h1 { font-size: clamp(30px, 3.6vw, 38px); line-height: 1.15; font-weight: 600; letter-spacing: -0.025em; }
+.lead { font-size: 17.5px; margin-top: 12px; max-width: 64ch; }
+.page h2 { font-size: 22px; font-weight: 600; margin: 40px 0 12px; }
+.prose { max-width: 70ch; margin-top: 24px; }
+.small { margin-top: 12px; color: var(--muted); font-size: 14.5px; max-width: 70ch; }
 
-/* Letter */
-.letter { display: grid; grid-template-columns: minmax(0, 640px); padding-block: 64px 48px; gap: 18px; }
-.letter h1 { font-size: clamp(34px, 5vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -0.035em; }
-.letter p { font-size: 18px; line-height: 1.7; }
-.sign { color: var(--ink); font-weight: 500; }
-.toc { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; padding: 0; list-style: none; }
-.toc a { display: inline-flex; align-items: baseline; gap: 10px; padding: 10px 16px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--ink); text-decoration: none; font-weight: 500; transition: box-shadow 150ms ease-out, background-color 150ms ease-out; }
-.toc a:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--blue-line); }
-.toc a span { font-family: var(--mono); font-size: 12.5px; color: var(--blue); }
+.home { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: start; }
+.rows { margin-top: 28px; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 20px 2px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
+.row b { display: block; color: var(--ink); font-size: 17px; font-weight: 600; }
+.row small { display: block; margin-top: 2px; font-size: 15px; color: var(--body); }
+.row .arr { color: var(--muted); font-size: 18px; transition: transform 150ms ease-out, color 150ms ease-out; }
+.row:hover b, .row:hover .arr { color: var(--accent); }
+.row:hover .arr { transform: translateX(3px); }
+.facts { font-size: 14px; display: grid; gap: 18px; padding-top: 6px; }
+.facts dl { margin: 0; display: grid; gap: 12px; }
+.facts dt { color: var(--muted); font-size: 12.5px; }
+.facts dd { margin: 0; color: var(--ink); font-weight: 500; }
+.facts .links { display: grid; gap: 7px; padding-top: 16px; border-top: 1px solid var(--line); }
+.facts .links a { text-decoration: none; font-weight: 500; }
+.facts .links a:hover { text-decoration: underline; }
 
-/* Task sections */
-.task { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 28px; padding-block: 56px; border-top: 1px solid var(--line); }
-.num { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 8px; }
-.num b { display: block; font-family: var(--font); font-size: 64px; line-height: 1; font-weight: 600; color: var(--ink); letter-spacing: -0.04em; margin-bottom: 6px; }
-.content { display: grid; gap: 22px; min-width: 0; }
-.content > h2 { font-size: clamp(26px, 3.4vw, 32px); font-weight: 600; letter-spacing: -0.03em; }
-.brief { margin: 0; padding: 14px 18px; border-radius: 12px; background: var(--tint); font-size: 15.5px; color: var(--body); }
-.brief cite { display: block; margin-bottom: 4px; font-style: normal; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.lead { font-size: 17.5px; max-width: 68ch; }
-.lead strong { color: var(--ink); font-weight: 600; }
-h3.sub { font-size: 15px; font-weight: 600; letter-spacing: 0; margin-bottom: -8px; }
-
-.actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; white-space: nowrap; transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out; }
-.btn:active { transform: translateY(1px); }
-.btn.primary { background: var(--ink); color: #fff; }
-.btn.primary:hover { background: #2c2c31; }
-.btn.secondary { color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
-.btn.secondary:hover { background: var(--tint); }
-.btn svg { width: 16px; height: 16px; }
-
-/* Task 1 */
-.counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.count { padding: 16px 18px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
-.count b { display: block; font-size: 30px; line-height: 1.1; font-weight: 600; color: var(--ink); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.count span { font-size: 14px; color: var(--muted); }
-.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.q { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; padding: 16px 18px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
-.q .tag { grid-row: span 3; align-self: start; font-family: var(--mono); font-size: 11.5px; padding: 3px 8px; border-radius: 6px; background: var(--red-soft); color: var(--red); white-space: nowrap; }
-.q .tag.blue { background: var(--blue-soft); color: var(--blue); }
-.q h4 { margin: 0; font-size: 16px; color: var(--ink); font-weight: 600; }
-.q p { font-size: 15px; }
-.q .took { color: var(--ink); }
-.q .took b { font-weight: 600; }
-
-/* Task 2 */
-.split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.deliv { padding: 16px 18px; border-radius: 12px; background: var(--tint); display: grid; gap: 6px; align-content: start; }
-.deliv .k { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.deliv b { color: var(--ink); font-weight: 600; font-size: 15.5px; }
-.deliv span { font-size: 14.5px; }
-.tablewrap { overflow-x: auto; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line-strong); }
-table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
-th { text-align: left; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 12px 16px; background: var(--tint); border-bottom: 1px solid var(--line); }
-td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.brief { margin-top: 24px; padding: 16px 18px; border-radius: 10px; background: var(--wash); max-width: 74ch; }
+.brief b { display: block; font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 4px; }
+.brief p { color: var(--ink); }
+ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 70ch; }
+ul.plain b, .prose b { color: var(--ink); }
+.tablewrap { overflow-x: auto; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 620px; }
+th { text-align: left; font-size: 13px; font-weight: 500; color: var(--muted); padding: 11px 16px; background: var(--wash); border-bottom: 1px solid var(--line); }
+td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
 tr:last-child td { border-bottom: 0; }
 td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
-td:first-child a { color: var(--ink); text-decoration-color: var(--line-strong); }
-td:first-child a:hover { color: var(--blue); }
-.type { display: inline-block; font-family: var(--mono); font-size: 11.5px; padding: 2px 8px; border-radius: 6px; background: var(--blue-soft); color: var(--blue); white-space: nowrap; }
-.type.grey { background: var(--tint); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
-.extras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
-.extras li { padding-left: 18px; position: relative; font-size: 15px; }
-.extras li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
-.extras b { color: var(--ink); font-weight: 600; }
+td a, ul.plain a { text-decoration: none; font-weight: 500; }
+td a:hover, ul.plain a:hover { text-decoration: underline; }
+.cta { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 13px 16px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; color: inherit; max-width: 520px; transition: box-shadow 150ms ease-out; }
+.cta:hover { box-shadow: inset 0 0 0 1px var(--accent); }
+.cta svg { flex: none; width: 30px; height: 30px; }
+.cta b { display: block; color: var(--ink); font-weight: 600; }
+.cta small { color: var(--muted); font-size: 13.5px; }
+.cta .go { margin-left: auto; color: var(--muted); }
+pre { margin: 0; padding: 16px 18px; border-radius: 10px; background: var(--code-bg); font-family: var(--mono); font-size: 13px; line-height: 1.65; color: var(--ink); overflow-x: auto; }
+ol.steps { margin: 0; padding-left: 22px; display: grid; gap: 8px; max-width: 70ch; }
+.next { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.next a { text-decoration: none; display: grid; }
+.next a small { color: var(--muted); font-size: 13px; }
+.next a b { color: var(--ink); font-weight: 600; }
+.next a:hover b { color: var(--accent); }
+.next .r { text-align: right; margin-left: auto; }
 
 /* Task 3: an n8n-style canvas on a fixed 1320 x 520 grid, scaled to fit.
    Main steps are wide nodes with the label inside, so no wire crosses text. */
@@ -136,18 +122,18 @@ td:first-child a:hover { color: var(--blue); }
 .nd.sq.trigger .nbox { border-radius: 28px 12px 12px 28px; }
 .nd.sq b { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.2; }
 .nd.sq span { font-size: 12.5px; color: var(--muted); margin-top: -4px; }
-.nd.wd .nbox { width: 200px; height: 56px; border-radius: 12px; display: flex; align-items: center; gap: 9px; padding: 0 10px; box-shadow: 0 0 0 1px var(--blue-line), 0 4px 10px -7px rgba(16, 24, 40, 0.3); }
-.nd.wd i { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); }
+.nd.wd .nbox { width: 200px; height: 56px; border-radius: 12px; display: flex; align-items: center; gap: 9px; padding: 0 10px; box-shadow: 0 0 0 1px #cdd9f3, 0 4px 10px -7px rgba(16, 24, 40, 0.3); }
+.nd.wd i { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
 .nd.wd i svg { width: 18px; height: 18px; }
 .nd.wd b { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 500; color: var(--ink); line-height: 1.3; white-space: nowrap; }
 .nd.wd span { display: block; font-size: 12px; color: var(--muted); line-height: 1.3; }
-.nd.wf .nbox { box-shadow: 0 0 0 1.5px var(--blue), 0 4px 10px -7px rgba(16, 24, 40, 0.3); }
+.nd.wf .nbox { box-shadow: 0 0 0 1.5px var(--accent), 0 4px 10px -7px rgba(16, 24, 40, 0.3); }
 .nd.dim { opacity: 0.55; }
 .nd.dim .nbox { height: 42px; box-shadow: 0 0 0 1px #d6d8de; }
-.nd.dim i { width: 26px; height: 26px; background: var(--tint); color: var(--muted); }
-.nd.out .nbox { box-shadow: 0 0 0 1.5px var(--green), 0 4px 10px -7px rgba(16, 24, 40, 0.3); color: var(--green); }
+.nd.dim i { width: 26px; height: 26px; background: var(--wash); color: var(--muted); }
+.nd.out .nbox { box-shadow: 0 0 0 1.5px #157a4f, 0 4px 10px -7px rgba(16, 24, 40, 0.3); color: #157a4f; }
 .sn { position: absolute; width: 90px; display: grid; justify-items: center; gap: 4px; text-align: center; }
-.sn .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--paper); display: grid; place-items: center; box-shadow: 0 0 0 1px #c9d6f1; color: var(--blue); }
+.sn .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--paper); display: grid; place-items: center; box-shadow: 0 0 0 1px #c9d6f1; color: var(--accent); }
 .sn .dot svg { width: 15px; height: 15px; }
 .sn b { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--body); }
 .sn span { font-size: 11.5px; color: var(--muted); margin-top: -3px; }
@@ -157,297 +143,162 @@ td:first-child a:hover { color: var(--blue); }
 .canvas-legend i { display: inline-block; width: 22px; height: 0; vertical-align: middle; margin-right: 7px; border-top: 1.5px solid #9aa0ad; }
 .canvas-legend i.uses { border-top: 1.5px dashed #a9bde7; }
 .canvas-legend i.dim { border-top-color: #d6d8de; }
-.scroll-hint { display: none; font-size: 13px; color: var(--muted); }
-
-/* Footer */
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 36px 56px; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--muted); }
-.foot a { color: var(--ink); }
-
-@media (max-width: 860px) {
-  .task { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 44px; }
-  .num { display: flex; align-items: baseline; gap: 12px; padding-top: 0; }
-  .num b { font-size: 44px; margin-bottom: 0; }
-  .counts, .split { grid-template-columns: minmax(0, 1fr); }
-  .extras { grid-template-columns: minmax(0, 1fr); }
-  .scroll-hint { display: block; }
-  .letter { padding-block: 44px 36px; }
-}
-@media (max-width: 520px) {
-  .page { padding-inline: 16px; }
-  .q { grid-template-columns: minmax(0, 1fr); }
-  .q .tag { grid-row: auto; justify-self: start; }
-}
-
-/* Shell: tasks in a left sidebar, one panel open in the main area. */
-.shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
-.side { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 6px; padding: 28px 18px; border-right: 1px solid var(--line); background: var(--tint); }
-.side .brand { padding: 0 10px; }
-.side .meta { padding: 0 10px 22px; line-height: 1.6; }
-.tabs { display: grid; gap: 2px; }
-.tabs a { display: flex; align-items: baseline; gap: 12px; padding: 9px 10px; border-radius: 8px; color: var(--body); text-decoration: none; font-size: 15px; font-weight: 500; transition: background-color 150ms ease-out, color 150ms ease-out; }
-.tabs a span { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-.tabs a:hover { background: #eef0f3; color: var(--ink); }
-.tabs a[aria-current="page"] { background: var(--paper); color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(16, 24, 40, 0.05); }
-.tabs a[aria-current="page"] span { color: var(--blue); }
-.side-foot { margin-top: auto; padding: 0 10px; font-size: 13.5px; color: var(--muted); }
-.side-foot a { color: var(--ink); }
-.stage { max-width: 1240px; width: 100%; padding: 0 48px 64px; }
-.panel[hidden] { display: none; }
-.stage .task { border-top: 0; grid-template-columns: minmax(0, 1fr); gap: 10px; }
-.stage .num { padding-top: 0; color: var(--blue); }
-.stage .num b { display: none; }
-@media (max-width: 860px) {
-  .shell { grid-template-columns: minmax(0, 1fr); }
-  .side { position: sticky; z-index: 2; height: auto; padding: 14px 16px 10px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .side .meta, .side-foot { display: none; }
-  .tabs { display: flex; overflow-x: auto; gap: 4px; }
-  .tabs a { white-space: nowrap; padding: 7px 10px; font-size: 14px; }
-  .stage { padding: 0 16px 48px; }
-}
-
-
-/* Memo styling: one typeface, few boxes, plain labels. */
-.meta, .num, .brief cite, .h, .canvas-legend { font-family: var(--font) !important; }
-.side { background: var(--paper); }
-.side .brand { text-decoration: none; display: block; }
-.side .meta { font-size: 13px; color: var(--muted); margin: 6px 0 0; padding: 0 10px 26px; letter-spacing: 0; }
-.tabs { gap: 4px; }
-.tabs a { display: grid; gap: 1px; padding: 9px 12px; border-radius: 8px; }
-.tabs a b { font-size: 14.5px; font-weight: 600; color: var(--ink); }
-.tabs a span { font-family: var(--font); font-size: 13.5px; color: var(--muted); }
-.tabs a[aria-current="page"] { background: var(--tint); box-shadow: none; }
-.tabs a[aria-current="page"] b { color: var(--blue); }
-.tabs a[aria-current="page"] span { color: var(--body); }
-.side-foot { display: flex; gap: 14px; }
-.letter { padding-block: 72px 48px; gap: 16px; }
-.eyebrow, .stage .num { font-size: 13.5px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
-.letter h1 { font-size: clamp(30px, 4vw, 38px); letter-spacing: -0.025em; }
-.letter p { font-size: 17px; }
-.index { margin: 12px 0 4px; display: grid; gap: 0; border-top: 1px solid var(--line); }
-.index > div { padding: 16px 0; border-bottom: 1px solid var(--line); }
-.index dt a { font-weight: 600; color: var(--ink); text-decoration: none; }
-.index dt a:hover { color: var(--blue); }
-.index dd { margin: 2px 0 0; font-size: 15.5px; color: var(--body); }
-.brief { background: none; border-radius: 0; padding: 2px 0 2px 16px; border-left: 2px solid var(--line-strong); font-size: 15.5px; color: var(--body); }
-.brief cite { font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 500; }
-.qs { list-style: decimal; padding-left: 22px; display: grid; gap: 0; }
-.qs li { padding: 14px 0 14px 4px; border-bottom: 1px solid var(--line); }
-.qs li::marker { color: var(--muted); font-weight: 500; }
-.qs h4 { margin: 0 0 4px; font-size: 16px; color: var(--ink); }
-.qs p { font-size: 15.5px; margin: 0; }
-.qs .took { margin-top: 6px; color: var(--ink); }
-.more a { font-weight: 600; color: var(--blue); text-decoration: none; }
-.more a:hover { text-decoration: underline; }
-.map { margin: 0; display: grid; border-top: 1px solid var(--line); }
-.map > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.map dt { font-weight: 600; color: var(--ink); }
-.map dd { margin: 0; font-size: 15.5px; }
-.plain { font-size: 15.5px; max-width: 68ch; }
-th { font-family: var(--font); letter-spacing: 0; text-transform: none; font-size: 13px; color: var(--muted); }
-.tablewrap { box-shadow: inset 0 0 0 1px var(--line); }
-td:first-child a { text-decoration: none; color: var(--blue); font-weight: 600; }
-td:first-child a::after { content: ' ↗'; font-weight: 400; font-size: 0.9em; }
-td:first-child a:hover { text-decoration: underline; }
-.glabel { font-family: var(--font) !important; letter-spacing: 0.02em; text-transform: none; font-size: 12px; }
-@media (max-width: 860px) {
-  .tabs a { padding: 6px 10px; }
-  .tabs a span { display: none; }
-  .map > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-}
-
-/* Richer memo: soft cards for key items, link cards for deliverables. */
-.letter h1 { font-size: clamp(32px, 4.4vw, 44px); }
-.index { border-top: 0; gap: 10px; }
-.index > div { border: 0; padding: 0; }
-.index dt a { display: block; padding: 16px 18px 2px; }
-.index > div { border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow 150ms ease-out, background-color 150ms ease-out; }
-.index > div:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--blue-line); }
-.index dd { padding: 0 18px 16px; }
-.qs { list-style: none; padding: 0; gap: 12px; counter-reset: q; }
-.qs li { counter-increment: q; border: 0; padding: 18px 20px 18px 58px; border-radius: 12px; background: var(--tint); position: relative; }
-.qs li::before { content: counter(q); position: absolute; left: 20px; top: 18px; width: 24px; height: 24px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); display: grid; place-items: center; font-size: 12.5px; font-weight: 600; color: var(--ink); }
-.qs .took { margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); font-size: 15px; }
-.doclink { display: flex; align-items: center; gap: 14px; max-width: 520px; padding: 14px 16px; border-radius: 12px; text-decoration: none; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong), 0 1px 2px rgba(16, 24, 40, 0.04); transition: box-shadow 150ms ease-out, transform 150ms ease-out; }
-.doclink:hover { box-shadow: inset 0 0 0 1px var(--blue-line), 0 6px 16px -10px rgba(16, 24, 40, 0.25); transform: translateY(-1px); }
-.docicon { flex: none; width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; background: #eef3fe; }
-.docicon svg { width: 22px; height: 22px; }
-.docicon.site { background: var(--blue-soft); color: var(--blue); }
-.doctext { display: grid; gap: 1px; min-width: 0; }
-.doctext b { color: var(--ink); font-weight: 600; font-size: 15.5px; }
-.doctext span { color: var(--muted); font-size: 13.5px; }
-.docarrow { margin-left: auto; color: var(--muted); font-size: 16px; }
-.map > div { border-bottom: 1px solid var(--line); }
-
-.pieces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.piece { display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: 14px; background: var(--tint); box-shadow: inset 0 0 0 1px var(--line); }
-.piece .pi { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: var(--paper); color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue-line); }
-.piece .pi svg { width: 18px; height: 18px; }
-.piece b { color: var(--ink); font-size: 16px; font-weight: 600; margin-top: 4px; }
-.piece p { font-size: 14.5px; line-height: 1.55; margin: 0; }
-.plinks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
-.plinks a { font-size: 13.5px; font-weight: 500; color: var(--ink); text-decoration: none; padding: 5px 10px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); transition: box-shadow 150ms ease-out, color 150ms ease-out; }
-.plinks a:hover { color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue-line); }
-.briefmap .plinks { display: flex; margin-top: 8px; padding-top: 0; }
-.briefmap td:first-child { font-weight: 600; color: var(--ink); }
-@media (max-width: 860px) { .pieces { grid-template-columns: minmax(0, 1fr); } }
-
-.runsteps { margin: 0; padding: 0; list-style: none; counter-reset: r; display: grid; gap: 10px; }
-.runsteps li { counter-increment: r; position: relative; padding: 14px 18px 14px 54px; border-radius: 12px; background: var(--tint); font-size: 15.5px; }
-.runsteps li::before { content: counter(r); position: absolute; left: 18px; top: 14px; width: 24px; height: 24px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); display: grid; place-items: center; font-size: 12.5px; font-weight: 600; color: var(--ink); }
-.runsteps b { color: var(--ink); }
-.prompt { display: block; margin-top: 8px; padding: 10px 12px; border-radius: 8px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); }
-.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.cards2 .doclink { max-width: none; }
-.docicon.gh { background: #f2f2f3; color: var(--ink); }
-.docicon.gh svg { width: 20px; height: 20px; }
-td:nth-child(3):last-child { color: var(--muted); }
-@media (max-width: 860px) { .cards2 { grid-template-columns: minmax(0, 1fr); } }
-
-.readme { border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line-strong); background: var(--paper); }
-.rm-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; background: var(--tint); border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.readme { border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); background: var(--paper); }
+.rm-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; background: var(--wash); border-bottom: 1px solid var(--line); font-size: 13.5px; }
 .rm-path { color: var(--muted); }
 .rm-path i { font-style: normal; padding: 0 4px; }
 .rm-path b { color: var(--ink); font-weight: 600; }
-.rm-bar a { color: var(--blue); text-decoration: none; font-weight: 500; }
+.rm-bar a { color: var(--accent); text-decoration: none; font-weight: 500; }
 .rm-body { padding: 22px 24px 26px; display: grid; gap: 12px; }
 .rm-h1 { margin: 0; font-size: 24px; color: var(--ink); letter-spacing: -0.02em; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .rm-h2 { margin: 10px 0 0; font-size: 17px; color: var(--ink); padding-bottom: 6px; border-bottom: 1px solid var(--line); }
 .rm-body p { font-size: 15px; }
 .rm-body pre { margin: 0; padding: 16px 18px; border-radius: 10px; background: #17181c; color: #e6e7ea; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; overflow-x: auto; }
 .rm-body pre .c { color: #8b93a7; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+.glabel { font-family: var(--font) !important; letter-spacing: 0.02em; text-transform: none; font-size: 12px; }
+.canvas-legend { margin-top: 10px; }
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .nav { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 16px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .brand { padding: 0; width: 100%; margin-bottom: 6px; }
+  .navlabel, .navfoot { display: none; }
+  .nav a.item { font-size: 14px; padding: 6px 10px; }
+  .main { padding: 28px 16px 56px; }
+  .home { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 <div class="shell">
-
-  <aside class="side" aria-label="Case study">
-    <a class="brand" href="#overview"><b>neo</b> task<span>|</span>Harshil</a>
-    <p class="meta">Senior Technical Writer case study, October 2026</p>
-    <nav class="tabs">
-      <a href="#overview" data-panel="overview"><b>Overview</b></a>
-      <a href="#task-1" data-panel="task-1"><b>Task 1</b><span>Clarifying questions</span></a>
-      <a href="#task-2" data-panel="task-2"><b>Task 2</b><span>The Tracks docs</span></a>
-      <a href="#task-3" data-panel="task-3"><b>Task 3</b><span>The write-docs skill</span></a>
-    </nav>
-    <div class="side-foot"><a href="/" target="_blank" rel="noopener">Docs site</a><a href="https://github.com/harshilp24/neo-task" target="_blank" rel="noopener">GitHub</a></div>
-  </aside>
-
-  <main class="stage">
-
-  <section class="letter panel" id="overview" aria-labelledby="hello">
-    <p class="eyebrow">Overview</p>
-    <h1 id="hello">Hi team, thanks for the case study.</h1>
-    <p>Here's everything in one place. I've kept it short; the work itself is in the docs site and the repo.</p>
-    <dl class="index">
-      <div><dt><a href="#task-1">Task 1. Clarifying questions</a></dt><dd>24 questions about the Tracks PRD, each with the assumption I took to keep writing.</dd></div>
-      <div><dt><a href="#task-2">Task 2. The Tracks docs</a></dt><dd>A working docs site instead of a document, organised with Diátaxis.</dd></div>
-      <div><dt><a href="#task-3">Task 3. The write-docs skill</a></dt><dd>The skill that drafts those docs from any PRD. I'll use it in the live round.</dd></div>
-    </dl>
-    <p class="sign">Harshil</p>
-  </section>
-
-  <!-- Task 1 -->
-  <section class="task panel" id="task-1" aria-labelledby="t1">
-    <div class="num">Task 1</div>
-    <div class="content">
-      <h2 id="t1">What I'd need clarified</h2>
-      <blockquote class="brief"><cite>The brief</cite>List everything you would need clarified before you could write accurate documentation from the extract. For each item, state the assumption you took in order to complete the document.</blockquote>
-      <p class="lead">I read the PRD as a spec I'd be held to and checked it against the real Tracks screen on neo.work. That gave 24 questions: 6 about data loss and permissions, 12 about behaviour, and 6 about labels and wording. Each has the assumption I took and the pages it affects. Where the PRD could cost someone data, I took the reading that protects it.</p>
-
-      <h3 class="sub">The three that matter most</h3>
-      <ol class="qs">
-        <li>
-          <h4>Turning Tracks off: hide or delete?</h4>
-          <p>One section says switching off "is a hide, not a delete" and everything comes back. The lifecycle rules say it "clears all track assignments".</p>
-          <p class="took">Assumed: it clears everything, and the docs warn before the step.</p>
-        </li>
-        <li>
-          <h4>Who can delete a track?</h4>
-          <p>Deleting is permanent and reaches closed tasks, but the permissions table has no row for it. A user story says any team member.</p>
-          <p class="took">Assumed: any member, as the story says, with a recommendation to make it admin-only.</p>
-        </li>
-        <li>
-          <h4>What does Stop do?</h4>
-          <p>Stop is listed as an action but never defined, and it's missing from the offline list.</p>
-          <p class="took">Assumed: it returns the task to <i>Not started</i>, and needs a connection.</p>
-        </li>
-      </ol>
-
-      <!-- TODO: replace href with the Google Doc URL. -->
-      <a class="doclink" href="https://github.com/harshilp24/neo-task/blob/main/write-docs/examples/tracks/clarifying_questions.md" data-link="questions" target="_blank" rel="noopener">
-        <span class="docicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#4285f4"/><path d="M14 2v5h5" fill="#a1c2fa"/><path d="M8 12h8M8 15h8M8 18h5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
-        <span class="doctext"><b>Tracks PRD: clarifying questions</b><span>Google Doc · 24 questions, each with the assumption taken</span></span>
-        <span class="docarrow" aria-hidden="true">↗</span>
-      </a>
+  <nav class="nav" aria-label="Case study">
+    <a class="brand" href="#overview"><b>neo</b> <span>case study</span></a>
+    <a class="item" href="#overview" data-page="overview">Overview</a>
+    <div class="navlabel">Tasks</div>
+    <a class="item" href="#task-1" data-page="task-1">Task 1: Clarifying questions</a>
+    <a class="item" href="#task-2" data-page="task-2">Task 2: The Tracks docs</a>
+    <a class="item" href="#task-3" data-page="task-3">Task 3: The write-docs skill</a>
+    <div class="navfoot">
+      <a href="/docs/tasket" target="_blank" rel="noopener">Docs site ↗</a>
+      <a href="https://github.com/harshilp24/neo-task" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
-  </section>
+  </nav>
 
-  <!-- Task 2 -->
-  <section class="task panel" id="task-2" aria-labelledby="t2">
-    <div class="num">Task 2</div>
-    <div class="content">
-      <h2 id="t2">The Tracks docs</h2>
-      <blockquote class="brief"><cite>The brief</cite>Write three pieces on the same feature: a user-facing feature document for someone using the feature for the first time, a how-to guide for someone with a specific task in hand, and a release note for an existing user scanning what changed.</blockquote>
-      <p class="lead">I built the docs as a small Docusaurus site, kept in Git, instead of a Google Doc. Each page answers one kind of need (<a href="https://diataxis.fr/" target="_blank" rel="noopener">Diátaxis</a>), so every step and rule lives in one place and the other pages link to it.</p>
+  <main class="main">
 
-      <h3 class="sub">The three pieces in the brief</h3>
-      <div class="tablewrap">
-        <table class="briefmap">
-          <thead><tr><th>Piece</th><th>The brief asks for</th><th>What I made</th></tr></thead>
-          <tbody>
-            <tr><td>Feature document</td><td>A user-facing document for someone using the feature for the first time.</td><td>Set it up, then understand it.<span class="plinks"><a href="/docs/tasket/tracks/get-started" target="_blank" rel="noopener">Get started with Tracks ↗</a><a href="/docs/tasket/tracks" target="_blank" rel="noopener">What are Tracks? ↗</a></span></td></tr>
-            <tr><td>How-to guide</td><td>A guide for someone with a specific task in hand.</td><td>Everyday work, plus rare changes like renaming or deleting a track.<span class="plinks"><a href="/docs/tasket/tracks/manage-tasks-on-tracks" target="_blank" rel="noopener">Manage tasks on tracks ↗</a><a href="/docs/tasket/tracks/faq" target="_blank" rel="noopener">Tracks FAQ ↗</a></span></td></tr>
-            <tr><td>Release note</td><td>A note for an existing user scanning what changed.</td><td>One sentence, three facts, one link.<span class="plinks"><a href="/changelog/tracks" target="_blank" rel="noopener">Tracks in the changelog ↗</a></span></td></tr>
-          </tbody>
-        </table>
+    <article class="page" id="overview" aria-labelledby="h-overview">
+      <div class="home">
+        <div>
+          <h1 id="h-overview">Documenting Tracks</h1>
+          <p class="lead">My submission for the Senior Technical Writer case study. The brief asked for the questions I'd need answered, the docs for Tracks, and a skill that drafts them again from any PRD.</p>
+          <div class="rows">
+            <a class="row" href="#task-1"><span><b>Task 1: Clarifying questions</b><small>13 questions about the PRD, each with the assumption I took.</small></span><span class="arr" aria-hidden="true">→</span></a>
+            <a class="row" href="#task-2"><span><b>Task 2: The Tracks docs</b><small>A feature document, a how-to guide and a release note.</small></span><span class="arr" aria-hidden="true">→</span></a>
+            <a class="row" href="#task-3"><span><b>Task 3: The write-docs skill</b><small>Plain Markdown that drafts the same pages from any PRD.</small></span><span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <aside class="facts" aria-label="Details">
+          <dl>
+            <div><dt>Name</dt><dd>Harshil</dd></div>
+            <div><dt>Role</dt><dd>Senior Technical Writer</dd></div>
+            <div><dt>Feature</dt><dd>Tracks, in Tasket</dd></div>
+            <div><dt>Submitted</dt><dd>October 2026</dd></div>
+          </dl>
+          <div class="links">
+            <a href="/docs/tasket" target="_blank" rel="noopener">Docs site ↗</a>
+            <a href="https://docs.google.com/document/d/1s9BmkkpWd0PwdmXiX2DyuVdkqppV7U7Ow7km95dtab4/edit?usp=sharing" target="_blank" rel="noopener">Questions doc ↗</a>
+            <a href="case-study-brief.pdf" target="_blank" rel="noopener">Brief (PDF) ↗</a>
+            <a href="https://github.com/harshilp24/neo-task" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </aside>
       </div>
+    </article>
 
-      <h3 class="sub">Every page</h3>
+    <article class="page" id="task-1" aria-labelledby="h-t1" hidden>
+      <div class="crumb"><a href="#overview">Overview</a> › Task 1</div>
+      <h1 id="h-t1">Task 1: Clarifying questions</h1>
+      <div class="brief"><b>The brief</b><p>List everything you would need clarified before you could write accurate documentation from the extract. For each item, state the assumption you took in order to complete the document.</p></div>
+      <p class="prose">I read the PRD as a spec I'd be held to, and checked it against the real Tracks screen on neo.work. Where the PRD could cost someone data, I took the safer reading, and the docs warn before the step.</p>
+      <a class="cta" href="https://docs.google.com/document/d/1s9BmkkpWd0PwdmXiX2DyuVdkqppV7U7Ow7km95dtab4/edit?usp=sharing" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#4285f4"/><path d="M14 2v5h5" fill="#a1c2fa"/><path d="M8 12h8M8 15h8M8 18h5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span><b>Tracks PRD: clarifying questions</b><small>Google Doc · 13 questions, with a column for answers</small></span>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+      <h2>First, ask the team</h2>
+      <ul class="plain">
+        <li>Can you share a Loom video or join a call to walk me through Tracks?</li>
+        <li>Is there a test project or staging build I can use to check labels and screens?</li>
+        <li>Who should review the docs for accuracy, and when does Tracks launch?</li>
+      </ul>
+      <h2>The questions that change the docs most</h2>
       <div class="tablewrap">
         <table>
-          <thead><tr><th>Page</th><th>Type</th><th>Written for</th><th>What it covers</th></tr></thead>
+          <thead><tr><th>Topic</th><th>Question</th><th>Assumption taken</th></tr></thead>
           <tbody>
-            <tr><td><a href="/docs/tasket" target="_blank" rel="noopener">Tasket overview</a></td><td>Overview</td><td>Anyone arriving</td><td>What Tasket is, a preview of the Tracks board, and a way into every page.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks/get-started" target="_blank" rel="noopener">Get started with Tracks</a></td><td>Tutorial</td><td>First-time user</td><td>Turning Tracks on and adding tracks, with the PRD's sign-in redesign as the example.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks/manage-tasks-on-tracks" target="_blank" rel="noopener">Manage tasks on tracks</a></td><td>How-to</td><td>Someone moving work</td><td>Starting several tasks, sending one back, taking one off a track, working offline.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks" target="_blank" rel="noopener">What are Tracks?</a></td><td>Explanation</td><td>Anyone asking why</td><td>The model, and how a Tracks board differs from a status board.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks/reference" target="_blank" rel="noopener">Tracks reference</a></td><td>Reference</td><td>Someone checking a fact</td><td>Every status, action, permission and offline rule, in tables.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks/faq" target="_blank" rel="noopener">Tracks FAQ</a></td><td>FAQ</td><td>Someone with a quick question</td><td>Adding, renaming, reordering and deleting tracks, and turning Tracks off.</td></tr>
-            <tr><td><a href="/docs/tasket/tracks/troubleshooting" target="_blank" rel="noopener">Troubleshoot Tracks</a></td><td>Troubleshooting</td><td>Someone stuck</td><td>Ten issues, each with its cause and solution.</td></tr>
-            <tr><td><a href="/changelog/tracks" target="_blank" rel="noopener">Tracks</a></td><td>Release note</td><td>Existing users</td><td>What's new, in under a minute.</td></tr>
+            <tr><td>Turning Tracks off</td><td>The PRD says both "a hide, not a delete" and "clears all track assignments". Which is it?</td><td>It clears everything. The docs warn first.</td></tr>
+            <tr><td>Deleting a track</td><td>Delete isn't in the permissions table. Who can do it, and can guests?</td><td>Any member, guests included.</td></tr>
+            <tr><td>Stop</td><td>Stop is listed but never explained. What happens to the task?</td><td>It goes back to <i>Not started</i>.</td></tr>
+            <tr><td>Offline</td><td>Do Stop and starting several tasks work offline?</td><td>No. Only Start, Mark Done and Mark Pending.</td></tr>
+            <tr><td>Pill count</td><td>Is it out of every track in the project, or only the task's?</td><td>Every track in the project.</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="small">The Google Doc has the other eight, plus four details the real screen already answers, such as <i>Pending</i> instead of <i>In Progress</i>.</p>
+      <nav class="next" aria-label="Pages"><a href="#overview"><small>Previous</small><b>Overview</b></a><a class="r" href="#task-2"><small>Next</small><b>Task 2: The Tracks docs</b></a></nav>
+    </article>
 
-      <h3 class="sub">Also in the site</h3>
-      <ul class="extras">
-        <li><b>Copy page</b> as Markdown, or open it in ChatGPT or Claude</li>
-        <li><b>Was this page helpful?</b> on every page</li>
-        <li><b>Changelog</b> by month, with product and type filters</li>
-        <li><b>Sidebar by job</b>, then by type, so new features slot in by goal</li>
-        <li><b>Search</b> wired for Algolia DocSearch</li>
-        <li><b>Build fails</b> on any broken link or anchor</li>
+    <article class="page" id="task-2" aria-labelledby="h-t2" hidden>
+      <div class="crumb"><a href="#overview">Overview</a> › Task 2</div>
+      <h1 id="h-t2">Task 2: The Tracks docs</h1>
+      <div class="brief"><b>The brief</b><p>Write three pieces on the same feature: a user-facing feature document for someone using the feature for the first time, a how-to guide for someone with a specific task in hand, and a release note for an existing user scanning what changed.</p></div>
+      <p class="prose">I wrote the docs as a small site instead of a single document. Each page answers one kind of need (<a href="https://diataxis.fr/" target="_blank" rel="noopener">Diátaxis</a>), so every step and rule lives in one place and the other pages link to it.</p>
+      <h2>The three pieces</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Piece</th><th>Written for</th><th>Pages</th></tr></thead>
+          <tbody>
+            <tr><td>Feature document</td><td>Someone using Tracks for the first time</td><td><a href="/docs/tasket/tracks/get-started" target="_blank" rel="noopener">Get started with Tracks ↗</a>, then <a href="/docs/tasket/tracks" target="_blank" rel="noopener">What are Tracks? ↗</a></td></tr>
+            <tr><td>How-to guide</td><td>Someone with a task in hand</td><td><a href="/docs/tasket/tracks/manage-tasks-on-tracks" target="_blank" rel="noopener">Manage tasks on tracks ↗</a>, and the <a href="/docs/tasket/tracks/faq" target="_blank" rel="noopener">Tracks FAQ ↗</a> for rare changes</td></tr>
+            <tr><td>Release note</td><td>An existing user scanning what changed</td><td><a href="/changelog/tracks" target="_blank" rel="noopener">Tracks ↗</a> in the changelog</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>Supporting pages</h2>
+      <ul class="plain">
+        <li><a href="/docs/tasket/tracks/reference" target="_blank" rel="noopener">Tracks reference ↗</a>: every status, action, permission and offline rule.</li>
+        <li><a href="/docs/tasket/tracks/troubleshooting" target="_blank" rel="noopener">Troubleshoot Tracks ↗</a>: ten issues, each with its cause and solution.</li>
+        <li><a href="/docs/tasket" target="_blank" rel="noopener">Tasket overview ↗</a>: what Tasket is, and a way into every Tracks page.</li>
       </ul>
+      <h2>Also in the site</h2>
+      <ul class="plain">
+        <li><b>Copy page</b> on every page: copy it as Markdown, view the Markdown, or open it in ChatGPT or Claude.</li>
+        <li><b>Was this page helpful?</b> at the end of every page, with a thumbs up or down.</li>
+        <li><b>Search</b> wired for Algolia DocSearch, opened with <code>⌘K</code>.</li>
+        <li><b>Changelog</b> by month, with product and type filters.</li>
+        <li><b>Sidebar by job</b>, then by page type, so a new feature slots in by goal.</li>
+        <li><b>Build checks</b>: the site won't build with a broken link or anchor.</li>
+      </ul>
+      <h2>Choices I made</h2>
+      <ul class="plain">
+        <li><b>The real screen wins over the PRD.</b> The UI says <i>Pending</i>, so the docs do too.</li>
+        <li><b>Warnings come before damage.</b> Deleting a track and turning Tracks off each have a warning above the steps.</li>
+        <li><b>Answer first.</b> Each page's description answers its question in one line, for search and AI assistants.</li>
+      </ul>
+      <nav class="next" aria-label="Pages"><a href="#task-1"><small>Previous</small><b>Task 1: Clarifying questions</b></a><a class="r" href="#task-3"><small>Next</small><b>Task 3: The write-docs skill</b></a></nav>
+    </article>
 
-      <a class="doclink" href="/docs/tasket" target="_blank" rel="noopener">
-        <span class="docicon site" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H20v14H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></span>
-        <span class="doctext"><b>Neo docs: Tasket and Tracks</b><span>Docs site · 8 pages, built with Docusaurus</span></span>
-        <span class="docarrow" aria-hidden="true">↗</span>
+    <article class="page" id="task-3" aria-labelledby="h-t3" hidden>
+      <div class="crumb"><a href="#overview">Overview</a> › Task 3</div>
+      <h1 id="h-t3">Task 3: The write-docs skill</h1>
+      <div class="brief"><b>The brief</b><p>Build a reusable skill file that produces a first draft of those same three article types from any PRD and its supporting artefacts, not just this one.</p></div>
+      <p class="prose"><b>write-docs</b> is a folder of plain Markdown that any AI assistant or writer can follow. Give it a PRD and any screens, and it drafts the full set of pages, a release note, the clarifying questions, and a report of what it checked. When the feature changes, it updates the one page that owns each changed fact.</p>
+      <a class="cta" href="https://github.com/harshilp24/neo-task/tree/main/write-docs" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#17191e" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        <span><b>write-docs on GitHub</b><small>The skill folder, with its README</small></span>
+        <span class="go" aria-hidden="true">↗</span>
       </a>
-    </div>
-  </section>
-
-  <!-- Task 3 -->
-  <section class="task panel" id="task-3" aria-labelledby="t3">
-    <div class="num">Task 3</div>
-    <div class="content">
-      <h2 id="t3">The write-docs skill</h2>
-      <blockquote class="brief"><cite>The brief</cite>Build a reusable skill file that produces a first draft of those same three article types from any PRD and its supporting artefacts, not just this one.</blockquote>
-      <p class="lead">The skill is a folder of plain Markdown, <code>write-docs/</code>, that any AI assistant or writer can follow. Give it a PRD and any screens, and it drafts the full set of pages from Task 2, a release note, the clarifying questions, and a report of what it checked. When the feature changes later, it updates the one page that owns each changed fact.</p>
-
-      <h3 class="sub">How a run flows</h3>
-      <p class="scroll-hint">Scroll sideways to see the whole flow.</p>
+      <h2>How a run flows</h2>
       <div class="canvas-wrap" id="canvas-wrap">
         <div class="canvas" id="canvas" role="img" aria-label="A PRD, screens or a change go to SKILL.md, which routes to a workflow. For a new feature, new_feature_docs runs prd_analysis, page_planning and content_generation. For a change, update_feature_docs runs find_changes, locate_owner and update_pages. Both lanes end in the quality checklist and produce the output. Both use the doc contracts, and each step follows standards from the framework folder. release_note_only and review_only are smaller extra workflows.">
           <svg class="wires" id="wires" aria-hidden="true"></svg>
@@ -484,7 +335,7 @@ td:nth-child(3):last-child { color: var(--muted); }
         <span><i class="uses"></i>uses this standard or template</span>
       </div>
 
-      <h3 class="sub">The README</h3>
+      <h2>The README</h2>
       <div class="readme">
         <div class="rm-bar"><span class="rm-path">write-docs <i>/</i> <b>README.md</b></span><a href="https://github.com/harshilp24/neo-task/blob/main/write-docs/README.md" target="_blank" rel="noopener">View on GitHub ↗</a></div>
         <div class="rm-body">
@@ -516,6 +367,7 @@ td:nth-child(3):last-child { color: var(--muted); }
 │       └── guest.md
 │
 ├── workflows/                       <span class="c"># Task-based entry points</span>
+│   ├── three_pieces.md              <span class="c"># PRD → feature doc, how-to, release note (default)</span>
 │   ├── new_feature_docs.md          <span class="c"># PRD → full doc set</span>
 │   ├── update_feature_docs.md       <span class="c"># Feature changed → update pages</span>
 │   ├── release_note_only.md         <span class="c"># Changelog entry only</span>
@@ -526,6 +378,7 @@ td:nth-child(3):last-child { color: var(--muted); }
 │   ├── page_planning.md             <span class="c"># Goals → pages → sidebar</span>
 │   ├── content_generation.md        <span class="c"># How to draft</span>
 │   └── doc_contracts/               <span class="c"># One contract per page type, by sidebar section</span>
+│       ├── feature_document.md      <span class="c"># Feature document (three-piece mode)</span>
 │       ├── product_overview.md      <span class="c"># &lt;Product&gt; overview</span>
 │       ├── tutorial.md              <span class="c"># Get started</span>
 │       ├── how_to_guide.md          <span class="c"># Job area, e.g. Run work across teams</span>
@@ -546,41 +399,42 @@ td:nth-child(3):last-child { color: var(--muted); }
         </div>
       </div>
 
-      <h3 class="sub">How to run it</h3>
-      <ol class="runsteps">
-        <li><b>Give it the inputs.</b> The PRD, plus any screenshots or tickets. Screens win over the PRD for labels.</li>
-        <li><b>Ask in plain words.</b><code class="prompt">Use write-docs to draft the docs for this PRD.</code></li>
-        <li><b>Review what comes back.</b> The pages, the release note, the clarifying questions with assumptions, and a checklist report.</li>
+      <h2>How to run it</h2>
+      <ol class="steps">
+        <li>Give it the PRD, plus any screenshots or tickets.</li>
+        <li>Ask: <code>Use write-docs to draft the docs for this PRD.</code></li>
+        <li>Review the pages, the release note, the clarifying questions and the checklist report.</li>
       </ol>
-      <p class="plain">To change how every page is written, edit one file: a contract for a page type, or a framework file for a house rule. That's what I'll do in the live round.</p>
-
-      <div class="cards2">
-        <a class="doclink" href="https://github.com/harshilp24/neo-task/tree/main/write-docs" target="_blank" rel="noopener">
-          <span class="docicon gh" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
-          <span class="doctext"><b>write-docs on GitHub</b><span>The skill folder · plain Markdown</span></span>
-          <span class="docarrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="doclink" href="https://github.com/harshilp24/neo-task/blob/main/write-docs/README.md" target="_blank" rel="noopener">
-          <span class="docicon site" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
-          <span class="doctext"><b>How the skill works</b><span>README · architecture and how to change it</span></span>
-          <span class="docarrow" aria-hidden="true">↗</span>
-        </a>
+      <h2>How to change it</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>To change</th><th>Edit</th></tr></thead>
+          <tbody>
+            <tr><td>Voice, banned words, naming</td><td><code>framework/style_and_tone.md</code></td></tr>
+            <tr><td>What goes on a page type</td><td>The matching file in <code>modules/doc_contracts/</code></td></tr>
+            <tr><td>How the release note looks</td><td><code>modules/doc_contracts/release_note.md</code></td></tr>
+            <tr><td>What counts as done</td><td><code>quality/checklist.md</code></td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
+      <p class="small">That's what I'll do in the live round: change one file, and the next draft follows it.</p>
+      <nav class="next" aria-label="Pages"><a href="#task-2"><small>Previous</small><b>Task 2: The Tracks docs</b></a><a class="r" href="#overview"><small>Back to</small><b>Overview</b></a></nav>
+    </article>
 
   </main>
 </div>
 <script>
-// Show one panel at a time, chosen by the URL hash.
 (() => {
-  const panels = [...document.querySelectorAll('.panel')];
-  const links = [...document.querySelectorAll('.tabs a')];
+  const pages = [...document.querySelectorAll('.page')];
+  const links = [...document.querySelectorAll('.nav a.item')];
   function show() {
     const id = (location.hash || '#overview').slice(1);
-    const target = panels.find((p) => p.id === id) ? id : 'overview';
-    panels.forEach((p) => { p.hidden = p.id !== target; });
-    links.forEach((a) => { if (a.dataset.panel === target) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    const target = pages.some((p) => p.id === id) ? id : 'overview';
+    pages.forEach((p) => { p.hidden = p.id !== target; });
+    links.forEach((a) => {
+      if (a.dataset.page === target) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
     window.scrollTo(0, 0);
     window.dispatchEvent(new Event('resize'));
   }

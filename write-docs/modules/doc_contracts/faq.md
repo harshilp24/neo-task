@@ -28,7 +28,7 @@ toc_max_heading_level: 2
    - **one sentence** that answers it: "To rename a track in <Product>, click **Rename** in the track's menu on the **Tracks** board." It may lead straight into the steps: "… To put a new track in a specific place:"
    - for destructive actions, the `:::warning` here, before the steps; for admin-only actions, the answer says "an admin"
    - numbered steps with results
-4. **Related**: reference and troubleshooting.
+4. **See also**: reference and troubleshooting.
 
 ## Rules
 

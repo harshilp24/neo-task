@@ -50,6 +50,7 @@ write-docs/
 │       └── guest.md
 │
 ├── workflows/                       # Task-based entry points
+│   ├── three_pieces.md              # PRD → feature doc, how-to, release note (default)
 │   ├── new_feature_docs.md          # PRD → full doc set
 │   ├── update_feature_docs.md       # Feature changed → update pages
 │   ├── release_note_only.md         # Changelog entry only
@@ -60,6 +61,7 @@ write-docs/
 │   ├── page_planning.md             # Goals → pages → sidebar
 │   ├── content_generation.md        # How to draft
 │   └── doc_contracts/               # One contract per page type, by sidebar section
+│       ├── feature_document.md      # Feature document (three-piece mode)
 │       ├── product_overview.md      # <Product> overview
 │       ├── tutorial.md              # Get started
 │       ├── how_to_guide.md          # Job area, e.g. Run work across teams

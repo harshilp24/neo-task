@@ -27,7 +27,7 @@ The description is the answer to "What are <Feature>?", in one or two sentences.
 4. **How <Feature> differs from <familiar thing>**: a comparison table, if readers will confuse the two.
 5. **When to use <Feature>**: the PRD's situation, then when not to use it.
 6. **What to know before you turn it on**: two or three things that are hard to change later, with a link to the reference.
-7. **Related**: tutorial, guide, FAQ, reference.
+7. **See also**: tutorial, guide, FAQ, reference.
 
 ## Rules
 
