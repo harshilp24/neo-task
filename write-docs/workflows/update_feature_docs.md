@@ -20,16 +20,21 @@ Each fact lives on one page (see [../framework/framework_base.md](../framework/f
 
 | Change type | Usually lives in |
 |---|---|
-| Label or status name | Reference, tutorial, guides, troubleshooting, release note |
-| Behaviour or rule | Reference first, then the guide section that uses it |
-| Permission | Reference permissions grid, guide **Before you begin**, persona notes |
+| Label or status name | Reference, tutorial, guide, FAQ, troubleshooting, overview preview |
+| Behaviour or rule | Reference first, then the guide or FAQ section that uses it |
+| Permission | Reference permissions grid, **Before you begin** sections, FAQ answers, persona notes |
 | Setup flow | Tutorial |
+| A rare change to the feature (rename, delete, turn off) | FAQ |
+| A new way it can go wrong | Troubleshooting, as a new issue with the right label |
+| A new capability | Not an existing page. Run it through [../modules/page_planning.md](../modules/page_planning.md): it becomes a section in the guide, a question in the FAQ, or, if it's a new job, a new page with its own contract |
 
 ### 3. Update the owner, then the links
 
 Change the page that owns the fact. Update other pages only where they link to it or name it. Don't copy the new detail into them.
 
 If a heading changes, search for its old anchor and fix every link.
+
+Keep each changed page in its contract's format ([../modules/doc_contracts/](../modules/doc_contracts/)): the answer-first `description`, tags and keywords must still match the page, an FAQ answer stays one sentence, a troubleshooting issue keeps its callout, Cause and Solution. If a page is added or removed, update `sidebars.js`, the product overview cards and `docs/tags.yml`.
 
 ### 4. Close the question
 

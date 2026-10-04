@@ -15,6 +15,7 @@ REFERENCE            reference pages
 HELP                 FAQ, then troubleshooting
 ```
 
+- **Adding a second feature.** Put each new page into the existing section for its type: its tutorial under **Get started** next to the others, its reference under **Reference**, and so on. Put its guide in the job area whose goal it serves; add a new job area only if none fits. Never add a section named after the feature.
 - **One entry per page.** Never add a second entry that jumps to a section of a page that's already listed.
 - **Job areas** are named for a user goal: "Plan work", "Run work across teams", "Work with guests", "Administer". Not for a feature or a team.
 - **Labels** in the sidebar can be shorter than the page title, but must mean the same thing.

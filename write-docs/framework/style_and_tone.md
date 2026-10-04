@@ -34,7 +34,7 @@ Never use these. The review checks for them.
 - **Statuses** in italics in running text: *Pending*, *Done*, *Not started*. In tables, use status chips (see [callouts_and_formatting.md](callouts_and_formatting.md)).
 - **Feature names** capitalised when they mean the feature (Tracks), lower case when they mean the thing (a track, two tracks).
 - **Example data** in code style when the reader types it: `Spec`. In italics when it names something that already exists: *Redesign the sign-in page*.
-- **Example names must not look like UI.** Avoid names that contain words from the interface, such as *Settings*, *Sign in* or *Start*. Introduce each one with what it is the first time in a step: "the project named *Customer portal*", "the task called *Redesign the sign-in page*".
+- **Example names must not look like UI.** Avoid names that contain words from the interface, such as *Settings*, *Sign in* or *Start*. Introduce each one with what it is the first time in a step: "the task called *Redesign the sign-in page*". Use the reader's own project ("open your project") rather than naming one.
 
 ## Words for roles
 

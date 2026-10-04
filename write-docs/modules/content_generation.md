@@ -6,7 +6,7 @@ How to write a page once you know its type. The page's contract in [doc_contract
 
 Choose one concrete scenario from the PRD and use it through the tutorial, the explanation and any examples in the guides. Name the project, the items and the people's roles.
 
-Tracks example: the project named *Customer portal*, tracks `Spec`, `Design`, `Engineering` and `QA`, and one task called *Redesign the sign-in page*. The PRD itself gives "a sign-in redesign needs spec, design, then engineering, then QA".
+Tracks example: tracks `Spec`, `Design`, `Engineering` and `QA`, and one task called *Redesign the sign-in page*, in the reader's own project. The PRD itself gives "a sign-in redesign needs spec, design, then engineering, then QA".
 
 Name examples so they can't be mistaken for buttons or menu items: a task title that reads as a task, a project name with no UI words, and "named" or "called" the first time each appears in a step.
 
@@ -15,7 +15,7 @@ Name examples so they can't be mistaken for buttons or menu items: a task title 
 1. **Open with one or two lines** saying what this section achieves and anything the reader must know first.
 2. **Steps**, one action each, with the UI label in bold.
 3. **Result** under each step that changes something on screen.
-4. In tutorials, **For example:** applying the steps to the running example.
+4. In tutorials, the example goes inside the step it applies to, starting "For example," and saying why.
 
 ## Writing steps
 

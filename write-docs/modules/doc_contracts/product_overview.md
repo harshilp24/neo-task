@@ -37,6 +37,8 @@ import {Overview, JobCards, TracksPreview} from '@site/src/components/ProductOve
 1. **Intro paragraph**: what the product is and its three layers, from the PRD's "what it is" section.
 2. **Three layer rows**, each an icon, a bold title and one line.
 3. **Preview**: a small static mock of the real UI, built only from screens and PRD facts. Show the feature's main view (for Tracks, the board: `Team › Project`, **Open** and **Tracks** tabs, numbered columns with counter and **Start**, *Pending* and *Done* sections, **+ Add Track**).
+Keep the existing preview when adding a feature. Only replace it if the new feature is the product's main view, and then build it from that feature's screens.
+
 4. **One h2 per feature**, then a card for each of its pages: tutorial, guide, explanation, reference, FAQ, troubleshooting. Card text is one line on what the reader gets.
 5. A line linking the feature's release note.
 

@@ -4,7 +4,7 @@ Use when asked to review existing pages or a draft. Change nothing; report findi
 
 ## Steps
 
-1. Identify each page's type (tutorial, how-to, explanation, reference, troubleshooting, release note).
+1. Identify each page's type (product overview, tutorial, how-to, explanation, reference, FAQ, troubleshooting, release note).
 2. Check it against its contract in [../modules/doc_contracts/](../modules/doc_contracts/).
 3. Run every check in [../quality/checklist.md](../quality/checklist.md).
 4. If the PRD is available, check every claim traces to it or to a logged assumption.
