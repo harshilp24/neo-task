@@ -7,7 +7,7 @@ keywords: [Tasket, what are Tracks, Tracks explained, workstreams, track status,
 toc_max_heading_level: 2
 ---
 
-**Tracks** let one task move through several workstreams at the same time, with a separate status in each. A project's tracks might be Spec, Design, Engineering and QA. Each discipline sees the task in its own column and moves it forward without changing anyone else's progress, while the task itself stays in one place.
+**Tracks** lets one task move through several workstreams at the same time, with a separate status in each. A project's tracks might be Spec, Design, Engineering and QA. Each discipline sees the task in its own column and moves it forward without changing anyone else's progress, while the task itself stays in one place.
 
 - **One task, many lanes.** A task can be *Pending* on Design while it's *Done* on Spec. Its comments, assignees, watchers, Studio docs and Friday chat stay on the one task.
 - **Separate from the task's own status.** Marking a task Done on a track doesn't complete the task, and completing the task doesn't change its tracks.
@@ -19,22 +19,30 @@ This page explains why Tracks exist, how they work, and when to use them. It has
 
 A task's status answers one question: is the work open or closed? Real work usually passes through several teams before it closes, and those teams overlap.
 
-Take a sign-in redesign. It needs a spec, then design, then engineering, then QA, then documentation, and the task can be in spec and in design at the same time. Ask *"Where is the sign-in redesign?"* and the honest answer is "spec is done, design is under way, engineering hasn't started". A single Open status can't hold that.
+Take a sign-in redesign. It needs a spec, then design, then engineering, then QA, then documentation, and the task can be in spec and in design at the same time. Ask *"Where is the sign-in redesign?"* and the real answer is "spec is done, design is under way, engineering hasn't started". A single Open status can't hold that.
 
 Splitting the work into one task per discipline doesn't fix it either. The comments, docs and Friday chat split across copies, so nobody sees the whole picture.
 
-Tracks keep one task as the single home for the work and its context, and give each workstream its own status on it.
+Tracks keeps one task as the single home for the work and its context, and gives each workstream its own status on it.
 
 ## How Tracks work
+
+**Tracks show where a task stands on each workstream. They don't move the task on or close it.**
 
 A track is a workstream in a project, such as Design. A task joins a track when someone **starts** it there. From then on it has a status on that track, either *Pending* while the work is under way or *Done* when that workstream has finished with it. On every track it hasn't joined, the task is *Not started*.
 
 Two views show the same information from different sides:
 
-- **The Tracks board** puts the tracks side by side, one column per track. Read it to see what one team has on its plate: a task on three tracks appears in three columns.
-- **The Tracks pill** on a task lists every track in the project with the task's status on each. Read it to see where one task stands across every team. It's the only place that shows the whole picture for a single task.
+- **The Tracks board** puts the tracks side by side, one column per track. Use it to see every task a team is working on. A task on three tracks appears in three columns.
+- **The Tracks pill** on a task lists every track in the project with the task's status on each. Use it to see where one task stands with every team. It's the only place that shows the whole picture for a single task.
 
-The task's own status, *Open*, *Completed* or *Discarded*, runs alongside its tracks and doesn't depend on them. A task can be *Done* on every track and still *Open*, waiting for someone to complete it. Completing it takes it off the board, but its track statuses are kept and come back if it's reopened.
+:::note[Done on every track isn't the same as complete]
+
+A task can be *Done* on every track and still *Open*. Someone still has to complete it.
+
+:::
+
+The task's own status, *Open*, *Completed* or *Discarded*, runs alongside its tracks and doesn't depend on them. Completing a task takes it off the board, but its track statuses are kept and come back if it's reopened.
 
 ## How Tracks differ from a status board
 

@@ -20,6 +20,7 @@ Never use these. The review checks for them.
 | AI filler: *seamless(ly), robust, leverage, empower, unlock, delve, effortless, streamline, cutting-edge, game-changer, elevate, harness* | Say what it does: "starts the task on both tracks" |
 | Hype: *powerful, amazing, simply, just, easily, intuitive* | Remove it. If it's easy, the steps show that. |
 | Hedging: *basically, essentially, actually, in order to* | Remove it, or "to" |
+| Idioms and filler adjectives: *on their plate, honest answer, at a glance (in prose)* | Say it literally: "every task a team is working on" |
 | "Not X, but Y" framing, colon-then-reveal sentences | State Y |
 | Scare quotes around ordinary words | Plain words |
 | Future tense for UI results: "will appear" | Present tense: "appears" |
@@ -32,7 +33,7 @@ Never use these. The review checks for them.
 - **Friday** is a participant in the work. "Assign the task to Friday", not "use the Friday tool".
 - **UI labels** in bold, exactly as shown: **Settings**, **+ Add Track**, **Mark Done**.
 - **Statuses** in italics in running text: *Pending*, *Done*, *Not started*. In tables, use status chips (see [callouts_and_formatting.md](callouts_and_formatting.md)).
-- **Feature names** capitalised when they mean the feature (Tracks), lower case when they mean the thing (a track, two tracks).
+- **Feature names** capitalised when they mean the feature (Tracks), lower case when they mean the thing (a track, two tracks). A feature name takes a singular verb, even if it ends in s: "Tracks lets one task…", "Tracks is on".
 - **Example data** in code style when the reader types it: `Spec`. In italics when it names something that already exists: *Redesign the sign-in page*.
 - **Example names must not look like UI.** Avoid names that contain words from the interface, such as *Settings*, *Sign in* or *Start*. Introduce each one with what it is the first time in a step: "the task called *Redesign the sign-in page*". Use the reader's own project ("open your project") rather than naming one.
 

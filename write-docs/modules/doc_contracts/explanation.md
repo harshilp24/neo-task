@@ -23,7 +23,7 @@ The description is the answer to "What are <Feature>?", in one or two sentences.
 
 1. **Intro** (no heading): one paragraph saying what it is, feature name in bold. Three bullets with bold lead-ins for its defining properties. One line: "This page explains why <Feature> exists, how it works, and when to use it. It has no steps. To set it up, follow [Get started…]."
 2. **Why <the old way> isn't enough**: the problem, using the PRD's own example. One question the reader would ask. Why the obvious workaround fails.
-3. **How <Feature> works**: the objects, states and views, in plain words.
+3. **How <Feature> works**: open with **one bold sentence that states the rule** readers must remember (Tracks: "**Tracks show where a task stands on each workstream. They don't move the task on or close it.**"). Then the objects, states and views, in plain words. Put the one thing readers most often get wrong in a `:::note[...]` callout, not mid-paragraph.
 4. **How <Feature> differs from <familiar thing>**: a comparison table, if readers will confuse the two.
 5. **When to use <Feature>**: the PRD's situation, then when not to use it.
 6. **What to know before you turn it on**: two or three things that are hard to change later, with a link to the reference.

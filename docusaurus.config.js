@@ -48,6 +48,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          showLastUpdateTime: true,
           editUrl:
             'https://github.com/harshilp24/neo-task/tree/main/',
         },

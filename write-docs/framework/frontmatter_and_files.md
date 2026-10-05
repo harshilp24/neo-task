@@ -38,6 +38,7 @@ toc_max_heading_level: 2
 - **tags**: the product, the feature, and the page type (`tutorial`, `how-to`, `concept`, `reference`, `faq`, `troubleshooting`). Every tag must be defined in `docs/tags.yml`, or the build warns.
 - **keywords**: the words people search with, including the product name and UI labels.
 - **toc_max_heading_level: 2** on every page, so "On this page" lists only h2 sections.
+- **Last updated** shows on every page automatically, from Git (`showLastUpdateTime` in `docusaurus.config.js`). Don't write a date into the page.
 - **slug** only on the explanation page, so the feature's root URL opens it: `slug: /tasket/tracks`.
 
 ## Release note front matter

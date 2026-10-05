@@ -15,7 +15,7 @@ Same as the tutorial: an answer-first `description`, `tags: [<product>, <feature
 1. **Intro** (no heading): what the feature is in two lines, then "In this guide, you <outcome>."
 2. **Before you begin**: "Make sure you have:" with access, connection and anything to prepare.
 3. **Set up <Feature>**: numbered steps, one action each, examples inside the step that say why.
-4. **How it works**: three to five bullets on the model, such as statuses and where they show. No steps.
+4. **How it works**: one bold sentence with the rule readers must remember, then three to five bullets on the model, such as statuses and where they show. No steps.
 5. **Good to know**: who can do what, what works offline, and every action that can't be undone. One line each.
 6. **Next steps**: link to the how-to guide.
 
