@@ -46,9 +46,9 @@ And check by reading:
 ## Release note
 
 - [ ] Title is the feature name only.
-- [ ] One sentence, at most three bullets, one "Learn about … →" link.
+- [ ] One sentence on what it does, one or two on who it's for, at most three bullets, one "Learn about … →" link.
 - [ ] Product and type tags set.
-- [ ] About 50 to 80 words.
+- [ ] About 60 to 90 words, including who it's for.
 
 ## Example commands
 

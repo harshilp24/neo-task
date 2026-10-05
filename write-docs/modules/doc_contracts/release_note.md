@@ -7,11 +7,12 @@
 
 ## Shape
 
-About 50 to 80 words in total.
+About 60 to 90 words in total.
 
 1. **One sentence** saying what it does, in the reader's terms.
-2. **Up to three one-line bullets** with concrete facts: where to turn it on, the main action, one caveat that can't be undone.
-3. **One link**: `[Learn about <Feature> →](/docs/<product>/<feature>)`.
+2. **Who it's for, in one or two sentences**: the kind of team or work it suits, from the PRD's own example, and who can turn it on.
+3. **Up to three one-line bullets** with concrete facts: where to turn it on, and the main action.
+4. **One link**: `[Learn about <Feature> →](/docs/<product>/<feature>)`.
 
 Front matter tags carry the product and the type (`new-feature`, `improvement`, `fix`). Don't repeat them in the text.
 
@@ -31,11 +32,12 @@ Same shape. The sentence says what's different now. For a fix, say what used to 
 [blog/2026-10-02-tracks.mdx](../../../blog/2026-10-02-tracks.mdx)
 
 ```mdx
-Run one task through several workstreams at once, such as Spec, Design and QA. Each track has its own **Pending** or **Done** status, and the task stays in one place.
+Run one task through several workstreams at once, such as Spec, Design and QA. Each track has its own *Pending* or *Done* status, and the task stays in one place.
+
+Tracks is for teams whose work passes through several disciplines, like a sign-in redesign that needs a spec, design, engineering and QA. Any team member can turn it on, including guests.
 
 - Turn on Tracks in a project's **Settings**, then add a track for each workstream.
 - Start a task on a track from the **Tracks** board or the task's Tracks pill.
-- Deleting a track or turning Tracks off can't be undone.
 
 [Learn about Tracks →](/docs/tasket/tracks)
 ```
