@@ -19,5 +19,12 @@ For the full doc set (reference, FAQ, troubleshooting, overview), use [new_featu
 2. **Pick the one job** the how-to guide covers: the everyday task most readers come back for. List the other jobs as sections only if they're short.
 3. **Draft in this order:** feature document, how-to guide, release note. Use [../modules/content_generation.md](../modules/content_generation.md).
 4. **Keep the three self-contained.** With no reference page to link to, the feature document carries the key rules: who can do what, what works offline, and what can't be undone, in one short section.
-5. **Check** each piece against [../quality/checklist.md](../quality/checklist.md): accuracy, style and its contract.
-6. **Report** the three files, the questions, and any check that failed.
+5. **Place them** with [../framework/linking_and_navigation.md](../framework/linking_and_navigation.md):
+   - the feature document under **Get started** in `sidebars.js`, next to the other tutorials
+   - the how-to guide under the job area that matches its goal, such as **Run work across teams**; add a new job area only if none fits
+   - a card for each page on the product overview (`docs/<product>/index.mdx`)
+   - the release note in `blog/`, with its product and `new-feature` tags
+   - any new tags in `docs/tags.yml`
+   Then run `npm run build`; it fails on a broken link or anchor.
+6. **Check** each piece against [../quality/checklist.md](../quality/checklist.md): accuracy, style and its contract.
+7. **Report** the three files, the questions, and any check that failed.
