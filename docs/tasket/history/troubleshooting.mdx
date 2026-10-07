@@ -1,0 +1,210 @@
+---
+title: Troubleshoot History
+description: "Fixes for History in Tasket: History that doesn't load, an empty History, a task that's missing or in the wrong section, a task that opens read-only, a first load while offline, and a reopen that fails."
+tags: [tasket, history, troubleshooting]
+keywords: [Tasket, History, History empty, task missing from History, History offline, read-only task, reopen failed, Neo]
+toc_max_heading_level: 2
+---
+
+This page covers the most common problems with History in Tasket: errors, symptoms such as an empty list or a missing task, offline and permission limits, and data loss. Each one shows what you see, its cause and the solution.
+
+For steps, see [Return to recent tasks](./return-to-recent-tasks.mdx). For how History behaves in each case, see the [History reference](./reference.mdx).
+
+## History doesn't load
+
+:::danger[Error]
+
+The **History** tab shows a full-page error instead of your tasks.
+
+:::
+
+### Cause
+
+Tasket couldn't load your History.
+
+### Solution
+
+Use the retry option on the error page.
+
+## Task no longer exists
+
+:::danger[Error]
+
+You click a row in History, and a message says the task no longer exists. The row then disappears.
+
+:::
+
+### Cause
+
+The task was deleted, and History hadn't yet removed its row.
+
+### Solution
+
+Nothing brings a deleted task back into History.
+
+## Task can't be reopened
+
+:::danger[Error]
+
+You click **Re-open**, and an error says the task couldn't be reopened.
+
+:::
+
+### Cause
+
+A network error stopped the change. The task's status hasn't changed.
+
+### Solution
+
+Check your connection, then click **Re-open** again.
+
+## History is empty
+
+:::info[Symptom]
+
+The **History** tab shows no tasks.
+
+:::
+
+### Cause
+
+One of these applies:
+
+- You haven't viewed or acted on a task since History was released. Activity from before the release isn't included.
+- Every task you used is older than 30 days.
+
+### Solution
+
+Open a task from any view. It appears under **Today**.
+
+## Task missing from History
+
+:::info[Symptom]
+
+A task you remember using isn't in any section.
+
+:::
+
+### Cause
+
+One of these applies:
+
+- You last viewed or acted on the task more than 30 days ago.
+- The task was deleted. History removes deleted tasks and shows no marker for them.
+- You hovered over the task's row without opening it. Hovering doesn't add a task to History.
+
+### Solution
+
+If the task still exists, open it from its project. It returns to History under **Today**.
+
+## Task in the wrong section
+
+:::info[Symptom]
+
+A task you used today sits under **Past Week** or **Past Month**, or the other way round.
+
+:::
+
+### Cause
+
+You viewed the task offline. While you're offline, History sorts tasks by your device's clock. A clock that's wrong by more than 24 hours, or that passed midnight while you were offline, puts the task in the wrong section.
+
+### Solution
+
+Reconnect. Tasket corrects the section when the access syncs.
+
+## Sections don't stay collapsed
+
+:::info[Symptom]
+
+A section you collapsed is expanded again, or **Today** is collapsed when you open History.
+
+:::
+
+### Cause
+
+Collapsed sections aren't remembered between sessions. Each new session starts with every section expanded. **Today** is the exception: it starts collapsed whenever it has no tasks.
+
+### Solution
+
+Collapse or expand the section again. To fill **Today**, open a task.
+
+## History needs a connection
+
+:::caution[Offline]
+
+History shows "History requires an internet connection for your first load."
+
+:::
+
+### Cause
+
+You're offline, and this device has no saved copy of your History yet.
+
+### Solution
+
+Reconnect and open the **History** tab. After the first load, History also opens offline.
+
+## History looks out of date
+
+:::caution[Offline]
+
+History shows an offline banner, and recent activity from your other devices is missing.
+
+:::
+
+### Cause
+
+You're offline, so History shows the copy saved on this device.
+
+### Solution
+
+Reconnect. History updates.
+
+## Task opens read-only
+
+:::caution[Permission]
+
+A task opened from History shows a notice that you no longer have edit access. You can't assign, comment, complete, discard or watch.
+
+:::
+
+### Cause
+
+You were removed from the task's assignees and watchers, or you no longer belong to the task's workspace. History keeps the row, but the task opens read-only.
+
+### Solution
+
+You can still read the task. To act on it, you need access to the task again.
+
+## Reopened task is closed again
+
+:::danger[Data loss]
+
+A task you reopened offline goes back to *Completed* or *Discarded* after you reconnect, and an error appears.
+
+:::
+
+### Cause
+
+The reopen couldn't sync, so Tasket put the task back to the status it has on the server.
+
+### Solution
+
+Open the task and click **Re-open** again while you're connected.
+
+## Offline visit missing from History
+
+:::danger[Data loss]
+
+A task you opened offline was in **Today** on that device, but it isn't in History on your other devices.
+
+:::
+
+### Cause
+
+The record of that visit never synced. The task itself isn't affected.
+
+### Solution
+
+Open the task again while you're connected. It appears under **Today** on every device.

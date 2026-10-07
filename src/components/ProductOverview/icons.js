@@ -11,6 +11,7 @@ const PATHS = {
   list: <><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></>,
   question: <><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.7"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></>,
   wrench: <><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9L12 17.8a2.3 2.3 0 0 1-3.3-3.3l7.4-7.4"/><path d="M14.5 5.5 17 3l4 4-2.5 2.5"/></>,
+  clock: <><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></>,
   plus: <path d="M12 5v14M5 12h14"/>,
 };
 

@@ -6,6 +6,10 @@ tracks:
   label: Tracks
   permalink: /tracks
   description: Docs for Tracks, which let one task sit on several workstreams at once.
+history:
+  label: History
+  permalink: /history
+  description: Docs for History, the list of tasks you viewed or acted on in the last 30 days.
 tutorial:
   label: Tutorial
   permalink: /tutorial

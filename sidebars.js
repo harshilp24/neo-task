@@ -29,11 +29,19 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Find your work',
+      collapsible: true,
+      collapsed: false,
+      className: 'sb-section sb-section--clock',
+      items: ['tasket/history/return-to-recent-tasks'],
+    },
+    {
+      type: 'category',
       label: 'Concepts',
       collapsible: true,
       collapsed: false,
       className: 'sb-section sb-section--book',
-      items: ['tasket/tracks/what-are-tracks'],
+      items: ['tasket/tracks/what-are-tracks', 'tasket/history/what-is-history'],
     },
     {
       type: 'category',
@@ -41,7 +49,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       className: 'sb-section sb-section--list',
-      items: ['tasket/tracks/reference'],
+      items: ['tasket/tracks/reference', 'tasket/history/reference'],
     },
     {
       type: 'category',
@@ -49,7 +57,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       className: 'sb-section sb-section--wrench',
-      items: ['tasket/tracks/faq', 'tasket/tracks/troubleshooting'],
+      items: ['tasket/tracks/faq', 'tasket/tracks/troubleshooting', 'tasket/history/troubleshooting'],
     },
   ],
 };

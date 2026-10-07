@@ -1,0 +1,135 @@
+---
+title: History reference
+slug: /tasket/history/reference
+description: "History reference for Tasket: the three sections (Today, Past Week, Past Month), what adds a task to History, what each row shows, who can reopen a task, what works offline, and how long History keeps a task."
+tags: [tasket, history, reference]
+keywords: [Tasket, History, History tab, Today, Past Week, Past Month, recently viewed tasks, History offline, reopen a task, 30 days, Neo]
+toc_max_heading_level: 2
+---
+
+This page lists the facts about History in Tasket: its sections, what adds a task to it, what each row shows, reopening, offline behaviour and how long a task stays. It describes how History behaves. For steps, see [Return to recent tasks](./return-to-recent-tasks.mdx). For fixes, see [Troubleshoot History](./troubleshooting.mdx).
+
+:::info[At a glance]
+
+- **Sections:** **Today**, **Past Week**, **Past Month**
+- **Task statuses shown:** <Chip>Open</Chip> <Chip kind="done">Completed</Chip> <Chip>Discarded</Chip>
+- **Kept in the list for:** 30 calendar days, in your local timezone
+- **Can't be brought back:** a deleted task's row
+- **Works offline:** opening History and a task from the copy saved on your device, and reopening a task
+- **Needs a connection:** the first load of History
+
+:::
+
+## Sections
+
+History groups tasks into three sections by when you last viewed or acted on them. Every boundary is midnight in your local timezone, not UTC. A task you view at 11:30 PM local time counts as today.
+
+| Section | Covers | When it has no tasks |
+|---|---|---|
+| **Today** | The current calendar day, from midnight to now. | Starts collapsed, with a count of zero. It stays visible and can be expanded. |
+| **Past Week** | The seven calendar days before today. | The header stays. The section shows "No activity this week". |
+| **Past Month** | Day 8 to day 30 before today. | The header stays. The section shows "No activity this month". |
+
+- Within each section, tasks are sorted by most recent access, with the most recent first.
+- Sections can be collapsed. A collapsed section shows its header with an expand icon.
+- Collapsed sections aren't remembered. Each new session starts with every section expanded, except **Today**, which starts collapsed whenever it has no tasks.
+
+## What adds a task to History
+
+History is personal. It records your own access to tasks, from every project and every view in Tasket.
+
+| Event | Adds the task to History |
+|---|:-:|
+| Opening the task's detail view from a row in any view | ✓ |
+| Opening the task from a direct link | ✓ |
+| Acting on the task in its detail view: comment, reassign, mark as reviewed, complete, discard or watch | ✓ |
+| Acting on the task without opening its detail view, such as with a keyboard shortcut | ✓ |
+| Reopening a completed or discarded task | ✓ |
+| Hovering over a task's row | — |
+
+- A task appears once. Several views in one day produce one row, at the top of **Today**.
+- Opening a task that sits in **Past Week** or **Past Month** moves it to the top of **Today**. It leaves the older section.
+- History updates without a manual refresh.
+- History syncs across devices. Two devices that open the same task on the same day both show it once in **Today**.
+
+## The History list
+
+Each row shows:
+
+| Field | What it shows |
+|---|---|
+| Task title | The task's title. |
+| Task ID | The task's ID. |
+| Project name | The project the task belongs to. History covers every project, so each row names its project. |
+| Status | *Open*, *Completed* or *Discarded*, as it is now. |
+| Assignee avatars | The task's assignees, stacked as in other views. |
+| Silence score | The task's current score, fetched when the list is shown. It isn't the score from your last visit. |
+| Unread red dot | Shown when the task has new, unreviewed activity since you last accessed it. |
+
+Clicking a row opens the task's detail view, the same as from any other view.
+
+## Empty states
+
+| Situation | What History shows |
+|---|---|
+| You've never viewed a task | A message saying that your recently viewed tasks appear here. No section headers. |
+| Every task you viewed is older than 30 days | The three section headers with their empty messages, and the overall empty message below them. |
+| First visit after History is released | An empty History. Tasks you used before the release aren't included. |
+| History can't load | A full-page error with a retry option. |
+| Offline, with no copy saved on the device | "History requires an internet connection for your first load." |
+
+## Reopening a task
+
+| Part | Behaviour |
+|---|---|
+| Where | **Re-open** is in the task's detail view when the task is *Completed* or *Discarded*. It isn't on the History row. |
+| Comment | A text field below **Re-open** takes an optional comment. |
+| Result | The task's status changes to *Open*. It returns to the project's **Open** tab and to the assignee's **Work** tab. |
+| In History | The task stays in History, with the status *Open*. Reopening counts as acting on the task. |
+| If it fails | An error appears and the status doesn't change. |
+
+## Roles and permissions
+
+Reopening follows the same permissions as completing and discarding a task.
+
+|  | Creator | Assignee | Contributor | Watcher |
+|---|:-:|:-:|:-:|:-:|
+| Reopen a completed or discarded task | ✓ | ✓ | ✓ | ✓ |
+
+Losing access to a task doesn't remove it from your History:
+
+| Change | Row | On click |
+|---|---|---|
+| You're removed from the task's assignees and watchers | Still shown | The detail view opens read-only, with a notice that you no longer have edit access. Assign, comment, complete, discard and watch aren't available. |
+| You no longer belong to the task's workspace | Still shown | The same read-only detail view and notice. |
+
+## Offline behaviour
+
+| Works offline | Needs a connection |
+|---|---|
+| Opening History from the copy saved on your device · opening a task from that copy · reopening a task | The first load of History |
+
+- Offline, History shows an offline banner. The list and its sections may be out of date.
+- A task you view or act on offline goes to the top of **Today** straight away. The record is saved on your device and syncs on reconnect.
+- Actions you take on a task offline are queued and sync on reconnect.
+- A task reopened offline shows as *Open* on your device. If the sync fails, the status goes back to *Completed* or *Discarded* and an error appears.
+- If a saved record can never sync, History on your other devices doesn't show that access. The task itself isn't affected.
+- A record that syncs more than 30 days after the access isn't shown in History.
+- Sections use your device's clock while you're offline. If the clock passes midnight or is wrong by more than 24 hours, a task can sit in the wrong section until you reconnect.
+
+## What changes do to History
+
+| Change | Effect | Undo |
+|---|---|---|
+| You view or act on a task | It moves to the top of **Today**. | — |
+| Someone completes or discards a task | It stays in History, with its new status. | <Chip kind="yes">Reopen</Chip> |
+| Someone deletes a task | Its row is removed, with no "deleted" marker. | <Chip kind="no">No</Chip> |
+| You click a deleted task before History has removed it | A message says the task no longer exists, and the row is removed. | <Chip kind="no">No</Chip> |
+| 30 days pass since your last access | The task leaves the list. | <Chip kind="yes">Open the task again</Chip> |
+
+## Rules and limits
+
+- History shows the last 30 calendar days, in your local timezone.
+- Tasket keeps the record of each access for 90 days.
+- History starts on the day the feature is released. It doesn't include earlier activity.
+- History needs no setup. It updates whenever you view or act on a task.

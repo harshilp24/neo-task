@@ -1,7 +1,7 @@
 ---
 title: Tasket
 slug: /tasket
-description: "Tasket is Neo's work management platform. Teams of members, admins and guests work in projects, each task has comments, Studio docs and a Friday chat, and Tracks lets one task move through several workstreams at once."
+description: "Tasket is Neo's work management platform. Teams of members, admins and guests work in projects, each task has comments, Studio docs and a Friday chat, Tracks lets one task move through several workstreams at once, and History lists the tasks you used in the last 30 days."
 tags: [tasket]
 hide_table_of_contents: true
 ---
@@ -9,7 +9,7 @@ hide_table_of_contents: true
 import {Overview, JobCards, TracksPreview} from '@site/src/components/ProductOverview';
 
 <Overview
-  intro={<>Tasket is Neo's work management platform. It organises your team's work across three layers: <b>teams and projects</b> (who works together, and where), <b>tasks</b> (each unit of work and its context), and <b>views</b> (where your work shows up). Use this section to set up Tracks, move tasks through them, and fix common problems.</>}
+  intro={<>Tasket is Neo's work management platform. It organises your team's work across three layers: <b>teams and projects</b> (who works together, and where), <b>tasks</b> (each unit of work and its context), and <b>views</b> (where your work shows up). Use this section to set up Tracks, move tasks through them, return to recent tasks with History, and fix common problems.</>}
   layers={[
     {icon: 'team', title: 'Teams and projects', text: 'Members, admins and guests from other organisations, working in projects that hold tasks.'},
     {icon: 'task', title: 'Tasks', text: 'A title, a comment thread, Studio docs and a Friday chat. Open, Completed or Discarded.'},
@@ -32,3 +32,16 @@ import {Overview, JobCards, TracksPreview} from '@site/src/components/ProductOve
 />
 
 New to Tracks? Read the [release note](/changelog/tracks).
+
+## History
+
+<JobCards
+  items={[
+    {icon: 'clock', title: 'Return to recent tasks', text: 'Open a recent task, collapse sections, reopen a closed task and use History offline.', to: '/docs/tasket/history/return-to-recent-tasks'},
+    {icon: 'book', title: 'What is History?', text: 'How Tasket lists every task you viewed or acted on in the last 30 days.', to: '/docs/tasket/history'},
+    {icon: 'list', title: 'History reference', text: 'Every section, row field, empty state and offline rule.', to: '/docs/tasket/history/reference'},
+    {icon: 'wrench', title: 'Troubleshoot History', text: 'Fixes for an empty History, missing tasks and failed reopens.', to: '/docs/tasket/history/troubleshooting'},
+  ]}
+/>
+
+New to History? Read the [release note](/changelog/history).
