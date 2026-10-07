@@ -1,6 +1,6 @@
 ---
 name: write-docs
-description: Turn a PRD and its supporting artefacts (screens, tickets, designs) into first drafts of Neo product docs: a product overview, a tutorial, a how-to guide, a concept page, a reference page, an FAQ, troubleshooting, and a release note. Also updates existing docs when a feature changes, and reviews drafts against Neo's standards.
+description: Turn a PRD and its supporting artefacts (screens, tickets, designs) into first drafts of Neo product docs: a product overview, a tutorial, a how-to guide, a concept page, a reference page, an FAQ, troubleshooting, and a release note. Also updates existing docs when a feature changes, hides or deletes pages without breaking links or the build, and reviews drafts against Neo's standards.
 ---
 
 # Write docs
@@ -23,6 +23,7 @@ These apply to every request:
 | A new feature: "write docs for this PRD", "draft the three documents" (default) | [workflows/three_pieces.md](workflows/three_pieces.md) |
 | A new feature, full doc set: "write the full docs", "add a reference and FAQ" | [workflows/new_feature_docs.md](workflows/new_feature_docs.md) |
 | A change to a documented feature: "the PRD changed", "the UI now…", "update the Tracks docs" | [workflows/update_feature_docs.md](workflows/update_feature_docs.md) |
+| Taking pages out: "hide this page", "remove the FAQ", "delete these docs", "unpublish" | [workflows/hide_or_delete_pages.md](workflows/hide_or_delete_pages.md) |
 | Only a release note or changelog entry | [workflows/release_note_only.md](workflows/release_note_only.md) |
 | A review of existing pages or a draft | [workflows/review_only.md](workflows/review_only.md) |
 
@@ -37,6 +38,8 @@ Before drafting, make sure you have:
 3. **The product** the feature belongs to (Tasket, Friday, Studio or Drive), so pages go in the right folder.
 
 If the PRD is missing, stop and ask for it. Never draft from a feature name alone.
+
+Hiding or deleting pages is the exception: it needs only the list of pages, not a PRD.
 
 ## 4. Outputs
 

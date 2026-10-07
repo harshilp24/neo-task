@@ -46,6 +46,8 @@ Each page shows **Home › <Product> › <sidebar section>** above the title, wi
 | Product overview | Every page of the feature, as cards |
 | Release note | The explanation, as "Learn about <feature> →" |
 
+These apply between published pages. Never link to a hidden page, and don't keep a required link to a page that's been hidden or deleted. See [../workflows/hide_or_delete_pages.md](../workflows/hide_or_delete_pages.md).
+
 ## Anchors
 
 Link to a section with its heading's anchor, for example `faq.mdx#how-do-i-turn-off-tracks`. If you rename a heading, search the repo for its old anchor. The build fails on broken anchors.

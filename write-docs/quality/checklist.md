@@ -43,6 +43,18 @@ And check by reading:
 - [ ] Every tag is defined in `docs/tags.yml`.
 - [ ] `npm run build` passes. Broken links and anchors fail it.
 
+## Hide or delete
+
+Only for [../workflows/hide_or_delete_pages.md](../workflows/hide_or_delete_pages.md).
+
+- [ ] A hidden page has `unlisted: true` and no `tags` line. A deleted page's file is gone.
+- [ ] The page is out of `sidebars.js`, the product overview cards and the home page. No sidebar category is left empty.
+- [ ] A search for the page's file name, URL and sidebar id finds no link from a page that's still published.
+- [ ] Every link that was needed now points to the feature's main page, with link text that matches it.
+- [ ] No sentence is left promising a page that's gone ("see the FAQ", "the steps are in…").
+- [ ] `npm run build` passes with `onBrokenLinks` and `onBrokenAnchors` still set to `throw`.
+- [ ] Hide: the built page has the `noindex` robots tag and isn't in `build/sitemap.xml` or under `build/docs/tags`.
+
 ## Release note
 
 - [ ] Title is the feature name only.
@@ -57,4 +69,5 @@ grep -rn "—" docs/<product>/<feature> blog/*-<slug>.mdx
 grep -rnE "^:::(note|info|warning|tip)$" docs blog
 grep -rniE "seamless|leverage|robust|empower|unlock|delve|effortless|streamline" docs blog
 npm run build
+grep -rnE "<file>\.mdx|/docs/<product>/<feature>/<page>" docs blog src static sidebars.js docusaurus.config.js
 ```

@@ -34,7 +34,7 @@ Change the page that owns the fact. Update other pages only where they link to i
 
 If a heading changes, search for its old anchor and fix every link.
 
-Keep each changed page in its contract's format ([../modules/doc_contracts/](../modules/doc_contracts/)): the answer-first `description`, tags and keywords must still match the page, an FAQ answer stays one sentence, a troubleshooting issue keeps its callout, Cause and Solution. If a page is added or removed, update `sidebars.js`, the product overview cards and `docs/tags.yml`.
+Keep each changed page in its contract's format ([../modules/doc_contracts/](../modules/doc_contracts/)): the answer-first `description`, tags and keywords must still match the page, an FAQ answer stays one sentence, a troubleshooting issue keeps its callout, Cause and Solution. If a page is added, update `sidebars.js`, the product overview cards and `docs/tags.yml`. If a page has to be hidden or deleted, run [hide_or_delete_pages.md](hide_or_delete_pages.md) for it.
 
 ### 4. Close the question
 

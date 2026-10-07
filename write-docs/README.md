@@ -30,6 +30,18 @@ PRD + screens
  → output: pages + release note + clarifying questions + report
 ```
 
+To take pages out, no PRD is needed:
+
+```
+list of pages + "hide" or "delete"
+ → pick the mode       hide keeps the file and URL, delete removes both
+ → take the pages out  unlisted and untagged, or git rm
+ → navigation          sidebar, overview cards, home page
+ → backlinks           remove each link, or repoint a needed one to the feature's main page
+ → build and verify    no broken links, noindex in place, nothing left pointing at the page
+ → output: changed files + backlink report + what the change leaves open
+```
+
 ## Structure
 
 ```
@@ -53,6 +65,7 @@ write-docs/
 │   ├── three_pieces.md              # PRD → feature doc, how-to, release note (default)
 │   ├── new_feature_docs.md          # PRD → full doc set
 │   ├── update_feature_docs.md       # Feature changed → update pages
+│   ├── hide_or_delete_pages.md      # Hide or delete pages, fix backlinks, build
 │   ├── release_note_only.md         # Changelog entry only
 │   └── review_only.md               # Review drafts, change nothing
 │
@@ -101,6 +114,7 @@ The assistant routes the request, writes pages into `docs/` and `blog/`, and rep
 | How the release note looks | [modules/doc_contracts/release_note.md](modules/doc_contracts/release_note.md) |
 | How pages are grouped in the sidebar | [framework/linking_and_navigation.md](framework/linking_and_navigation.md) |
 | How a role is addressed | [framework/persona_specific/](framework/persona_specific/) |
+| How pages are hidden or deleted, and what happens to links to them | [workflows/hide_or_delete_pages.md](workflows/hide_or_delete_pages.md) |
 | What counts as "done" | [quality/checklist.md](quality/checklist.md) |
 | A new kind of job | add a file in [workflows/](workflows/) and a row in [SKILL.md](SKILL.md) |
 
